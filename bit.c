@@ -11,11 +11,12 @@ void main()
 	bool e = -2 ;
 
 	printf("a=%d, b=%d, c=%d, d=%d, e=%d\n", a, b, c, d, e ) ;
-	printf("size a=%d, b=%d, c=%d, d=%d, e=%d bool=%d\n", 
+	printf("size a=%d, b=%d, c=%d, d=%d, e=%d bool=%d, char=%d\n", 
 		sizeof(a), 
 		sizeof(b), 
 		sizeof(c), 
 		sizeof(d), 
 		sizeof(e),
-		sizeof(bool) ) ;
+		sizeof(bool), 
+		sizeof(char) ) ;
 }
