@@ -1,3 +1,7 @@
+/*
+	2016.06.08 Huiqun.Lin
+	bool 型のサイズ、値を検証
+*/
 #include <stdio.h>
 #include <stdbool.h>
 
