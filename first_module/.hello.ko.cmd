@@ -1,0 +1,1 @@
+cmd_/home/camos/my_source/first_module/hello.ko := ld -r -m elf_i386 -T ./scripts/module-common.lds --build-id  -o /home/camos/my_source/first_module/hello.ko /home/camos/my_source/first_module/hello.o /home/camos/my_source/first_module/hello.mod.o
