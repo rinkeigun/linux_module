@@ -9,3 +9,6 @@
 
 スレッド関連関数は？どう使うか？
 
+POSIX, MUTEXってなに？
+MULTI THREAD
+
