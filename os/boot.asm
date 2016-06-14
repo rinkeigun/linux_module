@@ -16,7 +16,7 @@ ORG 0x7C00
 
 JMP BOOT		;BS_jmpBoot
 BS_jmpBoot2		DB	0x90
-BS_OEMName		DB	"MyOS   "
+BS_OEMName		DB	"MyOS     "
 BPB_BytsPerSec	DW	0x0200		;BytesPerSector
 BPB_SecPerClus	DB	0x01		;SectorPerCluster
 BPB_RsvdSecCnt	DW	0x0001		;reservedSectors
@@ -34,10 +34,39 @@ BPB_DrvNum		DB	0x00		;DriveNum
 BS_Reserved1	DB	0x00		;Reserved
 BS_BootSig		DB	0x29		;BootSignature
 BS_VoIID		DD	0x20160613	;VolumeSerialNumber
-BS_VolLab		DB	"MyOS  "	;VolumeLabel
+BS_VolLab		DB	"MyOS       "	;VolumeLabel
 BS_FilSsType	DB	"FAT12  "	;FileSystemType
 
 BOOT:
+	MOV	AH, 0x0E
+	MOV AL, 0x41
+	MOV	BH, 0x00
+	MOV BL, 0x07
+	INT	0x10
+
+;/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+;
+; DisplayMessage
+; display ASCIIZ string
+;
+;/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
+DisplayMessage:
+	PUSH	AX
+	PUSH	BX
+StartDispMsg:
+	LODSB
+	OR	AL, AL
+	JZ	.DONE
+	MOV	AH, 0x0E
+	MOV	BH, 0x00
+	MOV	BL, 0x07
+	INT	0x10
+	JMP	StartDispMsg
+.DONE:
+	POP	BX
+	POP	AX
+	RET
+
 	CLI
 	HLT
 
