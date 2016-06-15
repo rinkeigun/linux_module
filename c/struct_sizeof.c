@@ -3,12 +3,22 @@
 	struct型のサイズ検証
 */
 #include <stdio.h>
+#include <stdbool.h>
 
 void main()
 {
 	struct {
 		char c1 ;
 	} s1 ;
+	struct {
+		bool b ;
+		char c1 ;
+	} s1_bool ;
+	struct {
+		bool b ;
+		bool b1 ;
+		char c1 ;
+	} s1_bool2 ;
 	struct  {
 		char c1 ;
 		char c2 ;
@@ -27,6 +37,10 @@ void main()
 		int i1 ;
 	} s4 ;
 	struct  {
+		bool c1 ;
+		int i1 ;
+	} s4_bool ;
+	struct  {
 		char c1 ;
 		char c2 ;
 		double d1 ;
@@ -44,12 +58,18 @@ void main()
 	printf("sizeof types\n") ;
 	printf("sizeof struct char 1 = %d\n", sizeof ( s1 ) );
 		// 結果：1
+	printf("sizeof struct char 1 = %d\n", sizeof ( s1_bool ) );
+		// 結果：2
+	printf("sizeof struct char 1 = %d\n", sizeof ( s1_bool2 ) );
+		// 結果：3
 	printf("sizeof struct char 1 = %d\n", sizeof ( s2 ) );
 		// 結果：2
 	printf("sizeof struct char 1 = %d\n", sizeof ( s3 ) );
 		// 結果：8, intと一緒に使うと、charは 4の倍数でとられる
 	printf("sizeof struct char 1 = %d\n", sizeof ( s4 ) );
 		// 結果：8, 4以下であれば、charを増やしてもサイズが変わりません
+	printf("sizeof struct bool 1 = %d\n", sizeof ( s4_bool ) );
+		// 結果：8, 4以下であれば、boolを増やしてもサイズが変わりません
 	printf("sizeof struct char 1 = %d\n", sizeof ( s5 ) );
 		// 結果：12, doubleと一緒でも4の倍数しかとらない
 	printf("sizeof struct char 1 = %d\n", sizeof ( s6 ) );
