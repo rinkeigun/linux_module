@@ -1,3 +1,7 @@
+/*
+	2016/06/17	Huiqun.Lin
+	gcc -pthread thread.c
+*/
 #define _XOPEN_SOURCE 600
 
 #include <stdlib.h>
