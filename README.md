@@ -36,3 +36,16 @@ ELF : 再配置可能なオブジェクト, 実行ファイル, 共有オブジ�
 2016/06/20
 どのようなセンサーがあるか？
 linux上ではどう扱うか
+user <-> web server <-> DB <-> Concentrator(集約器) <-> senson
+web ( linux + Apache + PHP ) 
+DB ( MySql, DBアクセス )
+concentrator( c言語、開発要)
+sensor( driver開発, 接続方法)
+
+日本統計API
+http://www.e-stat.go.jp/SG1/estat/eStatTopPortal.do
+
+linux 通信用語
+セマフォ プロセス　キュー　通信　FIFO　メッセージ　ソケット
+シグナル パイプ 共有メモリ thread(スレッド) タイマー 割り込み
+
