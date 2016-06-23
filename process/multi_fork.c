@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-//#include <sys/types.h>	// fork
+#include <sys/types.h>	// fork
 #include <unistd.h>	// fork
 #include <sys/wait.h>	// wait
  
@@ -47,7 +47,8 @@ Waitpid(pid_t wpid, int *status, int options)
 void
 wait_children (ssize_t *child) {
 	int status;
-	int options = WEXITED;
+	//int options = WEXITED;
+	int options = 1;
  
 	bool is_first = true;
 	for(;*child > 0;) {
@@ -76,7 +77,7 @@ doit()
 int
 main(int argc, char *argv[])
 {
-	const ssize_t child_max = 30;	// 同時最大子プロセス数
+	const ssize_t child_max = 5;	// 同時最大子プロセス数
 	const ssize_t fork_max = 70;	// forkの最大数
 	ssize_t child = 0;		// 現在の子プロセスの数
 	ssize_t fork_count = 0;		// 現在のfork()の回数
