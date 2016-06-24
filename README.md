@@ -2,7 +2,7 @@
 このファイルの内容を新しい順で先頭に追加するようにします
 2016/06/23
 IoT
-user <-> web server <-> DB <-> Server(Center) <-> Concentrator(集約器) <-> senson
+user <-> web server <-> DB <-> Server(Center) <-> Concentrator(集約器) <-> sensor
 web ( linux + Apache + PHP ) : 閲覧、指示 
 DB ( MySql, DBアクセス ) : データ管理
 Center( server, c ) : データアクセス、制御伝達
