@@ -1,4 +1,13 @@
 # linux_module
+このファイルの内容を新しい順で先頭に追加するようにします
+2016/06/23
+IoT
+user <-> web server <-> DB <-> Server(Center) <-> Concentrator(集約器) <-> senson
+web ( linux + Apache + PHP ) : 閲覧、指示 
+DB ( MySql, DBアクセス ) : データ管理
+Center( server, c ) : データアクセス、制御伝達
+concentrator( c言語、開発要) : センサー情報収集、制御伝達
+sensor( driver開発, 接続方法)
 
 2016/06/09 
 ----- 2016/06/20 この内容は下に纏める -----------------
