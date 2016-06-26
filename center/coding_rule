@@ -5,8 +5,12 @@
 カウンター（counter）、ポインター(pointer)、最大(max）、最初(min)
 
 変数有効範囲（スコープ、記憶域クラス指定子)
-自動変数（関数内部、ローカル変数, Local）
 外部変数（関数外部、グローバル変数, Global）
+自動変数（関数内部、ローカル変数, Local）
+関数の引数(Input)
+関数の引数(Output)
+関数の引数(input/output, P)
+関数のreturn値(Return)
 静的変数（Static)
 関数内の静的変数(s)
 関数外の静的変数(x)
