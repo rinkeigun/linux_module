@@ -1,6 +1,5 @@
 /*
- * multi_fork.c
- * Copyright (C) 2014 kaoru <kaoru@bsd>
+	2016/06/28	Huiqun.Lin
  */
 #include <stdbool.h>
 #include <stdio.h>
@@ -12,16 +11,6 @@
  
 #include <err.h>
 #include <errno.h>
- 
-pid_t
-Fork()
-{
-	pid_t pid = fork();
-	if (-1 == pid) {
-		err(EXIT_FAILURE, "can not fork");
-	}
-	return pid;
-}
  
 pid_t
 Waitpid(pid_t wpid, int *status, int options)
@@ -79,15 +68,18 @@ int
 main(int argc, char *argv[])
 {
 	const ssize_t child_max = 30;	// 同時最大子プロセス数
-	ssize_t child = 0;		// 現在の子プロセスの数
+	ssize_t child = 0;				// 現在の子プロセスの数
  
 	ssize_t i = 0;
 	while(1){
 		//(void) printf ("child=%lu\n",  child);
 		printf ("child=%lu\n",  child);
 		for (; child < child_max; child++/*, fork_count++*/) {
-			pid_t pid = Fork ();
-			if (0 == pid) {
+			pid_t pid = fork();
+			if (-1 == pid) {
+				err(EXIT_FAILURE, "can not fork");
+			}
+			else if (0 == pid) {
 				doit(2);
 				printf(" parent\n" ) ;
 				_exit(EXIT_SUCCESS);
