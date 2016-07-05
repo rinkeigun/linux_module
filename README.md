@@ -19,6 +19,7 @@ vim + screen + global?
 nmap, imap
 exモードって何？
 vimの拡張、連携
+keyの割り当て　:help index.txt, :verbose nmap
 
 認知
 聞いた、見たことがある（知っている）
