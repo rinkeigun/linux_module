@@ -1,0 +1,23 @@
+#!/bin/bash
+#SYNOPSIS :  if 条件; then ... [elif 条件; then] ... [elif]...fi 
+echo  'if 条件; then ... [elif 条件; then] ... [elif]...fi'
+echo  '条件:文字列比較'
+echo  '     a == b'
+echo  '     a != b'
+echo  '条件:数値比較'
+echo  '     a -eq b'
+echo  '     a -ne b'
+echo  '     a -ge b'
+echo  '     a -le b'
+echo  '     a -gt b'
+echo  '     a -lt b'
+echo  '条件:test'
+echo  '     -f ファイル名:通常ファイル'
+echo  '     -d ファイル名:ディレクトリ'
+echo  '     -e ファイル名:ファイルが存在'
+echo  '     -L ファイル名:シンボリックリンク'
+echo  '     -r ファイル名:読み取り可能'
+echo  '     -w ファイル名:書き込み可能'
+echo  '     -x ファイル名:ファイルが存在し、実行権限あり'
+echo  '     -s ファイル名:サイズ０より大きい'
+

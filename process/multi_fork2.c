@@ -1,16 +1,8 @@
 /*
 	2016/06/28	Huiqun.Lin
  */
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
- 
-#include <sys/types.h>	// fork
-#include <unistd.h>	// fork
-#include <sys/wait.h>	// wait
- 
-#include <err.h>
-#include <errno.h>
+#include "std_header.h"
+#include "tcpserver.h"
  
 pid_t
 Waitpid(pid_t wpid, int *status, int options)
@@ -80,7 +72,8 @@ main(int argc, char *argv[])
 				err(EXIT_FAILURE, "can not fork");
 			}
 			else if (0 == pid) {
-				doit(2);
+				//doit(2);
+				tcp_main() ;
 				printf(" parent\n" ) ;
 				_exit(EXIT_SUCCESS);
 			}

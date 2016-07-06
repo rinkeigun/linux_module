@@ -40,9 +40,9 @@
 #ifndef _TCPSERVER_H_
 #define _TCPSERVER_H_
 
+#include "std_header.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <stdio.h>
 
 /* クライアントからの接続を待つサーバの情報を表現する構造体 */
 typedef struct {
@@ -79,6 +79,8 @@ extern int tcpserver_wait(
 /* クライアントとの接続を終了 */
 extern void tcpclient_close(
     TCPCLIENT_INFO* client_info);   /* tcpserver_wait()で初期化されたもの */
+
+extern int tcp_main( void );   /* */
 
 #endif
 
