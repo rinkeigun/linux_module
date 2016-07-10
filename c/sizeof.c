@@ -51,6 +51,7 @@ void main()
 	printf("sizeof float = %d\n", sizeof ( float ) );
 		// 結果：4
 	printf("sizeof double = %d\n", sizeof ( double ) );
+	printf("sizeof double long = %d\n", sizeof ( double long ) );
 		// 結果：8
 	printf("sizeof long double = %d\n", sizeof ( long double ) );
 		// 結果：12
