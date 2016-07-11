@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SYNOPSIS :  if 条件; then ... [elif 条件; then] ... [elif]...fi 
-echo  'if 条件; then ... [elif 条件; then] ... [elif]...fi'
+#SYNOPSIS :  条件 
 echo  '条件:文字列比較'
 echo  '     a == b'
 echo  '     a != b'
+
 echo  '条件:数値比較'
 echo  '     a -eq b'
 echo  '     a -ne b'
@@ -12,6 +12,7 @@ echo  '     a -ge b'
 echo  '     a -le b'
 echo  '     a -gt b'
 echo  '     a -lt b'
+
 echo  '条件:test'
 echo  '     -f ファイル名:通常ファイル'
 echo  '     -d ファイル名:ディレクトリ'
@@ -28,38 +29,9 @@ echo '      [ 条件A ] && [ 条件B ] && [ 条件C ]'
 echo '      [ 条件A -o 条件B -o 条件C]   <- o = or'
 echo '      [ 条件A ] || [ 条件B ] || [ 条件C ]'
 echo '      [  ] スペースを必ずいれること'
-USER_ID=`/usr/bin/id -u`
- 
-#if [ $USER_ID -ne 0 ]; then
-#    echo "You must be super-user to execute $0"
-#    exit 1
-#fi
- 
-a=5
-b=7
 
-if [ $a == $b ]; then
-	echo "a=b"
-elif [ $a == 5 -a $b == 6 ] ; then
-#elif [ $a == 5 ] && [ $b == 6 ] ; then
-	echo "$a=5, $b=6"
-else
-	echo "else"
-fi
-
-nowtime=`date +%u`
-if [ $nowtime -le  4 ]
-then
-	echo "You have to work..."
-elif [ $nowtime -eq 5 ]
-then
-	echo "You can drink many beer soon!"
-else
-	echo "Have a relax day."
-fi
-
-echo ${c:-$a}
-echo ${a:+$b}
-echo ${c:=$a}
-echo $c
-echo ${d:?'$dが定義されていないためこのメッセージが標準エラーとして出力'}
+echo 'NULL評価'
+echo '${VAR:-expression} 値がセットされていない(NULL)場合、:-以降の式を評価結果を返す。'
+echo '${VAR:+expression} 値がセットされている(NONE-NULL)場合、:+以降の式を評価結果を返す。'
+echo '${VAR:=expression} 値がセットされていない(NULL)場合、:=以降の式を評価結果を返し、変数に代入。'
+echo '${VAR:?[expression]} 値がセットされていない(NULL)場合、:式が標準エラーに出力。'
