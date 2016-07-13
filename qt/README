@@ -1,0 +1,62 @@
+MinGWのインストール
+1.i686-4.8.2-release-posix-dwarf-rt_v3-rev3.7zをC:\直下に解凍
+2.システム環境変数 Path に追加する。
+
+
+C:\mingw32\bin
+
+Edit
+ 
+Qtのインストール
+?qt-opensource-windows-x86-mingw482-4.8.7.exeを実行する。
+?全てデフォルト値で進む
+?システム環境変数 Path に追加する。
+
+
+C:\Qt\4.8.7\bin
+
+Edit
+ 
+QtCreatorのインストール
+?qt-creator-opensource-windows-x86-3.4.1.exeを実行する。
+?全てデフォルト値で進む
+
+Edit
+ 
+Qt-solutionsのインストール
+
+※ 受領した資料と同じ。4.8.5を入れていた人はリビルドだけする。
+1. qt-solutions-master.zip を展開する。(WinZipで「ここに展開」を選択)
+qt-solutions-qt-solutions フォルダができるので、C:\Qt に移動する。このとき、フォルダ名を「qt-solutions」に変更しておく。
+2. コマンドプロンプトを開いて、コンフィグレーションを行う。
+
+
+cd C:\Qt\qt-solutions\qtservice
+configure.bat -library
+
+以下のファイルが作成されていることを確認する。
+
+
+C:\Qt\qt-solutions\qtservice\config.pri
+
+※作成されていな場合、引数（-library）を手入力してみること。
+3. QtCreatorを起動して、ビルド設定を行う。 ?「ツール > オプション > ビルドと実行 > Qtバージョン 」の追加ボタンを
+押下する。
+?C:\Qt\4.8.7\bin\qmake.exeを選択する。
+?* 手動」に「Qt4.8.5(4.8.7) C:\Qt\4.8.7\bin\qmake.exe」が追加されることを確認し、適用ボタンを押下する。
+?* 「ツール > オプション > ビルドと実行 > キット」に移動する。
+?* 「手動」の「デスクトップ（デフォルト）」を選択し、Qtバージョンを
+「Qt 4.8.7(4.8.7)」に変更し、OKボタンを押下する。
+4. qt-solutionsプロジェクトをビルドする。 ?* 「プロジェクトを開く」からC:\Qt\qt-solutions\qtservice\qtservice.proを選択する。
+?* 「プロジェクトを構成」ボタンを押下する。
+?* 左ペインのqtserviceを右クリックで選択し、「qmake実行」を実行する。
+?* 左ペインのqtserviceを右クリックで選択し、「ビルド」を実行する。
+Warningが４つ出るが気にしない。
+?* C:\Qt\qt-solutions\qtserviceフォルダにlibフォルダができて、中に４つライブラリファイルができることを確認する。
+・libQtSolutions_Service-head.a
+・libQtSolutions_Service-headd.a
+・QtSolutions_Service-head.dll
+・QtSolutions_Service-headd.dll
+
+5. qtsingleapplicationプロジェクトに関しても、2と4を実施する。
+
