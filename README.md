@@ -1,5 +1,10 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/06/14
+Qtデザインのパーツ
+layout
+line, textarea, label, button, list, check, radio, select, pulldown
+
 2016/07/13
 Qt インストール
 PostgreSQL インストール
