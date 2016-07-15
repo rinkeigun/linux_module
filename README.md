@@ -5,6 +5,8 @@ Qtデザインのパーツ
 layout
 line, textarea, label, button, list, check, radio, select, pulldown
 
+実行時間とswitch、メモリ配置、構造体参照位置
+
 2016/07/13
 Qt インストール
 PostgreSQL インストール
