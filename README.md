@@ -1,6 +1,12 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
-2016/06/14
+2016/07/15
+C#
+c:\Windows\Microsoft.NET\Framework\バージョン番号\
+コンパイラ:csc
+ソースの拡張子:cs
+
+2016/07/14
 Qtデザインのパーツ
 layout
 line, textarea, label, button, list, check, radio, select, pulldown
