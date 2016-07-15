@@ -17,6 +17,9 @@ GUIの作成
 作成補助
 ビルド、デバッグ補助
 
+scp -r rin-k@172.30.10.33:filename ~/local
+scp filename rin-k172.30.10.33:
+
 
 2016/07/14
 Qtデザインのパーツ
