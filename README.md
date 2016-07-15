@@ -5,6 +5,18 @@ C#
 c:\Windows\Microsoft.NET\Framework\バージョン番号\
 コンパイラ:csc
 ソースの拡張子:cs
+netbeans
+visual studio
+IDE
+
+統合開発環境
+プロジェクト管理
+バージョン管理
+GUIの作成
+チーム開発
+作成補助
+ビルド、デバッグ補助
+
 
 2016/07/14
 Qtデザインのパーツ
