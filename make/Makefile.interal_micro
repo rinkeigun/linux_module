@@ -1,0 +1,17 @@
+# Makefile2
+
+OBJS = hello.o print.o
+CC = gcc
+
+hello: $(OBJS)
+	$(CC) -Wall -O2 -o $@ $(OBJS)
+
+hello.o: hello.c
+	$(CC) -c $<
+
+print.o: print.c
+	$(CC) -c $<
+
+.PHONY: clean
+clean:
+	$(RM) hello $(objs)

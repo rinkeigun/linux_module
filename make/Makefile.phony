@@ -1,0 +1,4 @@
+#.PHONY は疑似ターゲット
+.PHONY: clean
+clean:
+	rm -f *.class

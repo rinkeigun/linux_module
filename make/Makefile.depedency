@@ -1,0 +1,6 @@
+# targetAはtargetBに依存
+targetA:targetB
+	[targetAのコマンド行]
+targetB:
+	[targetBのコマンド行]
+

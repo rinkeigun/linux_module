@@ -1,0 +1,8 @@
+# makeの引数が指定しない場合、一番目のルールが実行される。つまり、hello.txtが生成される
+# make hello.txt cleanで複数ターゲットを実行することもOK
+hello.txt:
+	echo Hello World > hello.txt
+
+.PHONY: clean
+clean:
+	rm -f *.class

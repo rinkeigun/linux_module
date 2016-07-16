@@ -1,0 +1,4 @@
+hello.txt:
+	@echo "一行書いてもできる" > hello.txt
+	@echo "二行に分けてもOK" >> hello.txt
+	cat hello.txt

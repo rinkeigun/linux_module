@@ -8,12 +8,14 @@
 #SYNOPSIS :  		a, b の他の処理;; 
 #SYNOPSIS :  esac 
 
-a=2
+a=aatestbb
 case $a in
 	1)
 		echo '1';;
 	2)
 		echo '2';;
+	*test*)
+		echo "*test*";;
 	*)
 		echo 'そのほか、これはｃ言語のdefault見たいに最初に配置するのはだめ';;
 esac

@@ -1,0 +1,6 @@
+#
+# Hello Worldを出力する
+#
+
+all:
+	@echo Hello World!

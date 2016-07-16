@@ -1,0 +1,19 @@
+# Makefile2
+
+PROGRAM = hello
+OBJS = hello.o print.o
+CC = gcc
+CFLAGS = -Wall -O2
+
+$(PROGRAM): $(OBJS)
+	$(CC) -o $(PROGRAM) $^
+
+hello.o: hello.c
+	$(CC) $(CFLAGS) -c $<
+
+print.o: print.c
+	$(CC) $(CFLAGS) -c $<
+
+.PHONY: clean
+clean:
+	$(RM) $(PROGRAM) $(OBJS)

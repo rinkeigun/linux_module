@@ -1,0 +1,7 @@
+分割 Makefile
+subsystem:
+      cd subdir && $(MAKE)
+または
+
+subsystem:
+      $(MAKE) -C subdir

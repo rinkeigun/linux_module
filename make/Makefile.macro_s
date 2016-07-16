@@ -1,0 +1,44 @@
+#マクロ名　文字列　説明
+#AR        ar      アーカイブユーティリティ
+#AS        as       アセンブラ
+#CC        cc       Cコンパイラ
+#CXX       g++      C++コンパイラ
+#CO        co       RCSファイルからりびじゅんをチェックアウトする
+#CPP       $(CC) -E Cプリプロセッサ
+#FC        f77      Fortranコンパイラ
+#GET       get      不明
+#LEX       lex      lex
+#PC        pc       Pascalコンパイラ
+#YACC      yacc     yacc
+#YACCR     yacc -r  不明
+#MAKEINFO  makeinfo Texinfo -> Info
+#TEX       tex      TeX
+#TEXI2DVI  texi2dvi Texinfo -> DVI
+#WEAVE     weave    不明
+#CWEAVE    cweave   不明
+#TANGLE    tangle   不明
+#CTANGLE   ctangle  不明
+#RM        rm -f    ファイル削除
+
+#引数用マクロ
+#ARFLAGS   rv       ARの引数
+#ASFLAGS            ASの引数
+#CFLAGS             CCの引数
+#CXXFLAGS           CXXの引数
+#COFLAGS            COの引数
+#CPPFLAGS           CPPの引数
+#FFLAGS             FCの引数
+#GFLAGS             GETの引数
+#PFLAGS             PCの引数
+#RFLAGS             不明
+#YFLAGS             YACCの引数
+
+#内部マクロ
+$@                  ターゲット名
+$%                  ターゲットメンバ名（ターゲット名がedajima.a(momo.o)の場合、$@は"edajima.a"で、$%はmomo.o
+$<                  依存ファイル先頭のファイル名
+$?                  依存ファイルのうち、ターゲットより新しいファイルのリスト
+$^                  依存ファイルのリスト
+$+                  不明
+$*                  不明
+

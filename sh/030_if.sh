@@ -58,8 +58,12 @@ else
 	echo "Have a relax day."
 fi
 
+#$cが定義していなければ$aを出力
 echo ${c:-$a}
+#$aが定義してあれば$bを出力
 echo ${a:+$b}
+echo ${a+$b}
+#$cが定義していなければ$aを$cに代入
 echo ${c:=$a}
 echo $c
 echo ${d:?'$dが定義されていないためこのメッセージが標準エラーとして出力'}

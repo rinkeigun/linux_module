@@ -1,0 +1,2 @@
+.PHONY: rebuild
+rebuild: clean build ;  #

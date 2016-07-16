@@ -1,0 +1,4 @@
+SUFFIXES: .o .c
+
+.c.o:
+      $(CC) $(CFLAGS) -c $<
