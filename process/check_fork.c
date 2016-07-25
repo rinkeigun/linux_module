@@ -9,10 +9,10 @@
 int main(int argc, char** argv)
 {
   pid_t pid;
-  pid_t pid2[1];
+  pid_t pid2[2];
   int status;
 	
-	int process_no = 1 ;
+	int process_no = 2 ;
 	int excu_times = 0 ;
 	int excu_times_before = 0 ;
 	int i ;
@@ -25,7 +25,6 @@ int main(int argc, char** argv)
 	{
   		pid = fork();
 		printf("i=%d, pid=%d getpid=%d\n", i, pid, getpid() ) ;
-if(0){
 
   		/// プロセス作成に失敗した時は、0未満を返す
  		 //if ( pid2[i] < 0 )
@@ -51,22 +50,18 @@ if(0){
 			    execl("/bin/echo", "echo", "hahaha", NULL);
 			    perror("/bin/cat");
 			}
-//			sleep( 3 ) ;
-    		//exit(-1);
+    		exit(-1);
   		}
 	}
-}
 
-if(0)
-{
-	for( i=0; i<2; i++)
+	for( i=0; i<process_no; i++)
 	{
 		//  else
   		{
  		 	/// 子プロセスの終るのを待つ
    		 	//waitpid(pid2[i], &status, 0);
 		//	pid = getpid() ;
-		    pid = waitpid(-1, &status, 1);
+		    pid = waitpid(-1, &status, 0);
 		    //printf ("child(PID=%d) finished!\n", pid2[i]);
 		    printf ("child(PID=%d) finished!\n", pid );
 
@@ -86,7 +81,6 @@ if(0)
   		}
 
 	}
-}
 
   return(0);
 }
