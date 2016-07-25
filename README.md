@@ -1,5 +1,9 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/07/25
+arduino, 回路図 fritzhing
+ソース, 回路図, 写真, 部品一覧, 部品仕様
+
 2016/07/15
 C#
 c:\Windows\Microsoft.NET\Framework\バージョン番号\
