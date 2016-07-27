@@ -29,10 +29,11 @@ void setup() {
 
 void one_light( int no, int brightness)
 {
+    int times = 100 ;
     digitalWrite(no, HIGH);   // turn the LED on (HIGH is the voltage level)
-    delay(brightness);              // wait for a second
+    delayMicroseconds(brightness*times);              // wait for a second
     digitalWrite(no, LOW);    // turn the LED off by making the voltage LOW
-    delay(10-brightness);              // wait for a second
+    delayMicroseconds((10-brightness)*times);              // wait for a second
 }
 // the loop function runs over and over again forever
 void loop() {
