@@ -79,7 +79,7 @@ int popen2(int *fd_r, int *fd_w) {
         close(pipe_child2parent[WRITE]);
 
         // 子プロセスはここで該当プログラムを起動しリターンしない
-        if (execl("./test1", "./test1", NULL) < 0) {
+        if (execl("./test1", "./test1aaa", NULL) < 0) {
             perror("popen2");
             close(pipe_parent2child[READ]);
             close(pipe_child2parent[WRITE]);
