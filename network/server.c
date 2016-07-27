@@ -11,6 +11,7 @@ main()
  struct sockaddr_in client;
  int len;
  int sock;
+char msg[256] ;
 
  /* ソケットの作成 */
  sock0 = socket(AF_INET, SOCK_STREAM, 0);
@@ -29,7 +30,9 @@ main()
  sock = accept(sock0, (struct sockaddr *)&client, &len);
 
  /* 5文字送信 */
- write(sock, "HELLO", 5);
+ //write(sock, "HELLO", 5);
+read( sock, msg, sizeof( msg ) ) ;
+printf( msg ) ;
 
  /* TCPセッションの終了 */
  close(sock);
