@@ -1,5 +1,11 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/07/29
+  576  apt-get install php5-cli
+  577  apt-get install php5-mysql
+    apt-get install mysql-server
+  578  apt-get install mysql-client
+
 2016/07/25
 arduino, 回路図 fritzhing
 ソース(arduino, windows), 回路図, 写真, 部品一覧, 部品仕様
