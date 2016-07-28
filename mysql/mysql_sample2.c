@@ -20,9 +20,9 @@ collect2: error: ld returned 1 exit status
 #include <mysql/mysql.h>
 
 #define DBHOST "localhost"
-#define DBUSER "myuser"
-#define DBPASS "mypass"
-#define DBNAME "mydb"
+#define DBUSER "root"
+#define DBPASS "Keigun690920"
+#define DBNAME "hardware_info"
 
 int main()
 {
