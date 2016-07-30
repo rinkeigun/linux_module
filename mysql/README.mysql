@@ -1,2 +1,5 @@
 mysqlクライアントインストール：apt-get install libmysqlclient-dev
 インストールの確認：ls /usr/include/mysql/
+
+mysqludf
+
