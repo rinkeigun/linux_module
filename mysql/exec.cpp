@@ -1,6 +1,8 @@
 /*
 	2016/07/30 Huiqun.Lin
 	g++ -Wall -I/usr/include/mysql/ -shared -o exec.so -fPIC exec.cpp
+	cp exec.so /usr/lib/mysql/plugin/
+	mysql> CREATE FUNCTION exec RETURNS int SONAME 'exec.so';
 */
 #include <mysql.h>
 #include <m_string.h>
