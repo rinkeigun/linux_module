@@ -1,0 +1,1 @@
+CREATE FUNCTION exec RETURNS int SONAME 'exec.so';

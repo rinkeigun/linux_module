@@ -32,7 +32,9 @@ int main() {
         int i;
         for ( i=0; i<10; i++ ) {
                 int signo;
+printf( "test2\n" ) ;
                 sigwait(&sigset, &signo);
+printf( "test3\n" ) ;
 
                 struct timeval tv;
                 gettimeofday(&tv, NULL);

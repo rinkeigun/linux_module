@@ -1,0 +1,17 @@
+1. 接続
+$> mysql -u root -p
+
+2. データベースを作成
+create database database_name ;
+
+3. データベースの切り替え
+use database_name;
+
+4. テーブル作成
+create table table_name ( col_name data_type ) ;
+
+5. レコードの追加
+insert into table_name ( col_name ) values ( value ) ;
+
+6. テーブル編集
+alter table table_name add col_name data_type ;
