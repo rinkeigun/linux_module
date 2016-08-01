@@ -26,7 +26,7 @@ if (!$con) {
 #$result = mysql_query('SELECT * FROM feature', $con);
 $result = mysqli_query($con, 'SELECT * FROM feature');
 while ($data = mysqli_fetch_array($result)) {
-  echo  $data['a'].$data['b'] ;
+  echo  '<p>网站可以看到温度了，只能算是監視、不能算監控'.$data['a'].$data['b'].'</p>' ;
 }
 
 #$con = mysql_close($con);

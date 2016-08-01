@@ -1,9 +1,16 @@
+/*
+	2016/07/28 Huiqun.Lin
+	mysql-config --libs
+	gcc server2.c mysql_sample3.c -L/usr/lib/i386-linux-gnu -lmariadbclient
+*/
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <errno.h>
+#include "mysql_sample3.h"
+
 
 int
 main()
@@ -53,7 +60,8 @@ printf("test %d\n" , n++) ;
 	{
 		printf( "recv エラー( errno : %d )\n", errno ) ;
 	}
-	printf( msg ) ;
+	dbserver( msg ) ;	
+	//printf( msg ) ;
 
    close(sock);
  }

@@ -1,5 +1,8 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/07/30
+mysqludf
+
 2016/07/29
   576  apt-get install php5-cli
   577  apt-get install php5-mysql
