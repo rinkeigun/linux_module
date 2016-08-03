@@ -9,7 +9,8 @@ void Input(void);
 
 int main(void)
 {
-  SetSignal(SIGINT);
+  //SetSignal(SIGINT);
+  SetSignal(SIGUSR1);
 
   Input();
 
