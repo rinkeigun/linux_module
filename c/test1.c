@@ -13,7 +13,7 @@ int main() {
         return 1;
     }
 
-    printf("test1: ");
+    printf("test3: ");
     fwrite(buf, 1, rc, stdout);
     printf("\n");
 
