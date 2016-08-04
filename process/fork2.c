@@ -1,38 +1,30 @@
+/*
+	2016/08/04	Huiqun.Lin
+	子プロセスの生成
+*/
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
-#include <sys/wait.h>
-#include <signal.h>
 
 #define CHILD_NUM 1
 pid_t sig_pid[CHILD_NUM];
-void sig_func(int signum)
-{
-
-	while(1)
-	{
-		fprintf(stdout,"%d : child process.\tpid = %d.\tmy ppid = %d\n",signum,getpid(),getppid());
-		sleep(5);
-	}
-}
-
 int main(void){
 	pid_t result_pid;
-	int i, iii;
+	int i, cnt=0;
 	
 
 	for(i = 0;i < CHILD_NUM;i++){
+		printf( "forkは一回実行することにより\n" ) ;
 		result_pid = fork();
+		printf( "forkの後ろのコードは必ず２回実行される。親と子はどっち先に生成されるか？\n" ) ;
     
 		switch(result_pid){
 		case 0:
       /* getpidは自分のPIDを返す. */
       /* getppidは自分のPPID(親のPID)を返す */
-//			while(1){
-//				fprintf(stdout,"child process.\tpid = %d.\tmy ppid = %d\n",getpid(),getppid());
-				signal( SIGUSR1, sig_func ) ;
 				while(1){
-					fprintf(stdout,"1  child process.\tpid = %d.\tmy ppid = %d\n",getpid(),getppid());
+					printf("子	ループ\n" ) ;
+					fprintf(stdout,"child : child process.\tpid = %d.\tmy ppid = %d\n",getpid(),getppid());
 					sleep(1) ;
 				}
 				//sig_pid[i] = getpid() ;
@@ -44,15 +36,22 @@ int main(void){
 			break;
 		default:
 			sig_pid[i] = result_pid ;
+			while(1){
+			printf("親	ループ\n" ) ;
+			fprintf(stdout,"parent : child process.\tpid = %d.\tmy ppid = %d\n",result_pid, getpid());
+					sleep(1) ;
+			}
 			break;
 		}
-    /* 子は出る */
+    	/* 子は出る */
 		if(result_pid == 0){
+			printf( "子プロセスの時にreturnしないと余分なプロセスが生成される\n" ) ;
 			return 0;
 		}
 	}
 
 	//signal( SIGUSR1, sig_func ) ;
+#if 0
 	sleep(5) ;
 
 	for( i=0; i<CHILD_NUM; i++)
@@ -79,6 +78,7 @@ int main(void){
 			sleep(1);
 		}
 	}
+#endif
 	return 0;
 }
 

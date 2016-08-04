@@ -1,5 +1,8 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/08/04
+signal fork kill
+
 2016/08/02
 receiveMSG
 analyzeMSG
