@@ -1,5 +1,14 @@
 #実行ファイル
 *.exe
 *.out
+
+#ライブラリ
+*.so
+
+#Document
 *.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
 *.zip
