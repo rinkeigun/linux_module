@@ -22,9 +22,9 @@ void sig_handler(int signo)
     } else if (signo == SIGTERM) {
         printf("received SIGTERM\n");
     }
-    g_hoge = 1;
+    g_hoge += 1;
 }
- 
+
 int main(void)
 {
     /* シグナルハンドラの設定 */
@@ -49,7 +49,10 @@ int main(void)
  
     /* シグナルを受け取るまで無限ループ */
     while(1) {
-        if (g_hoge == 1) break;
+//kill ( getpid(), SIGUSR1 ) ; // 自分自身をkill
+// kill -l でシグナル一覧
+        //if (g_hoge == 1) break;
+        if (g_hoge > 5) break;
         sleep(1);
     }
  
