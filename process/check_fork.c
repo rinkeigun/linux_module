@@ -4,34 +4,34 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
-	FILE *f ;
+FILE *f ;
 
 int main(int argc, char** argv)
 {
-  pid_t pid;
-  pid_t pid2[2];
-  int status;
+	pid_t pid;
+	pid_t pid2[2];
+	int status;
 	
-	int process_no = 2 ;
+	int process_no = 4 ;
 	int excu_times = 0 ;
 	int excu_times_before = 0 ;
 	int i ;
   
 	printf( "top pid = %d\n", getpid() ) ;
 	f = fopen( "test.txt", "a" ) ;
-  /// 新しいプロセスを作る
-  /// カーネルは、同じプロセスをもう１つ作る
+	/// 新しいプロセスを作る
+	/// カーネルは、同じプロセスをもう１つ作る
 	for( i=0; i<process_no; i++)
 	{
   		pid = fork();
 		printf("i=%d, pid=%d getpid=%d\n", i, pid, getpid() ) ;
 
   		/// プロセス作成に失敗した時は、0未満を返す
- 		 //if ( pid2[i] < 0 )
- 		 if ( pid < 0 )
- 		 {
-   			 fprintf (stderr, "fork error\n");
-   			 //exit(1);
+ 		//if ( pid2[i] < 0 )
+ 		if ( pid < 0 )
+ 		{
+   			fprintf (stderr, "fork error\n");
+   			exit(1);
   		}
 
   		/// 子プロセスのpidは、0
@@ -40,13 +40,13 @@ int main(int argc, char** argv)
   		//if (pid == 0) 
   		{
 			char tmp_c[256] ;
+			sleep( 4) ;
 			memset( tmp_c, '\0', sizeof( tmp_c )) ;
 			sprintf( tmp_c, "aaaaa\t%d\t%d\n",i, getpid() ) ;
 			//sprintf( tmp_c, "%d", pid2[i] ) ;
 			printf( "%s\n", tmp_c ) ;
 			if( 0>fwrite( tmp_c, sizeof ( tmp_c ), 1, f ) )
 			{
-	 
 			    execl("/bin/echo", "echo", "hahaha", NULL);
 			    perror("/bin/cat");
 			}
@@ -56,12 +56,14 @@ int main(int argc, char** argv)
 
 	for( i=0; i<process_no; i++)
 	{
+		sleep( 1 ) ;
 		//  else
   		{
  		 	/// 子プロセスの終るのを待つ
    		 	//waitpid(pid2[i], &status, 0);
-		//	pid = getpid() ;
+			//	pid = getpid() ;
 		    pid = waitpid(-1, &status, 0);
+
 		    //printf ("child(PID=%d) finished!\n", pid2[i]);
 		    printf ("child(PID=%d) finished!\n", pid );
 
