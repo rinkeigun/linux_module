@@ -102,7 +102,7 @@ int main( int argc, char **args )
 	printf("G : %G\n" , 1.33 ) ;
 	printf("c : %c\n" , 91 ) ;
 	printf("s : %s\n" , "文字列" ) ;
-	printf("p : %p\n" , cmd ) ;
+	printf("p : %p アドレス\n" , &cmd ) ;
 	//printf("n : %n <- 整数変数に出力済み文字数を格納\n" , &a ) ;
 
 	return 0 ;

@@ -34,15 +34,13 @@ int process()
 		printf("子プロセス開始\n");
 		signal(SIGUSR1, test_sig ) ;
     	sleep(10);
-/*
 		while(1)
 		{
 
     		sleep(2);
-			printf( "ここで無限ループ?\n" ) ;
+			printf( "ここで無限ループ?外部からkill -USR1 pidを送ってください\n" ) ;
 			if( flg > 0 ) break ;
 		}
-*/
 
 		printf("子プロセス終了\n");
 	}
