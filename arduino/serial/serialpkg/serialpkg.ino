@@ -10,12 +10,14 @@ Serial.println(data, format)
 Serial.write(val) 
 */
 #include <stdio.h>
+#define MAXLEN 10
+#define STRLEN 10
+int delay_l = 1000 ;  //１秒=1000
 
-int delay_l = 1000 ;  //１秒=100
 typedef struct cmdt
 {
   char cmd ;
-  char body[1024] ;
+  char body[10] ;
 } cmd_t ;
 
 void setup() {
@@ -23,8 +25,8 @@ void setup() {
 }
 
 void loop() {
-  char msg[1024] ;
-  char tmp[1024] ;
+  char msg[STRLEN] ;
+  char tmp[STRLEN] ;
   cmd_t cmd_c ;
   
   receiveMSG( msg );
@@ -46,15 +48,14 @@ void loop() {
 int receiveMSG(char *msg)
 {
   int cnt=0;
-  //char incoming[1024] ;
-  memset( msg, '\0', 1024 ) ;
+  memset( msg, '\0', STRLEN ) ;
   
   while(1)
   {
     if( Serial.available()>0)
     {
       char ch1 = Serial.read();
-      if( ch1 == '\r' ) break ; // return code(CR,LF,CR/LF)
+      if( ch1 == '\r' || cnt >=MAXLEN-1 ) break ; // return code(CR,LF,CR/LF)
       msg[cnt] = ch1 ;
       cnt ++ ;
     }
@@ -64,19 +65,21 @@ int receiveMSG(char *msg)
 
 void analyzeMSG(char *msg, cmd_t *tmp_cmd )
 {
-  Serial.print( msg ) ;
-  //memcpy( &cmd->cmd , msg, 1 );
 
-  tmp_cmd->cmd = msg[0] ;
-  //Serial.println( "qqq" ) ;
-  //Serial.println("\n") ;
-  /*
-  msg++ ;
-  memcpy(cmd->body , msg, strlen(msg) ) ;
-  Serial.print( cmd->body ) ;
-  */
+  tmp_cmd->cmd = msg[0] ;           // コマンド
+  memcpy(&tmp_cmd->body , &msg[1], strlen(msg) ) ;  //メッセージのBody
+  Serial.print( tmp_cmd->cmd ) ;
+  Serial.print(":") ;
+  Serial.println( tmp_cmd->body ) ;
+  Serial.flush() ;
+}
+
+void doWork()
+{
+  // 何をしたい？
 }
 void sendMSG(char *msg )
 {
   Serial.println( msg ) ;
+  Serial.flush() ;
 }
