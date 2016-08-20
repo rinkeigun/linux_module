@@ -10,14 +10,14 @@ Serial.println(data, format)
 Serial.write(val) 
 */
 #include <stdio.h>
-#define MAXLEN 10
-#define STRLEN 10
+#define MAXLEN 50
+#define STRLEN 50
 int delay_l = 1000 ;  //１秒=1000
 
 typedef struct cmdt
 {
   char cmd ;
-  char body[10] ;
+  char body[] ;
 } cmd_t ;
 
 void setup() {
