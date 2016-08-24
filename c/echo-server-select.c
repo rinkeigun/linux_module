@@ -167,7 +167,7 @@ main(){
                                 /* ソケットが読み出し可能か順にチェック */
 //printf("while ") ;
     for ( i=0 ; i<FD_SETSIZE ; i++ ){
-//printf("for 1 i=%d \n", i) ;
+printf("for 1 i=%d \n", i) ;
       if ( FD_ISSET(i, &target_fds) ){
         printf("ディスクリプタ %d 番が読み込み可能です。\n", i);
 
@@ -195,7 +195,7 @@ main(){
     time(&now_time);          /* 現在時刻を取得 */
 
     for ( i=0 ; i<FD_SETSIZE ; i++ ){
-//printf("for 2 i=%d\n", i) ;
+printf("for 2 i=%d\n", i) ;
                                 /* 監視対象でないソケットはスキップ */
       if ( ! FD_ISSET(i, &org_target_fds) )  continue;
                                 /* リスニングソケットはスキップ */
