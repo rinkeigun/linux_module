@@ -1,5 +1,5 @@
 #!/bin/bash
-#SYNOPSIS :  while 真条件の間 
+#SYNOPSIS :  until 真条件の間 
 #SYNOPSIS :  do	
 #SYNOPSIS :  		処理2 
 #SYNOPSIS :  done 
