@@ -1,10 +1,24 @@
 #include <QApplication>
 #include <QLabel>
+#include <QLineEdit>
+#include <QHBoxLayout>
+#include <QGroupBox>
 
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
+    QWidget* qwin = new QWidget() ;
+    QHBoxLayout* layout = new QHBoxLayout;
+    //QGroupBox* qg = new QGroupBox ;
     QLabel* label = new QLabel("Hello Qt!");
-    label->show();
+    QLineEdit* lineedt = new QLineEdit();
+    lineedt->setGeometry(30,30,20,20);
+    //qwin->addWidget( lineedt );
+    layout->addWidget(label);
+    layout->addWidget(lineedt);
+    qwin->setLayout(layout);
+    //label->show();
+    //lineedt->show() ;
+    qwin->show();
     return app.exec();
 }
