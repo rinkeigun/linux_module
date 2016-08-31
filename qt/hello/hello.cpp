@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <qWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QHBoxLayout>
@@ -7,7 +8,7 @@
 int main(int argc, char** argv)
 {
     QApplication app(argc, argv);
-    QWidget* qwin = new QWidget() ;
+    QWidget* qwin = new QWidget ;
     QHBoxLayout* layout = new QHBoxLayout;
     //QGroupBox* qg = new QGroupBox ;
     QLabel* label = new QLabel("Hello Qt!");
@@ -19,6 +20,7 @@ int main(int argc, char** argv)
     qwin->setLayout(layout);
     //label->show();
     //lineedt->show() ;
+    //app.setMainWidget( qwin ) ;
     qwin->show();
     return app.exec();
 }
