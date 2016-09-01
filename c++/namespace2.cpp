@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 
 namespace Tokyo{
@@ -16,20 +15,21 @@ void PrintName(const char* name){
         cout << name << "  " << name << endl;
 }
 
-// これ以下は、Tokyo::と付けなくても、暗黙でTokyoを調べてくれる
-using namespace Tokyo;
+// これ以下は、Tokyo::と付けなくても、暗黙でYamadaだけはTokyoを調べてくれる
+using Tokyo::Yamada;
 
 int main(){
-    // さっきはどこのYamadaさんだかわからなかったが、今回はTokyoのYamadaさんだとわかる
-    // しかし、PrintNameがTokyoのPrintNameだか、グローバルなPrintNameだかわからないので
-    // エラー
-    //PrintName(Yamada);
+    // 今回は、TokyoのPrintNameは見えておらず、グローバルなPrintNameのみ見えているので
+    // YamadaはTokyo::を見てくれる
+    // OK
+    PrintName(Yamada);
 
     // TokyoのPrintNameを呼ぼうとしている
     // これはOK
     Tokyo::PrintName(Tokyo::Yamada);
 
     // グローバルなPrintNameを呼ぼうとしている
+    // YamadaはTokyo::を見てくれる
     // これもOK
-    ::PrintName("Suzuki");
+    ::PrintName(Yamada);
 }
