@@ -31,7 +31,9 @@ int main()
 #endif
 
     while (count < 3) {
-        left_i = sleep(10); //sigを受けた後残る時間を返す
+        //left_i = sleep(10); //sigを受けた後残る時間を返す
+        left_i = usleep(10000000); //10秒,usleepと同じく残る時間を返してくれるかな
+		// 割り込みがあった場合left_i =  -1
 		printf( "left_i = %d\n", left_i ) ;
     }
     return 0;
