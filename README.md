@@ -1,5 +1,8 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/09/14
+getopt, optind C言語引数解析
+
 2016/08/13
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
