@@ -9,9 +9,15 @@
 
 static int flg = 0 ;
 
+void test_int()
+{
+	printf("receive SIGINT pid(%d)\n", getpid() ) ;
+	
+	flg ++ ;
+}
 void test_sig()
 {
-	printf("receive kill commands\n" ) ;
+	printf("receive kill commands(%d)\n", getpid() ) ;
 	flg ++ ;
 }
 int process()
@@ -20,19 +26,22 @@ int process()
 	int         status;
 	int         return_code = 0;
 
+	signal(SIGINT, test_int ) ;
 	p_id = fork( ) ;
 	if (p_id > 0) {
-		printf("親プロセス開始\n");
+		printf("親プロセス開始 %d\n", getpid());
 		//kill( p_id, SIGUSR1 ) ;
 		printf( "process ID = %d\n", p_id ) ;
-    	sleep(4);
-		wait(&status);
+    	sleep(6);
+		kill(p_id, SIGINT);
+		//wait(&status);
 		printf("親プロセス終了\n");
 	}
 	else if (p_id == 0) {
     	/* 子プロセス */
 		printf("子プロセス開始\n");
-		signal(SIGUSR1, test_sig ) ;
+		//signal(SIGUSR1, test_sig ) ;
+		signal(SIGINT, test_sig ) ;
     	sleep(10);
 		while(1)
 		{
