@@ -2,6 +2,7 @@
 このファイルの内容を新しい順で先頭に追加するようにします
 2016/09/21
 1. ソース編集　qsTr
+http://www.csdn123.com/html/blogs/20130706/32655.htm
 2. lupdate *.qml -ts *_ja.ts
 2-1. 複数lupdate *.qml -ts *_ja.ts *_zh.ts
 3. linguist
