@@ -3,9 +3,11 @@
 2016/09/21
 1. ソース編集　qsTr
 2. lupdate *.qml -ts *_ja.ts
+2-1. 複数lupdate *.qml -ts *_ja.ts *_zh.ts
 3. linguist
 4. *.pro TRANSLATIONS += *_ja.ts
 5. lrelease *.ts
+5-0 生成したqmファイルを適切な場所にコピー
 6. main.cpp QTranslator
 7. qmake, make
 
