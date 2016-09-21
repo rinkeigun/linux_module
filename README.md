@@ -9,7 +9,16 @@
 5. lrelease *.ts
 5-0 生成したqmファイルを適切な場所にコピー
 6. main.cpp QTranslator
+QTranslator appTranslator;
+  appTranslator.load(":/translations/brynhildr_"
+                 + QLocale::system().name(),
+                 qApp->applicationDirPath());
+  app.installTranslator(&appTranslator);
+
 7. qmake, make
+
+lconvert
+HowOpen
 
 2016/09/20
 opencv
