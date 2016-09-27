@@ -1,5 +1,12 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/09/27
+.proファイルの中身は次を含むべき？
+ SOURCES      = main.cpp
+ TRANSLATIONS = hellotr_ja.ts
+lupdate -pro *.pro -target-language <language>[_region]
+
+
 2016/09/21
 1. ソース編集　qsTr
 http://www.csdn123.com/html/blogs/20130706/32655.htm
