@@ -5,6 +5,7 @@
  SOURCES      = main.cpp
  TRANSLATIONS = hellotr_ja.ts
 lupdate -pro *.pro -target-language <language>[_region]
+http://qt-log.open-memo.net/sub/other__embed_resource.html
 
 
 2016/09/21
