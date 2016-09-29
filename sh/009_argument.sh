@@ -14,4 +14,6 @@ echo '直前に実行したコマンドのexit値$?:' $?
 echo 'シェル自身のプロセスID$$:' $$ 
 echo 'シェル起動時のフラグの一覧$-:' $- 
 echo 'シェルが最後に起動したバックグラウンドプロセスのプロセスID$!:' $! 
+echo '$LINENO:' $LINENO 
+echo '${PIPESTATUS[@]}:' ${PIPESTATUS[@]}
 

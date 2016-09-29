@@ -66,4 +66,8 @@ echo ${a+$b}
 #$cが定義していなければ$aを$cに代入
 echo ${c:=$a}
 echo $c
+name=abc123
+echo ${name:1}":${name}の「start=1」終わりまで文字出力します"
+echo ${name:1:2}":${name}の「start=1」バイト目から「length=2」文字出力します"
+#echo ${c:start:length'$cの「start」バイト目から「length」文字出力します'}
 echo ${d:?'$dが定義されていないためこのメッセージが標準エラーとして出力'}
