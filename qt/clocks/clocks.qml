@@ -60,6 +60,7 @@ Rectangle {
             ListElement { cityName: qsTr("London"); timeShift: 0 }
             ListElement { cityName: qsTr("Oslo"); timeShift: 1 }
             ListElement { cityName: qsTr("Mumbai"); timeShift: 5.5 }
+            ListElement { cityName: qsTr("BeiJing"); timeShift: 8 }
             ListElement { cityName: qsTr("Tokyo"); timeShift: 9 }
             ListElement { cityName: qsTr("Brisbane"); timeShift: 10 }
             ListElement { cityName: qsTr("Los Angeles"); timeShift: -8 }

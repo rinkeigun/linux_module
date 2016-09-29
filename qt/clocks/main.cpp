@@ -55,12 +55,12 @@ int main(int argc, char* argv[])
     QTranslator appTranslator;
 #if 1
 
-      appTranslator.load("i18n/clocks_"
+      appTranslator.load("://i18n/clocks_"
                      + QLocale::system().name(),
                      qApp->applicationDirPath());
 
 #else
-    appTranslator.load("i18n/clocks_en");
+    appTranslator.load("://i18n/clocks_en");
 #endif
       app.installTranslator(&appTranslator);
 
