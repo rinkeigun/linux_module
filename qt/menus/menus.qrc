@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>i18n/menus_en.qm</file>
+        <file>i18n/menus_ja.qm</file>
+        <file>i18n/menus_ko.qm</file>
+        <file>i18n/menus_zh.qm</file>
+    </qresource>
+</RCC>
