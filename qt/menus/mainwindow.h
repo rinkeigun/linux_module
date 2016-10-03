@@ -58,6 +58,8 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
+    //MainWindow(QApplication *parent=0);
+
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event) Q_DECL_OVERRIDE;
@@ -131,6 +133,7 @@ private:
     QAction *aboutQtAct;
     QLabel *infoLabel;
     QTranslator translator;
+    QApplication *pOwner;
 };
 //! [3]
 

@@ -59,6 +59,7 @@ int main(int argc, char *argv[])
       app.installTranslator(&appTranslator);
 
     MainWindow window;
+    //MainWindow window(&app);
     window.show();
     return app.exec();
 }

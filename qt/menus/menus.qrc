@@ -4,5 +4,7 @@
         <file>i18n/menus_ja.qm</file>
         <file>i18n/menus_ko.qm</file>
         <file>i18n/menus_zh.qm</file>
+        <file>i18n/menus_en.ts</file>
+        <file>i18n/linguist.exe</file>
     </qresource>
 </RCC>

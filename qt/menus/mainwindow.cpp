@@ -39,12 +39,20 @@
 ****************************************************************************/
 
 #include <QtWidgets>
+#include <QFile>
+#include <QTextStream>
+#include <iostream>
+#include <QFlag>
+
 
 #include "mainwindow.h"
 
 //! [0]
 MainWindow::MainWindow()
+//MainWindow::MainWindow(QApplication *parent):QApplication(parent)
 {
+    //QApplication *pOwner=parent;
+
     QWidget *widget = new QWidget;
     setCentralWidget(widget);
 //! [0]
@@ -144,6 +152,73 @@ infoLabel->setText(lang);
     this->translator.load("://i18n/menus_"
                + lang,
                qApp->applicationDirPath());
+
+// リソースファイルの書き出し
+#if 1
+
+// バイナリファイルの読み書き
+QFile infile("://i18n/linguist.exe" ) ;
+QFile outfile("linguist.exe" ) ;
+    qDebug() <<"://i18n/menus_" + lang + ".ts"<<endl;
+
+    if(!outfile.open(QIODevice::WriteOnly))
+{
+
+    qDebug() << "書き込みファイルオープン失敗" <<endl ;
+}
+
+
+if ( infile.open(QFile::ReadOnly) ){
+
+    QByteArray s = infile.readAll() ;
+    outfile.write(s);
+
+    infile.close();
+    outfile.close();
+
+}else{
+        qDebug() << "読み込みファイルオープン失敗" <<endl ;
+}
+
+#else
+// 英文以外は大丈夫？
+QFile infile("://i18n/menus_" + lang + ".ts" ) ;
+QFile outfile("menus_" + lang + ".ts" ) ;
+    qDebug() <<"://i18n/menus_" + lang + ".ts"<<endl;
+if(!outfile.open(QIODevice::WriteOnly | QIODevice::Text))
+{
+
+    qDebug() << "書き込みファイルオープン失敗" <<endl ;
+}
+QTextStream out_t( &outfile );
+
+
+if ( infile.open(QIODevice::ReadOnly | QIODevice::Text) ){
+
+
+QTextStream in_t( &infile );
+    //QDataStream in_t( &infile );
+    //in_t.setVersion(QDataStream::Qt_5_6);
+    //in_t.setCodec( codec );
+    QString s = in_t.readAll();
+
+
+        qDebug() <<s<<endl;
+    out_t << s << endl;    // << endl;//
+
+    infile.close();
+    outfile.close();
+
+}else{
+        qDebug() << "読み込みファイルオープン失敗" <<endl ;
+
+}
+#endif
+
+
+
+
+
     //this->pOwner.installTranslator(&(this->translator));
 /*
     this->setWindowTitle(QObject::tr("hello world"));
@@ -441,5 +516,4 @@ void MainWindow::createMenus()
     formatMenu->addAction(setLineSpacingAct);
     formatMenu->addAction(setParagraphSpacingAct);
 }
-MainWindow::slo
 //! [12]
