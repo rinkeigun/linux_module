@@ -1,0 +1,5 @@
+user1
+lcd /mnt/hgfs/AIMOS/gordian/amos_Bifurcate/exe/
+cd AMOS/exe/
+put *.exe
+bye
