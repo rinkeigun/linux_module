@@ -1,5 +1,24 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/10/06
+クライアント：ssh-keygen [-t rsa]
+              (ssh-keygen -t dsa)
+              passphrase
+              .ssh/         <- 700
+              .ssh/id_rsa   <- 600
+              .ssh/id_rsa.pub
+       サーバーにid_rsa.pubをコピー
+サーバー：cat id_rsa.pub >> authorized_keys
+クライアント：
+   script   script.sftp
+            passphrase
+            lcd locale path
+            cd remote path
+            bye
+   実行:sftp -b script.sftp user@server
+Permission denied (publickey).
+Couldn't read packet: Connection reset by peer
+
 2016/09/27
 .proファイルの中身は次を含むべき？
  SOURCES      = main.cpp
