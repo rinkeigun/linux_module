@@ -1,5 +1,17 @@
 # linux_module
 このファイルの内容を新しい順で先頭に追加するようにします
+2016/10/07
+セキュリティ問題
+インターネットやネットワーク
+OS
+サービス
+どのようなセキュリティ問題はあるか
+セキュリティ問題をどうやって作りだすか
+セキュリティ問題をどうやって見付け出すか
+セキュリティ問題をどう解析するか
+セキュリティ問題をどう解決するか
+セキュリティ問題をどう防げるか
+
 2016/10/06
 クライアント：ssh-keygen [-t rsa]
               (ssh-keygen -t dsa)
@@ -7,6 +19,7 @@
               .ssh/         <- 700
               .ssh/id_rsa   <- 600
               .ssh/id_rsa.pub
+              .ssh/known_hosts
        サーバーにid_rsa.pubをコピー
 サーバー：cat id_rsa.pub >> authorized_keys
 クライアント：
@@ -16,8 +29,13 @@
             cd remote path
             bye
    実行:sftp -b script.sftp user@server
+----------------------------------------------
 Permission denied (publickey).
 Couldn't read packet: Connection reset by peer
+----------------------------------------------
+/etc/ssh/sshd_config
+PasswordAuthentication yes
+
 
 2016/09/27
 .proファイルの中身は次を含むべき？
