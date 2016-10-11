@@ -3,6 +3,8 @@
 2016/01/11
 http://codezine.jp/article/detail/4700
 安全なシグナルハンドル実装
+http://www.jpcert.or.jp/securecoding/
+セキュリティコーディング
 
 2016/10/07
 セキュリティ問題
