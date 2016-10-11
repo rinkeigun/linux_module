@@ -5,6 +5,8 @@ http://codezine.jp/article/detail/4700
 安全なシグナルハンドル実装
 http://www.jpcert.or.jp/securecoding/
 セキュリティコーディング
+http://www.atmarkit.co.jp/ait/articles/0005/22/news009.html
+XML
 
 2016/10/07
 セキュリティ問題
