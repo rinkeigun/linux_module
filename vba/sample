@@ -1,0 +1,52 @@
+Sub 成型ボタン()
+    Dim FoundCell As Range
+    Dim wk_tbl(99, 99999)
+    Dim wk_cnt(99)
+    
+    Range("B6:Z99999").Select
+    Selection.ClearContents
+    
+    For i1 = 3 To 99
+        Sheets("成型").Select
+        wk_word = Cells(1, i1)   '検索ワード
+        wk_offset = Cells(2, i1) 'オフセット行
+        wk_stpos = Cells(3, i1)  '切取位置
+        wk_mojisu = Cells(4, i1) '文字数
+
+        '終了判定
+        If (wk_word = "" And wkoffset = "") Then
+            Exit For
+        End If
+            
+
+       'LOGシートから対象WORDを含む行を検索する。
+        Sheets("LOG").Select
+        For i2 = 1 To 99999
+            If (Cells(i2, 1) = "") Then
+                'Exit For
+            Else
+                wk_str = InStr(1, Cells(i2, 1), wk_word, vbTextCompare)
+                If (wk_str > 0) Then
+                    wk_cnt(i1) = wk_cnt(i1) + 1
+                    If (wk_stpos > 0) Then
+                        '切取位置の指定があったら切取って格納する。
+                        wk_tbl(i1, wk_cnt(i1)) = Mid(Cells(i2 + wk_offset, 1), wk_stpos, wk_mojisu)
+                    Else
+                        wk_tbl(i1, wk_cnt(i1)) = Cells(i2 + wk_offset, 1)
+                    End If
+                End If
+            End If
+        Next i2
+    
+    Next i1
+    wk_max = i1
+    
+    Sheets("成型").Select
+    For i1 = 3 To wk_max
+        For i3 = 1 To wk_cnt(i1)
+            Cells(i3 + 6, i1) = wk_tbl(i1, i3)
+        Next i3
+    Next i1
+    
+    Range("B4:B4").Select
+End Sub
