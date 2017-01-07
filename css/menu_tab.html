@@ -1,0 +1,33 @@
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>タブ</title>
+</head>
+<body>
+
+<p>タブ</p>
+<style type="text/css">
+
+.content {
+  display: none;
+}
+
+.content:target {
+  display: block;
+}
+</style>
+
+<nav>
+  <a href='#home'>Home</a>
+  <a href='#about'>About</a>
+  <a href='#members'>Members</a>
+  <a href='#links'>Links</a>
+</nav>
+
+<div id='home' class='content'>Home here</div>
+<div id='about' class='content'>About here</div>
+<div id='members' class='content'>Members here</div>
+<div id='links' class='content'>Links here</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>メニュー</title>
+</head>
+<body>
+
+<p>メニュー(子メニューは展開後に色が徐々変わる)</p>
+<style type="text/css">
+
+#flip > li{
+  perspective: 400px;
+}
+#flip li ul{
+  visibility: hidden;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+  transition: .3s;
+}
+#flip li:hover ul{
+  visibility: visible;
+  transform: rotateX(0);
+}
+</style>
+
+<ul id="flip" class="dropmenu">
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>どのようにしてHTMLに反映させる
+</title>
+</head>
+<body>
+<div>
+<H1>style属性による取り込み</H1>
+<pre>
+&lt;H1 style="background: #060">
+</pre>
+<H1>style要素による取り込み</H1>
+<pre>
+&lt;head>
+  &lt;style>
+    p { color:#333 }
+  &lt;/style>
+&lt;/head>
+</pre>
+<H1>link要素による外部ファイル取り込み</H1>
+<pre>
+&lt;head>
+  &lt;link rel="stylesheet" href="common.css">
+&lt;/head>
+</pre>
+<H1>CSSファイルに外部CSSファイルの取り込み</H1>
+<pre>
+@import "font.css";
+</pre>
+</div>
+</body>
+</html>

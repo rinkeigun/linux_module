@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<title>セレクタ連結</title>
+</head>
+<body>
+<p>セレクタ連結</p>
+
+<style type="text/css">
+a[b].c{
+	color: yellow;
+}
+a[b]#i.c{
+	color: blue;
+}
+p[b]:hover#j.c{
+	color: green;
+}
+p[b][d]:hover#k.c{
+	color: pink;
+}
+
+
+</style>
+
+<a class="c" b>
+aaaaa
+</a>
+<a id="i" class="c" b>
+bbbbb
+</a>
+<p id="j" class="c" b>pppppppp</p>
+<p id="k" class="c" b d>ddddddddd</p>
+
+</body>
+</html>

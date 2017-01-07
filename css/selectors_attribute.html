@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="selectors_main.css">
+<title>セレクタ
+</title>
+</head>
+<body>
+<H1>セレクタの種類2</H1>
+<div top>
+<div top2>
+<ul>
+	<li>タイプセレクタ（要素名）</li>
+	<li>ユニバーサルセレクタ（*）</li>
+	<li>クラスセレクタ（.○○○）</li>
+	<li>IDセレクタ（#○○○）</li>
+	<li>属性セレクタ（[○○○]）</li>
+	<li>疑似セレクタ（:○○○）</li>
+</ul>
+
+<H2>属性セレクタ（[○○○]</H2>
+<H3>書式</H3>
+<table>
+<thead>
+<tr>
+<th>属性セレクタ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[属性名]</td>
+<td>属性名とマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名="属性値"]</td>
+<td>属性名と属性値がマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名~="属性値"]</td>
+<td>属性名に対してスペースで区切られる属性値の１つにマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名|="属性値"]</td>
+<td>属性値またはハイフンで区切られる前半部分にマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名^="属性値"]</td>
+<td>先頭に属性値にマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名$="属性値"]</td>
+<td>末尾の属性値にマッチする要素</td>
+</tr>
+<tr>
+<td>[属性名*="属性値"]</td>
+<td>属性値の部分を含む要素</td>
+</tr>
+</tbody>
+</table>
+<H3>CSSコード</H3>
+<table>
+<thead>
+<tr>
+<th>属性セレクタ</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[属性名]</td>
+<td><code>code[attri]{color: #00f}</code></td>
+</tr>
+<tr>
+<td>[属性名="属性値"]</td>
+<td><code>code[attri="attri_value"]{color: #055}</code></td>
+</tr>
+<tr>
+<td>[属性名~="属性値"]</td>
+<td><code>code[attri~="value1"]{color: #550}</code>または<code>code[attri~="part_value"]{color: #505}</td>
+</tr>
+<tr>
+<td>[属性名|="属性値"]</td>
+<td><code>code[attri|="attri_hyphone"]{color: #505}</code>または<code>code[attri|="part-value"]{color: #00f}</code></td>
+</tr>
+<tr>
+<td>[属性名^="属性値"]</td>
+<td><code>code[attri^="star"]{color: #050}</code></td>
+</tr>
+<tr>
+<td>[属性名$="属性値"]</td>
+<td><code>code[attri$="end"]{color: #500}</code></td>
+</tr>
+<tr>
+<td>[属性名*="属性値"]</td>
+<td><code>code[attri*="aster"]{color: #555}</code></td>
+</tr>
+<tr>
+<td>[属性名*="属性値" i]</td>
+<td><code>code[attri*="aster" i]{color: #555}</code></td>
+</tr>
+</tbody>
+</table>
+
+<H3>HTMLコード</H3>
+<table>
+<thead>
+<tr>
+<th>属性セレクタ</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[属性名]</td>
+<td><code>&lt;code attri>attri属性が含まれてあれば適用される&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名="属性値"]</td>
+<td><code>&lt;code attri="attri_value">属性attriと属性値attri_valueは両方とも一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名~="属性値"]</td>
+<td><code>&lt;code attri="value">属性attriと属性値valueは両方とも一致する必要があります&lt;/code></code>または<code>&lt;code attri~="value part_value">属性attriとスペースで区切られた１つ属性値part_valueは両方とも一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名|="属性値"]</td>
+<td><code>&lt;code attri="value">属性attriと属性値valueは両方とも一致する必要があります&lt;/code></code>または<code>&lt;code attri|="part-value">属性attriとハイフンで区切られた１つ属性値part-valueの前半に一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名^="属性値"]</td>
+<td><code>&lt;code attri="startvalue">属性attriと属性値の先頭任意部分starは両方とも一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名$="属性値"]</td>
+<td><code>&lt;code attri="valueend">属性attriと属性値の終わり任意部分ndは両方とも一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名*="属性値"]</td>
+<td><code>&lt;code attri="uee">属性attriと属性値の任意部分ueeは両方とも一致する必要があります&lt;/code></code></td>
+</tr>
+<tr>
+<td>[属性名*="属性値" i]</td>
+<td><code>&lt;code attri="uee">iを追加することにより大文字か小文字かは区別しない&lt;/code></code></td>
+</tr>
+</tbody>
+</table>
+
+<H3>結果</H3>
+<table>
+<thead>
+<tr>
+<th>属性セレクタ</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[属性名]</td>
+<td><code attri>attri属性が含まれてあれば適用される</code></td>
+</tr>
+<tr>
+<td>[属性名="属性値"]</td>
+<td><code attri="attri_value">属性attriと属性値attri_valueは両方とも一致する必要があります</code></td>
+</tr>
+<tr>
+<td>[属性名~="属性値"]</td>
+<td><code attri="value1">属性attriと属性値value1は両方とも一致する必要があります</code>または<code attri="value part_value">属性attriとスペースで区切られた属性値の１つpart_valueは両方とも一致する必要があります</code></td>
+</tr>
+<tr>
+<td>[属性名|="属性値"]</td>
+<td><code attri="attri_hyphone">属性attriと属性値attri_hyphoneは両方とも一致する必要があります</code>または<code attri="part-value">属性attriとハイフンで区切られた１つ属性値part-valueの前半に一致する必要があります</code></td>
+</tr>
+<tr>
+<td>[属性名^="属性値"]</td>
+<td><code attri="startvalue">属性attriと属性値の先頭任意部分starは両方とも一致する必要があります</code></td>
+</tr>
+<tr>
+<td>[属性名$="属性値"]</td>
+<td><code attri="valueend">属性attriと属性値の終わり任意部分ndは両方とも一致する必要があります</code></td>
+</tr>
+<tr>
+<td>[属性名*="属性値"]</td>
+<td><code attri="aaasterrrr">属性attriと属性値の任意部分ueeは両方とも一致する必要があります</code></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</body>
+</html>

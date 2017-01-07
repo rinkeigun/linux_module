@@ -1,0 +1,64 @@
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>メニュー</title>
+</head>
+<body>
+
+<p>メニュー(子メニューは次々と展開)</p>
+<style type="text/css">
+
+#dropmenu li ul li{
+  overflow: hidden;
+  height: 0;
+  transition: .2s;
+}
+#dropmenu li:hover ul li{
+  overflow: visible;
+  height: 38px;
+}
+</style>
+
+<ul id="dropmenu" class="dropmenu">
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>

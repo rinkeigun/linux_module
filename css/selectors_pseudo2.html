@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="selectors_main.css">
+<title>セレクタ
+</title>
+</head>
+<body>
+<H1>セレクタの種類４</H1>
+<div top>
+<div top2>
+<ul>
+	<li>タイプセレクタ（要素名）</li>
+	<li>ユニバーサルセレクタ（*）</li>
+	<li>クラスセレクタ（.○○○）</li>
+	<li>IDセレクタ（#○○○）</li>
+	<li>属性セレクタ（[○○○]）</li>
+	<li>疑似セレクタ（:○○○）</li>
+</ul>
+
+<H2>疑似セレクタ（:○○○）</H2>
+<H3>疑似クラス</H3>
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>:nth-child(An+B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明</td>
+<td>先頭からB個目の要素からA個おきに適用</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>li:nth-child(2n+1){color: red;}</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>&lt;ol>&lt;li>１個目&lt;/li>&lt;li>2&lt;/li>&lt;li>３個目、２個おき&lt;/li>&lt;li>４個目&lt;/li>&lt;/ol></td>
+</tr>
+<tr>
+<td>結果</td>
+<td><ol><li>１個目</li><li>2</li><li>３個目、２個おき</li><li>４個目</li></ol></td>
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>:nth-last-child(An+B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明</td>
+<td>最後からB個目の要素からA個おきに適用</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>li:nth-last-child(2n+1){color: blue;}</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>&lt;ul>&lt;li>１個目&lt;/li>&lt;li>後部から２個おき&lt;/li>&lt;li>３個目、２個おき&lt;/li>&lt;li>４個目、後部から１個目&lt;/li>&lt;/ul></td>
+</tr>
+<tr>
+<td>結果</td>
+<td><ul><li>１個目</li><li>後部から２個おき</li><li>３個目、２個おき</li><li>４個目、後部から１個目</li></ul></td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>:nth-of-type(An+B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明</td>
+<td>同じ要素の先頭B個目の要素からA個おきに適用</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>li:nth-of-type(2n+1){color: yellow;}</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>&lt;ul>&lt;li>１個目&lt;/li>&lt;li>先頭から２個おき&lt;/li>&lt;li>３個目、２個おき&lt;/li>&lt;li>４個目、後部から１個目&lt;/li>&lt;/ul></td>
+</tr>
+<tr>
+<td>結果</td>
+<td><ul class="nth-of-type"><li>１個目</li><li>先頭から２個おき</li><li>３個目、２個おき</li><li>４個目、後部から１個目</li></ul></td>
+</tr>
+</tbody>
+</table>
+
+
+
+</div>
+</div>
+</body>
+</html>

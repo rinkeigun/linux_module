@@ -1,0 +1,70 @@
+<html>
+<head>
+
+<style type="text/css">
+
+</style>
+
+<title>タブ</title>
+</head>
+<body>
+
+<style type="text/css">
+
+ul#explorer li input:checked + label:before {
+	background-color: #ddd;
+	content: "ー";
+	border:solid;
+	border-width:thin;
+}
+ul#explorer li input + label:before {
+	background-color: #ddd;
+	content: "＋";
+	border:solid;
+	border-width:thin;
+}
+ul#explorer li input:checked ~ ul {
+	display: block;
+}
+ul#explorer li input ~ ul {
+	display: none;
+}
+ul#explorer li input{
+	display: none;
+}
+ul#explorer li{
+	list-style-type: none;
+}
+
+</style>
+
+<ul id="explorer">
+	<li>
+		<input type="checkbox" id="radio1" />
+		<label for="radio1">CSSのみで</label>
+		<ul for="radio1">
+			<li>
+				<input type="checkbox" id="radio4" />
+				<label for="radio4">エクスプローラーの動きを</label>
+				<ul for="radio4">
+					<li>模擬する</li>
+					<li>
+						<input type="checkbox" id="radio5" />
+						<label for="radio5">エクスプローラーの動きを</label>
+						<ul for="radio5">
+							<li>aaaaa</li>
+							<li>bbbbb</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>ccccc</li>
+		</ul>
+	</li>
+	<li><input type="checkbox" id="radio2" /><label for="radio2">リスト2</label></li>
+	<li><input type="checkbox" id="radio3" /><label for="radio3">リスト3</label></li>
+</ul>
+
+
+</body>
+</html>

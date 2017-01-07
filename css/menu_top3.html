@@ -1,0 +1,73 @@
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>メニュー</title>
+</head>
+<body>
+
+<p>メニュー(子メニューは展開後に色が徐々変わる)</p>
+<style type="text/css">
+
+#fade-in li ul{
+  visibility: hidden;
+  opacity: 0;
+  transition: 0s;
+}
+#fade-in li:hover ul{
+  visibility: visible;
+  opacity: 1;
+}
+#fade-in li ul li a{
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s;
+}
+#fade-in li:hover ul li a{
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+
+<ul id="fade-in" class="dropmenu">
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>

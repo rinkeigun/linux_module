@@ -1,0 +1,66 @@
+<html>
+<head>
+<link rel="stylesheet" href="common.css">
+<title>メニュー</title>
+</head>
+<body>
+
+<p>メニュー(子メニューは展開後に色が徐々変わる)</p>
+<style type="text/css">
+
+#left-to-right ul{
+  overflow: hidden;
+  width: 0;
+  transition: .5s;
+}
+#left-to-right li:hover ul{
+  width: 100%;
+}
+#left-to-right li:hover ul li a{
+  white-space: nowrap;
+}
+</style>
+
+<ul id="left-to-right" class="dropmenu">
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+  <li><a href="#">menu</a>
+    <ul>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+      <li><a href="#">submenu</a></li>
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>

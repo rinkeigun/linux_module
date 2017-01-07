@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="selectors_main.css">
+<title>セレクタ
+</title>
+</head>
+<body>
+<H1>セレクタの種類</H1>
+<div top>
+<div top2>
+<ul>
+	<li>タイプセレクタ（要素名）</li>
+	<li>ユニバーサルセレクタ（*）</li>
+	<li>クラスセレクタ（.○○○）</li>
+	<li>IDセレクタ（#○○○）</li>
+	<li>属性セレクタ（[○○○]）</li>
+	<li>疑似セレクタ（:○○○）</li>
+</ul>
+<H2>タイプセレクタ（要素名）</H2>
+<H3>CSSコード</H3>
+<code>
+code{color: blue}
+</code>
+<H3>HTMLコード</H3>
+<code>
+&lt;code>単純はHTMLのH1タグを青色に&lt;/code>
+</code>
+<H3>結果</H3>
+<code type_selector>単純はHTMLのcodeタグを青色に</code>
+
+<H2>ユニバーサルセレクタ（*）</H2>
+<H3>CSSコード</H3>
+<code>
+*{color: green}
+</code>
+<H3>HTMLコード</H3>
+<code>
+&lt;任意のHTMLタグ>全部のHTMLタグに影響しgreenになりますか&lt;/任意のHTMLタグ>
+</code>
+<H3>結果</H3>
+<H4 aster>H4タグに影響しgreenになりますか</H4>
+<code aster>codeタグに影響しgreenになりますか</code>
+
+<H2>クラスセレクタ（.○○○）</H2>
+<H3>CSSコード</H3>
+<code>
+code.classname{color: #050}
+</code>
+<H3>HTMLコード</H3>
+<code>
+&lt;code class="classname">"."の後ろに指定した文字列はHTMLのclass属性の属性値classnameとなる&lt;/code>
+</code>
+<H3>結果</H3>
+<code class="classname">"."の後ろに指定した文字列はHTMLのclass属性の属性値classnameとなる</code>
+
+<H2>IDセレクタ（#○○○）</H2>
+<H3>CSSコード</H3>
+<code>
+code#id_string{color: #500}
+</code>
+<H3>HTMLコード</H3>
+<code>
+&lt;code id="id_string">"#"の後ろに指定した文字列はHTMLのid属性の属性値id_stringとなる&lt;/code>
+</code>
+<H3>結果</H3>
+<code id="id_string">"#"の後ろに指定した文字列はHTMLのid属性の属性値id_stringとなる</code>
+
+
+</div>
+</div>
+</body>
+</html>

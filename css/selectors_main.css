@@ -1,0 +1,64 @@
+@import "common.css";
+
+/* type selector */
+code[type_selector]{
+	color: blue;
+}
+
+/* aster selector */
+*[aster]{
+	color: green;
+}
+
+
+/* class selector */
+code.classname{
+	color: #050;
+	}
+
+
+/* id selector */
+code#id_string{
+	color: #500;
+}
+
+/* attribute selector */
+code[attri]{
+	color: #00f;
+}
+code[attri="attri_value"]{
+	color: #055;
+}
+code[attri~="value1"]{
+	color: #550;
+}
+code[attri~="part_value"]{
+	color: #505;
+}
+code[attri|="attri_hyphone"]{
+	color: #005;
+}
+code[attri|="part-value"]{
+	color: #00f;
+}
+code[attri^="star"]{
+	color: #050;
+}
+code[attri$="end"]{
+	color: #500;
+}
+code[attri*="aster"]{
+	color: #555;
+}
+
+li:nth-child(2n+1){
+	color: red;
+}
+
+ul li:nth-last-child(2n+1){
+	color: blue;
+}
+
+ul.nth-of-type li:nth-last-child(2n+1){
+	color: yellow;
+}

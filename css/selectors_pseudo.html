@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="selectors_main.css">
+<title>セレクタ
+</title>
+</head>
+<body>
+<H1>セレクタの種類３</H1>
+<div top>
+<div top2>
+<ul>
+	<li>タイプセレクタ（要素名）</li>
+	<li>ユニバーサルセレクタ（*）</li>
+	<li>クラスセレクタ（.○○○）</li>
+	<li>IDセレクタ（#○○○）</li>
+	<li>属性セレクタ（[○○○]）</li>
+	<li>疑似セレクタ（:○○○）</li>
+</ul>
+
+<H2>疑似セレクタ（:○○○）</H2>
+<H3>リンク関連の疑似クラス</H3>
+<H4>書式</H4>
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:link</td>
+<td>リンク先をまだ見ていない状態</td>
+</tr>
+<tr>
+<td>:visited</td>
+<td>リンク先を既に見た状態</td>
+</tr>
+<tr>
+<td>:hover</td>
+<td>カーソルが上にある状態</td>
+</tr>
+<tr>
+<td>:active</td>
+<td>マウスのボタン等が押されている状態</td>
+</tr>
+</tbody>
+</table>
+<H4>CSSコード</H4>
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:link</td>
+<td><code>a:link{color: blue}</code></td>
+</tr>
+<tr>
+<td>:visited</td>
+<td><code>a:visited{color: purple}</code></td>
+</tr>
+<tr>
+<td>:hover</td>
+<td><code>a:hover{color: red}</code></td>
+</tr>
+<tr>
+<td>:active</td>
+<td><code>a:active{color: yellow}</code></td>
+</tr>
+
+</tbody>
+</table>
+
+<H4>HTMLコード</H4>
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:link</td>
+<td><code>&lt;a href="http://www.baidu.com/">リンク先をまだ見ていない状態&lt;/a></code></td>
+</tr>
+<tr>
+<td>:visited</td>
+<td><code>&lt;a href="http://www.qq.com/">リンク先を既に見た状態&lt;/a></code></td>
+</tr>
+<tr>
+<td>:hover</td>
+<td><code>&lt;a href="http://www.taobao.com/">カーソルが上にある状態&lt;/a></code></td>
+</tr>
+<tr>
+<td>:active</td>
+<td><code>&lt;a href="http://www.google.com/">マウスのボタン等が押されている状態&lt;/a></code></td>
+</tr>
+
+</tbody>
+</table>
+
+<H4>結果</H4>
+<table>
+<thead>
+<tr>
+<th>疑似クラス</th>
+<th>コード例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:link</td>
+<td><code><a href="http://www.baidu.com/">リンク先をまだ見ていない状態</a></code></td>
+</tr>
+<tr>
+<td>:visited</td>
+<td><code><a href="http://www.qq.com/">リンク先を既に見た状態</a></code></td>
+</tr>
+<tr>
+<td>:hover</td>
+<td><code><a href="http://www.taobao.com/">カーソルが上にある状態</a></code></td>
+</tr>
+<tr>
+<td>:active</td>
+<td><code><a href="http://www.google.com/">マウスのボタン等が押されている状態</a></code></td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+</div>
+</body>
+</html>
