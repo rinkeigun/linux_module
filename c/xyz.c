@@ -54,8 +54,8 @@ int main(int argc, char *argv[])
 	int cnt4 = 0;
 
 	x = atol( argv[1] ) ;
-//printf( "x = %d\n", x ) ;
-//printf( "int 0.4, 0.5 = %d, %d\n", (INT)0.4, (INT)0.5 ) ;
+	//printf( "x = %d\n", x ) ;
+	//printf( "int 0.4, 0.5 = %d, %d\n", (INT)0.4, (INT)0.5 ) ;
 
 	while(1)
 	//while(x<6)
@@ -71,16 +71,23 @@ int main(int argc, char *argv[])
 				zx_flg = call2( z, x , &zx) ;
 				xyz_flg = call3( x, y, z , &xyz) ;
 				
-				if( xy_flg && yz_flg && zx_flg && xyz_flg ) break ;
+				if( xy_flg && yz_flg && zx_flg && xyz_flg ) 
+				{
+					printf("x=%d, y=%d, z=%d, xy=%d, yz=%d, zx=%d, xyz=%d\n",
+					x, y, z,
+					xy_flg? xy:0,
+					yz_flg? yz:0,
+					zx_flg? zx:0,
+					xyz_flg ? xyz:0 ) ;
+					return true ;
+				}
 				cnt4=	(xy_flg? 1:0)+
 					(yz_flg? 1:0)+
 					(zx_flg? 1:0)+
 					(xyz_flg ? 1:0)  ;
-				//if( xy_flg || yz_flg || zx_flg || xyz_flg )
 				if( cnt4 >2 )
-				printf("x=%d, y=%d, z=%d, xy=%d, yz=%d, zx=%d, xyz=%d\n",
+				printf("x=%d, y=%d, z=%d, \x1b[46mxy=%d, yz=%d, zx=%d, xyz=%d\x1b[0m\n",
 					x, y, z,
-
 					xy_flg? xy:0,
 					yz_flg? yz:0,
 					zx_flg? zx:0,
