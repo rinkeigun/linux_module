@@ -1,1 +1,7 @@
-googletest
+tar xvf release-1.8.0.tar.gz 
+cd googletest-release-1.8.0/
+cmake .
+make
+#環境変数GTEST_DIR(includeを含むパス)を設定
+export GTEST_DIR=path/to/googletest
+
