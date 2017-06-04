@@ -1,6 +1,7 @@
 FROM ubuntu
 MAINTAINER RinKeigun <huiqun.lin@gmail.com>
 RUN apt-get update && apt-get -y install mariadb-server 
+#docker run -it -v /data/:/var/lib/mysql --name mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=demo centurylink/mysql
 #ENV APACHE_RUN_USER www-data
 #ENV APACHE_RUN_GROUP www-data
 #ENV APACHE_PID_FILE /run/apache2/apache2.pid
