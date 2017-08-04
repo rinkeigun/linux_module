@@ -1,0 +1,2 @@
+apt-get udpate
+apt-get install -y openjdk-9-jdk

@@ -24,6 +24,7 @@ ENTRYPOINT ["apachectl", "-DFOREGROUND"]
 #docker build -t imagename .
 #docker run -d -p 80:80 test apache2ctl start
 #docker run -it -v /home/rin/tmp/docker_p:/docker_p ubuntu
+#docker run -it -d -v /home/rin/tmp/docker_p:/docker_p ubuntu
 #docker Dockerfile commands
 #FROM
 #RUN
