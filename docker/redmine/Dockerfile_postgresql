@@ -1,0 +1,17 @@
+      apt-get update
+      apt-get install -y build-essential zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev
+      apt-get install -y postgresql postgresql-server-dev-9.5
+     apt-get install -y apache2 apache2-dev libapr1-dev libaprutil1-dev
+     apt-get install -y imagemagick libmagick++-dev fonts-takao-pgothic
+     apt-get install -y subversion git
+     curl -O https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.gz
+     tar xvf ruby-2.4.1.tar.gz
+     cd ruby-2.4.1
+     ./configure --disable-install-doc
+     make
+     make install
+     cd ..
+     gem install bundler --no-rdoc --no-ri
+     apt-get install sudo
+     sudo -u postgres createuser -P redmine
+

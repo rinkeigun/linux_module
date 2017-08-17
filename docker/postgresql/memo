@@ -1,0 +1,1 @@
+docker run -it --link postgres -v ~/.pgpass:/root/.pgpass postgres:9.5.4 psql -h postgres -U postgres
