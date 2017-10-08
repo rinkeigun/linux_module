@@ -7,7 +7,7 @@ RUN mkdir -p /home/myuser && \
 	echo 'myuser:myuser' | chpasswd && \
 	mkdir /home/myuser/.eclipse
 #RUN echo "¥nsu - myuser" >> /root/.bashrc
-#docker run -it -u myuser:dev -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix dev:1.2 /bin/bash
+#docker run -it -u myuser:dev -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix python_rin /bin/bash
 #RUN export uid=1000 gid=1000 && \
 #	mkdir -p /home/dev && \
 #	echo "dev:x:${uid}:${gid}:Developer,,,:/home/dev:/bin/bash" >> /etc/passwd && \
@@ -28,7 +28,7 @@ ENV LANGUAGE "ja_JP:ja"
 #RUN
 #CMD
 #LABEL
-#MAINTAINER
+#MAINTAINERt
 #EXPOSE
 #ENV
 #ADD
