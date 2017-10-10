@@ -1,6 +1,11 @@
 FROM ubuntu
 MAINTAINER RinKeigun <huiqun.lin@gmail.com>
-RUN apt-get update && apt-get -y install gdb gcc g++ make vim global doxygen language-pack-ja-base language-pack-ja ibus-mozc eclipse x11-apps python3 python3-bs4 git tesseract-ocr-all python3-pil
+RUN apt-get update && apt-get -y install gdb gcc g++ make \
+	global doxygen \
+	vim git \
+	language-pack-ja-base language-pack-ja ibus-mozc \
+	eclipse x11-apps \
+	python3 python3-bs4 tesseract-ocr-all python3-pil
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \
 	useradd -g dev -G sudo -s /bin/bash myuser && \
