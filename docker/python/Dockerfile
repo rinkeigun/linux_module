@@ -14,7 +14,7 @@ RUN mkdir -p /home/myuser && \
 	mkdir /home/myuser/.eclipse
 	#useradd -g dev -G sudo -s /bin/bash myuser && \
 #RUN echo "¥nsu - myuser" >> /root/.bashrc
-#docker run -it -u myuser:dev -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix python_rin /bin/bash
+#docker run -it -u myuser:dev -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/rin/tmp/docker_p:/home/myuser python_rin /bin/bash
 #RUN export uid=1000 gid=1000 && \
 #	mkdir -p /home/dev && \
 #	echo "dev:x:${uid}:${gid}:Developer,,,:/home/dev:/bin/bash" >> /etc/passwd && \
