@@ -5,11 +5,12 @@ RUN apt-get update && apt-get -y install gdb gcc g++ make \
 	vim git \
 	language-pack-ja-base language-pack-ja ibus-mozc \
 	eclipse x11-apps \
-	python3 python3-bs4 \
+	python3 python3-pip python3-tk python3-bs4 \
 	tesseract-ocr-all python3-pil \
 	python3-pyocr \
 	python3-numpy python-opencv libopencv-dev \
 	gpicview smplayer
+RUN pip3 install requests matplotlib
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \
 	useradd -g dev -G sudo -s /bin/bash myuser && \

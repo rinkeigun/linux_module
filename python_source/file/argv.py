@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# _*_ coding: utf-8 _*_
 
 # python3 argv.py a b c
 # python3 argv.py a b
@@ -6,17 +6,15 @@
 
 import sys
 
-def test_args( args ):
+def test_args( a ):
 	try:
-		print( len( args ) )
-		print ( args )
-		print ( u'first  arg : ' + args[1] )
-		print ( u'second arg : ' + args[2] )
-		print ( u'third  arg : ' + args[3] )
+		print( len( a ) )
+		print ( a )
+		print ( u'first  arg : ' + a[1] )
+		print ( u'second arg : ' + a[2] )
+		print ( u'third  arg : ' + a[3] )
 	except IndexError as e:
 		print ( u'handle IndexError' )
-
-__main__ = '__main__'
-if (__main__ == '__main__'):
+if __name__ == "__main__":
 	test_args( sys.argv ) 
 
