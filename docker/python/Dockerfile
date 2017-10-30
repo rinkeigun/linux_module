@@ -10,12 +10,21 @@ RUN apt-get update && apt-get -y install gdb gcc g++ make \
 	python3-pyocr \
 	python3-numpy python-opencv libopencv-dev \
 	gpicview smplayer
-RUN pip3 install requests matplotlib seaborn xlrd xlwr xlutils
+RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \
 	useradd -g dev -G sudo -s /bin/bash myuser && \
 	echo 'myuser:myuser' | chpasswd && \
 	mkdir /home/myuser/.eclipse
+#font : source-han-code-jp
+# tar xvf source-han-code-jp.tar.gz
+# cp -r OTC /usr/share/fonts/truetype/.
+# fc-cache -f -v
+# wget http://ipafont.ipa.go.jp/old/ipafont/IPAfont00303.php
+#  unzip IPAfont00303.php 
+#  cp IPAfont00303/*.ttf /usr/share/fonts/truetype/dejavu/.
+#  fc-cache -f -v
+
 	#useradd -g dev -G sudo -s /bin/bash myuser && \
 #RUN echo "¥nsu - myuser" >> /root/.bashrc
 #docker run -it -u myuser:dev -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/rin/tmp/docker_p:/home/myuser python_rin /bin/bash

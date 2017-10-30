@@ -6,7 +6,7 @@ from matplotlib import pyplot
 x = np.random.randn(30)
 sin_y = np.sin(x) + np.random.randn(30)
 
-#pyplot.rcParams['font.family' = 'IPAPGothic'
+#pyplot.rcParams['font.family'] = 'IPAPGothic'
 pyplot.rcParams['font.family'] = 'IPAMincho'
 pyplot.rcParams['font.size'] = 20
 pyplot.rcParams["figure.figsize"] = [20,12]

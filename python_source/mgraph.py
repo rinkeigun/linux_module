@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# File name : mmain.py
+# File name : mgraph.py
 # Date      : 2017/10/26
 # Author    : Huiqun Lin
 # Ver       : 0.1
@@ -9,26 +9,18 @@
 from mbase import mBase
 
 # クラスの説明
-# このクラスは、メニューの基本クラスとする
-class mMain(mBase):
+# このクラスは、グラフを描くための例
+class run(mBase):
 
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['型','mtype'],
-			['文字列','mstring'],
-			['リスト','mlists'],
-			['演算子','moperator'],
-			['制御','mcontrol'],
-			['関数','mfunction'],
-			['クラス','mclass'],
-			['例外','mexception'],
-			['パッケージ、モジュール','mmodule'],
-			['スクレイピング','mscraping'],
-			['画像','mimage'],
-			['ファイル処理','mfile'],
-			['DB','mdb'],
-			['グラフ','mgraph'],
+			['グラフの種類','mgraphtype'],
+			['線の太さ、色','mline'],
+			['マーカー','mmarker'],
+			['凡例、タイトル、ラベル',''],
+			['複数グラフ',''],
+			['3D','m3d'],
 		]
 		mBase.__init__(self, com_list)
 		
