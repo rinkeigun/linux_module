@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# File name : mgraphtype.py
-# Date      : 2017/10/26
+# File name : mscraping.py
+# Date      : 2017/11/03
 # Author    : Huiqun Lin
 # Ver       : 0.1
 #-----------------------------------------------
@@ -9,21 +9,20 @@
 from mbase import mBase
 
 # クラスの説明
-# このクラスは、グラフを描くための例
+# このクラスは、ウェブスクレピングを取り扱う例
 class run(mBase):
 
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['折れ線','mgraphplot'],
-			['散布図','mgraphscatter'],
-			['棒グラフ','mgraphbar'],
-			['QQプロット','mgraphqq'],
-			['円グラフ','mgraphpie'],
-			['極座標','imgraphpolar'],
-			['ヒストグラム','mgraphhistgram'],
-			['箱ひげ図','mgraphboxplot'],
-			['3D',''],
+			['API調査','mwebapi'],
+			['URL構造-一覧ページ',''],
+			['URL構造-詳細ページ',''],
+			['アクセス方法-GET',''],
+			['アクセス方法-POST',''],
+			['アクセス方法-認証',''],
+			['ページ構造確認',''],
+			['内容の取得',''],
 		]
 		mBase.__init__(self, com_list)
 		

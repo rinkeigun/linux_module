@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# File name : mgraphtype.py
-# Date      : 2017/10/26
+# File name : mwebapi.py
+# Date      : 2017/11/03
 # Author    : Huiqun Lin
 # Ver       : 0.1
 #-----------------------------------------------
@@ -9,21 +9,13 @@
 from mbase import mBase
 
 # クラスの説明
-# このクラスは、グラフを描くための例
+# このクラスは、ファイルを取り扱う例
 class run(mBase):
 
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['折れ線','mgraphplot'],
-			['散布図','mgraphscatter'],
-			['棒グラフ','mgraphbar'],
-			['QQプロット','mgraphqq'],
-			['円グラフ','mgraphpie'],
-			['極座標','imgraphpolar'],
-			['ヒストグラム','mgraphhistgram'],
-			['箱ひげ図','mgraphboxplot'],
-			['3D',''],
+			['郵便番号','fgetzipcode'],
 		]
 		mBase.__init__(self, com_list)
 		

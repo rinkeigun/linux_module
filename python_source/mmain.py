@@ -29,6 +29,9 @@ class mMain(mBase):
 			['ファイル処理','mfile'],
 			['DB','mdb'],
 			['グラフ','mgraph'],
+
+			['音声','mvoice'],
+			['機械学習','mmachinelearning'],
 		]
 		mBase.__init__(self, com_list)
 		
@@ -37,7 +40,7 @@ class mMain(mBase):
 		print('str')
 
 	def __del__(self):
-		print( 'クラスが終了するときに呼び出される' )
+		pass
 # mBaseの終わり
 
 # テストプログラムはこれより下に書く

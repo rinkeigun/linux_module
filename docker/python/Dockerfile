@@ -10,7 +10,8 @@ RUN apt-get update && apt-get -y install gdb gcc g++ make \
 	python3-pyocr \
 	python3-numpy python-opencv libopencv-dev \
 	gpicview smplayer
-RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils
+RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils \
+	pydub
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \
 	useradd -g dev -G sudo -s /bin/bash myuser && \

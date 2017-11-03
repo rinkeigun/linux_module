@@ -11,6 +11,8 @@ except HTTPError as e:
 	print(e)
 except URLError as e:
 	print("The server could not be found!")
+except :
+	print("上記以外のエラー!")
 else:
 	print("It worked")
 #bsObj = BeautifulSoup(html.read())

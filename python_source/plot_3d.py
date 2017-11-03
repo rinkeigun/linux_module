@@ -25,4 +25,5 @@ ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 #カラーバーを追加 
 fig2.colorbar(surf, shrink=0.5, aspect=5)
  
+plt.savefig('plot_sav.png')
 plt.show()
