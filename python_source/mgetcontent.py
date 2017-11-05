@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# File name : mwebapi.py
-# Date      : 2017/11/03
+# File name : mcontent.py
+# Date      : 2017/11/04
 # Author    : Huiqun Lin
 # Ver       : 0.1
 #-----------------------------------------------
@@ -15,10 +15,12 @@ class run(mBase):
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['郵便番号','fgetzipcode'],
-			['天気予報','fgetweather'],
-			['経度、緯度、標高','fgetlonlat'],
-			['株価','fgetweather'],
+			['内容','mgetwebcontent'],
+			['JavaScript','mjavascript'],
+			['CSS','mcss'],
+			['画像','mwebimage'],
+			['音声','msound'],
+			['映像','mmovie'],
 		]
 		mBase.__init__(self, com_list)
 		

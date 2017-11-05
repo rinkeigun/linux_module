@@ -34,7 +34,10 @@ class mBase:
 		i = 0
 		for nl in self.lst:
 			i+=1
-			print( str(i) + ':'+nl[0] )
+			cmd_str = nl[0] 
+			if len(nl[1]) == 0 :
+				cmd_str +=  '(未)'
+			print( str(i) + ' : '+cmd_str )
 	# 動作説明 
 	def mexp(self):
 		print( '-------------------------------------------------' )

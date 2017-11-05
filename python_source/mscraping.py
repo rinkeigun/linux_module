@@ -16,13 +16,19 @@ class run(mBase):
 	def __init__(self):
 		com_list = [
 			['API調査','mwebapi'],
+			['robots.txt',''],
+			['URL構造-基本','furlbase'],
+			['URL構造-一時的な場所に保存','furlretrieve'],
+			['URL構造-request','furlrequest'],
 			['URL構造-一覧ページ',''],
 			['URL構造-詳細ページ',''],
 			['アクセス方法-GET',''],
-			['アクセス方法-POST',''],
+			['アクセス方法-POST','furlpost'],
+			['アクセス方法-HEADER','furlheader'],
 			['アクセス方法-認証',''],
+			['例外','furlexcept'],
 			['ページ構造確認',''],
-			['内容の取得',''],
+			['内容の取得','mgetcontent'],
 		]
 		mBase.__init__(self, com_list)
 		
