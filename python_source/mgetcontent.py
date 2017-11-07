@@ -15,7 +15,10 @@ class run(mBase):
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['内容','mgetwebcontent'],
+			['サイト全体','mgetwebcontent'],
+			['インターネット','mgetwebcontent'],
+			['タグ','mgetwebcontent'],
+			['属性','mgetwebcontent'],
 			['JavaScript','mjavascript'],
 			['CSS','mcss'],
 			['画像','mwebimage'],

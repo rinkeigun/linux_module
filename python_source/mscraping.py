@@ -17,6 +17,7 @@ class run(mBase):
 		com_list = [
 			['API調査','mwebapi'],
 			['robots.txt',''],
+			['URL構造-解析','furlparse'],
 			['URL構造-基本','furlbase'],
 			['URL構造-一時的な場所に保存','furlretrieve'],
 			['URL構造-request','furlrequest'],
@@ -26,6 +27,9 @@ class run(mBase):
 			['アクセス方法-POST','furlpost'],
 			['アクセス方法-HEADER','furlheader'],
 			['アクセス方法-認証',''],
+			['ログイン',''],
+			['クッキー',''],
+			['セッション',''],
 			['例外','furlexcept'],
 			['ページ構造確認',''],
 			['内容の取得','mgetcontent'],
