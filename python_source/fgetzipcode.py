@@ -17,7 +17,7 @@ class run:
 	def excute(self):
 		if 1:
 		#try:
-			i_code = 470266 
+			i_code = 573313 
 			# DB接続、テーブル作成
 			connector = sqlite3.connect("zipcode20171103.db")
 			sql = "create table IF NOT EXISTS zipcodejp (zipcode text, address1 text, address2 text, address3 text, kana1 text, kana2 text, kana3 text, prefcode text, message text)"

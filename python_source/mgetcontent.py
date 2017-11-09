@@ -15,15 +15,17 @@ class run(mBase):
 #関数リスト
 	def __init__(self):
 		com_list = [
-			['サイト全体','mgetwebcontent'],
-			['インターネット','mgetwebcontent'],
-			['タグ','mgetwebcontent'],
-			['属性','mgetwebcontent'],
+			['ページ全体','fwholepage'],
+			['タグ','fgettag'],
+			['属性','fgetattrs'],
+			['ファイルの取得','fgetfiles'],
 			['JavaScript','mjavascript'],
 			['CSS','mcss'],
 			['画像','mwebimage'],
 			['音声','msound'],
 			['映像','mmovie'],
+			['サイト全体','mwholesite'],
+			['インターネット','minternet'],
 		]
 		mBase.__init__(self, com_list)
 		
