@@ -17,11 +17,13 @@ class run:
 	def excute(self):
 		if 1:
 		#try:
-			i_code = 573313 
 			# DB接続、テーブル作成
 			connector = sqlite3.connect("zipcode20171103.db")
 			sql = "create table IF NOT EXISTS zipcodejp (zipcode text, address1 text, address2 text, address3 text, kana1 text, kana2 text, kana3 text, prefcode text, message text)"
 			connector.execute( sql )
+			sql = "select max(zipcode) from zipcodejp"
+			cursor = connector.execute( sql )
+			i_code = int(cursor.fetchone()[0])+1
 
 			# 郵便番号7桁までループ開始
 			#while i_code < i_code + 999999:

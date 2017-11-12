@@ -8,6 +8,7 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.error import URLError
+import sys
 #from bs4 import BeautifulSoup
 # これで日本語入力できる
 
@@ -15,9 +16,35 @@ class run():
 	def __init__(self):
 		try:
 		#	html = urlopen( "http://www.google.com/" )
+			print( ' What is it ?')
 			html = urlopen( "http://hahaahnoiot.com/" )
-		except HTTPError as e:
+		except SyntaxError as e:
+			print( 'HTTPError 1')
 			print(e)
+		except ZeroDivisionError as e:
+			print( 'HTTPError 2')
+			print(e)
+		except NameError as e:
+			print( 'HTTPError 3')
+			print(e)
+		except TypeError as e:
+			print( 'HTTPError 4')
+			print(e)
+		except OSError as e:
+			print( 'HTTPError 5')
+			print(e.args[0])
+			print(e.errno)
+			print(e.strerror)
+			print(e.args)
+			print(e)
+			print(sys.exc_info())
+		except ValueError as e:
+			print( 'HTTPError 6')
+			print(e)
+		except HTTPError as e:
+			print( 'HTTPError 7')
+			print(e)
+			print(e.args)
 		except URLError as e:
 			if hasattr(e, 'reason'):
 				print('We failed to reach a server.')

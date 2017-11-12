@@ -48,6 +48,6 @@ def followExternalOnly(startingSite):
     print("Random external link is: "+externalLink)
     followExternalOnly(externalLink)
             
-followExternalOnly("http://yahoo.co.jp")
+#followExternalOnly("http://yahoo.co.jp")
 #何故かエラーになる
-#getInternalLinks("http://yahoo.co.jp")
+getInternalLinks("http://yahoo.co.jp")

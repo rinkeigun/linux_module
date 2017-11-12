@@ -18,7 +18,7 @@ class run(mBase):
 			['mysql','mmysql'],
 			['posgresql','mposgresql'],
 			['oracle','moracle'],
-			['sqlite','msqlite'],
+			['sqlite','fsqlite'],
 		]
 		mBase.__init__(self, com_list)
 		
