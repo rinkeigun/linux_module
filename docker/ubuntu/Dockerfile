@@ -1,23 +1,23 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.10
 MAINTAINER RinKeigun <huiqun.lin@gmail.com>
-RUN apt-get update && apt-get -y install gdb gcc g++ make \
-	global doxygen \
-	vim git \
-	language-pack-ja-base language-pack-ja ibus-mozc \
-	eclipse x11-apps \
-	python3 python3-pip python3-tk python3-bs4 \
-	tesseract-ocr-all python3-pil \
-	python3-pyocr \
-	python3-numpy libopencv-dev \
-	gpicview smplayer
-RUN pip3 install --upgrade pip
-RUN pip3 requests matplotlib seaborn xlrd xlwt xlutils \
-	opencv_python pydub
-RUN mkdir -p /home/myuser && \
-	groupadd -g 1000 dev && \
-	useradd -g dev -G sudo -s /bin/bash myuser && \
-	echo 'myuser:myuser' | chpasswd && \
-	mkdir /home/myuser/.eclipse
+RUN apt-get update && apt-get -y install wget
+#gdb gcc g++ make \
+#	global doxygen \
+#	vim git \
+#	language-pack-ja-base language-pack-ja ibus-mozc \
+#	eclipse x11-apps \
+#	python3 python3-pip python3-tk python3-bs4 \
+#	tesseract-ocr-all python3-pil \
+#	python3-pyocr \
+#	python3-numpy python-opencv libopencv-dev \
+#	gpicview smplayer
+#RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils \
+#	pydub
+#RUN mkdir -p /home/myuser && \
+#	groupadd -g 1000 dev && \
+#	useradd -g dev -G sudo -s /bin/bash myuser && \
+#	echo 'myuser:myuser' | chpasswd && \
+#	mkdir /home/myuser/.eclipse
 #font : source-han-code-jp
 # tar xvf source-han-code-jp.tar.gz
 # cp -r OTC /usr/share/fonts/truetype/.
@@ -37,12 +37,11 @@ RUN mkdir -p /home/myuser && \
 #	echo "dev ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/dev && \
 #	chmod 0440 /etc/sudoers.d/dev && \
 #	chown ${uid}:${gid} -R /home/dev
-USER dev
-ENV HOME /home/myuser
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE "ja_JP:ja"
-ENV TZ "Asia/Tokyo"
-ENV QT_X11_NO_MITSHM 1
+#USER dev
+#ENV HOME /home/myuser
+#ENV LANG ja_JP.UTF-8
+#ENV LANGUAGE "ja_JP:ja"
+#ENV TZ "Asia/Tokyo"
 
 #docker build -t imagename .
 #docker run -d -p 80:80 test apache2ctl start

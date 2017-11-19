@@ -24,6 +24,7 @@ class run:
 			sql = "select max(zipcode) from zipcodejp"
 			cursor = connector.execute( sql )
 			i_code = int(cursor.fetchone()[0])+1
+			i_code = 1804681
 
 			# 郵便番号7桁までループ開始
 			#while i_code < i_code + 999999:
