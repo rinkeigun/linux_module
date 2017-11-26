@@ -26,11 +26,13 @@ class mMain(mBase):
 			['パッケージ、モジュール','mmodule'],
 			['スクレイピング','mscraping'],
 			['画像','mimage'],
+			['グラフ','mgraph'],
+			['音声','mvoice'],
+			['GUI','mgui'],
+			['キーボード','mkeyboard'],
+			
 			['ファイル処理','mfile'],
 			['DB','mdb'],
-			['グラフ','mgraph'],
-
-			['音声','mvoice'],
 			['機械学習','mmachinelearning'],
 		]
 		mBase.__init__(self, com_list)

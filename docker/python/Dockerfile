@@ -11,7 +11,7 @@ RUN apt-get update && apt-get -y install gdb gcc g++ make \
 	python3-numpy libopencv-dev \
 	gpicview smplayer
 RUN pip3 install --upgrade pip
-RUN pip3 requests matplotlib seaborn xlrd xlwt xlutils \
+RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils \
 	opencv_python pydub
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \

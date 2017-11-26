@@ -1,4 +1,4 @@
-#from PIL import Image
+from PIL import Image
 import sys
 import pyocr
 import pyocr.builders
@@ -12,18 +12,18 @@ if len(tools) == 0:
 tool = tools[0]
 
 txt = tool.image_to_string(
-	Image.open("aaa.jpg"),
+	Image.open("img/aaa.jpg"),
 	lang="jpn+eng",
 	builder = pyocr.builders.TextBuilder( tesseract_layout=6)
 )
 #print (txt)
 
-out = cv2.imread("aaa.jpg")
+out = cv2.imread("img/aaa.jpg")
 for d in txt:
 	print (d.content)
 	print (d.position)
 	cv2.rectangle(out, d.position[0], d.position[1], (0, 0, 225), 2)
 
-cv.imshow('image', out)
-cv.waitKey(0)
-cv.destroyAllWindows()
+cv2.imshow('image', out)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
