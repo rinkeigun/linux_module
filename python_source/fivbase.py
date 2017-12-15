@@ -9,6 +9,7 @@
 # このクラスは、メニューの基本クラスとする
 
 from PIL import Image
+import numpy as np
 
 class fivbase:
 
@@ -17,6 +18,7 @@ class fivbase:
 		# クラスの初期化
 		#self.cnt = lst.count() 
 		self.cnt = len(lst)
+		lst = self.toimage(lst)
 		#self.x = lst[0].width 
 		#self.y = lst[0].height 
 		self.x = 250 
@@ -26,6 +28,16 @@ class fivbase:
 
 	def __str__(self):
 		print('str')
+
+	# image画像に変換
+	def toimage(self, lst):
+		i = 0
+		for l in lst:
+			if str(type(l)) == "<class 'numpy.ndarray'>":
+				lst[i] 	= Image.fromarray(np.uint8(l))
+				i += 1
+		
+		return lst
 
 	# 1画面の表示 
 	def fview(self):

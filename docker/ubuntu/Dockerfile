@@ -1,6 +1,28 @@
 FROM ubuntu:17.10
 MAINTAINER RinKeigun <huiqun.lin@gmail.com>
-RUN apt-get update && apt-get -y install wget
+RUN apt-get update && apt-get -y install wget \
+	vim git \
+	language-pack-ja-base language-pack-ja ibus-mozc \
+	x11-apps \
+	python3.6 python3-pip python3-tk python3-bs4 \
+	tesseract-ocr-all python3-pil \
+	python3-pyocr \
+	python3-numpy python-opencv libopencv-dev \
+	imagemagick gpicview smplayer
+RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils \
+	opencv_python pydub
+RUN mkdir -p /home/myuser && \
+	groupadd -g 1000 dev && \
+	useradd -g dev -G sudo -s /bin/bash myuser && \
+	echo 'myuser:myuser' | chpasswd && \
+	mkdir /home/myuser/.eclipse
+USER dev
+ENV HOME /home/myuser
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE "ja_JP:ja"
+ENV TZ "Asia/Tokyo"
+ENV QT_X11_NO_MITSHM 1
+
 #gdb gcc g++ make \
 #	global doxygen \
 #	vim git \

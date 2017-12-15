@@ -12,3 +12,14 @@
 *.xls
 *.xlsx
 *.zip
+
+#media
+*.mp3
+*.m4a
+*.jpg
+*.png
+*.bmp
+*.gif
+
+#DB
+*.db
