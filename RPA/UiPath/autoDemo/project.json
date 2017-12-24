@@ -1,0 +1,14 @@
+{
+  "name": "autoDemo",
+  "description": "Project",
+  "main": "C:\\Users\\linhu\\Desktop\\autoDemo\\AutoReadWrite.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "17.1.6522.14204",
+  "projectVersion": "1.0.6567.36478",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
