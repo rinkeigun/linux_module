@@ -8,6 +8,7 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
@@ -59,7 +60,7 @@
       <Variable x:TypeArguments="x:String" Name="searchWord" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <Sequence DisplayName="Recording Sequence" sap2010:WorkflowViewState.IdRef="Sequence_6">
@@ -88,8 +89,33 @@
           </ui:OpenBrowser.Body>
         </ui:OpenBrowser>
       </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+          <Sequence DisplayName="Data scraping" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+            </Sequence.Variables>
+            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Rpa Googl Page'" InformativeScreenshot="206bce32478d8874b82c90d35e18d569" Selector="&lt;html app='chrome.exe' title='rpa - Google 検索' /&gt;">
+              <ui:BrowserScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do">
+                    <ui:ExtractData ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' class='g'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='rc' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='title' attr='text' name2='url' attr2='href'&gt;&lt;webctrl tag='div' class='g'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='rc' idx='1'/&gt;&lt;webctrl tag='h3' class='r' idx='1'/&gt;&lt;webctrl tag='a' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='概要' attr='text'&gt;&lt;webctrl tag='div' class='g'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='div' class='rc' idx='1'/&gt;&lt;webctrl tag='div' class='s' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='span' class='st' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" MaxNumberOfResults="100" NextLinkSelector="&lt;webctrl aaname='次へ' parentid='pnnext' tag='SPAN' /&gt;">
+                      <ui:ExtractData.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="fa0a715a62f7cee699d67304745883a6" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='rso' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                      </ui:ExtractData.Target>
+                    </ui:ExtractData>
+                  </Sequence>
+                </ActivityAction>
+              </ui:BrowserScope.Body>
+            </ui:BrowserScope>
+          </Sequence>
+        </FlowStep>
+      </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_5">
       <ui:InputDialog Options="{x:Null}" DisplayName="Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="検索文字を入れてください" Title="検索文字の入力">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[searchWord]</OutArgument>
@@ -99,7 +125,8 @@
         <x:Reference>__ReferenceID0</x:Reference>
       </FlowStep.Next>
     </FlowStep>
-    <sads:DebugSymbol.Symbol>dzFEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcd2ViXHdlYl9hY2Nlc3NcTWFpbi54YW1sEDkDZw8CAQFdB2EYAgEOQQdaEgIBAl2OAV2cAQIBEl8zXz8CARBdowFdrAECAQ9CCVkaAgEDQtUBQvABAgENSA9WGgIBBEkRTR8CAQlOEVUcAgEFS6QBS88BAgEMSaoCSbgCAgEKU6QBU88BAgEIUD1QQQIBB1AwUDQCAQY=</sads:DebugSymbol.Symbol>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <sads:DebugSymbol.Symbol>dzFEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcd2ViXHdlYl9hY2Nlc3NcTWFpbi54YW1sHToDggEPAgEBdwd7GAIBHEIHWxICARBeC3IWAgECd44Bd5wBAgEgeTN5PwIBHnejAXesAQIBHUMJWhoCARFgQGBdAgEDYg1xHwIBBEPVAUPwAQIBG0kPVxoCARJi9wFisAICAQ9oE24eAgEFShFOHwIBF08RVhwCARNpFW0mAgEGTKQBTM8BAgEaSqoCSrgCAgEYVKQBVM8BAgEWUT1RQQIBFVEwUTQCARRpvQdpwgcCAQ5rqAFr9wICAQ1pb2l0AgEMaTVpOwIBC2lGaVoCAQlp1AdpkAgCAQhpsQFpqQcCAQc=</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -120,11 +147,27 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">160,344.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="FlowStep_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">160,244.5</av:Point>
             <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">260,295.5 260,344.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
