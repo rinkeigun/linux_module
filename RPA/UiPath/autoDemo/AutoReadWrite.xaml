@@ -1,0 +1,256 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="AutoReadWrite" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="AutoReadWrite_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="AutoReadWrite" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="DTRead" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="employee" />
+      <Variable x:TypeArguments="sd:DataTable" Name="readDemo" />
+      <Variable x:TypeArguments="x:String" Name="outputDemo" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="read管理表" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_12" Visible="False" WorkbookPath="input\社員管理表.xlsx">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[DTRead]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_5" Range="A2" SheetName="Sheet1" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_12">
+            <ui:ForEachRow DataTable="[DTRead]" DisplayName="createFiles" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="ui:GenericValue" Name="customerNames" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="times1" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="times2" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="numbers" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="workTimes" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="hourPay" />
+                      <Variable x:TypeArguments="ui:GenericValue" Name="totalMoney" />
+                    </Sequence.Variables>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="社員名" DisplayName="社員名" sap2010:WorkflowViewState.IdRef="GetRowItem_4" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[employee]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="取引先" DisplayName="取引先" sap2010:WorkflowViewState.IdRef="GetRowItem_7" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[customerNames]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" Value="{x:Null}" ColumnName="稼働下限" DisplayName="稼働下限" sap2010:WorkflowViewState.IdRef="GetRowItem_8" Row="[row]" />
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="稼働上限" DisplayName="稼働上限" sap2010:WorkflowViewState.IdRef="GetRowItem_9" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[times2]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="注文書番号" DisplayName="注文書番号" sap2010:WorkflowViewState.IdRef="GetRowItem_10" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[numbers]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="稼働時間" DisplayName="稼働時間" sap2010:WorkflowViewState.IdRef="GetRowItem_11" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[workTimes]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="単価" DisplayName="単価" sap2010:WorkflowViewState.IdRef="GetRowItem_12" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[hourPay]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="現場単価" DisplayName="現場単価" sap2010:WorkflowViewState.IdRef="GetRowItem_13" Row="[row]">
+                      <ui:GetRowItem.Value>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[totalMoney]</OutArgument>
+                      </ui:GetRowItem.Value>
+                    </ui:GetRowItem>
+                    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[&quot;output\請求書\&quot;+&quot;請求書-&quot;+employee+&quot;.xlsx&quot;]" DisplayName="create請求書" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="False" Path="input\demo.xlsx" />
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_17" Visible="False" WorkbookPath="[&quot;output\請求書\&quot;+&quot;請求書-&quot;+employee+&quot;.xlsx&quot;]">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                            <ui:ExcelWriteCell Cell="G2" DisplayName="Write Cell" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="請求書" Text="[numbers]" />
+                            <ui:ExcelWriteCell Cell="B3" DisplayName="Write Cell" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="請求書" Text="[customerNames]" />
+                            <ui:ExcelWriteCell Cell="F14" DisplayName="Write Cell" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="請求書" Text="[totalMoney]" />
+                            <ui:ExcelWriteCell Cell="F15" DisplayName="Write Cell" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="請求書" Text="[hourPay]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <sads:DebugSymbol.Symbol>dzJDOlxVc2Vyc1xsaW5odVxEZXNrdG9wXGF1dG9EZW1vXEF1dG9SZWFkV3JpdGUueGFtbEA/A6UBDwIBAUgJUyQCAUpWDZ0BHQIBAkilAUi3AQIBUU4PUBoCAUtWJlYwAgFIXBOaAR4CAQNPEU+3AQIBTGYVaiUCAUJrFW8lAgE8cBVwwAECAThxFXUlAgEydhV6JQIBLHsVfyUCASaAARWEASUCASCFARWJASUCARqKARWKAYECAgEXiwEVmQEwAgEET0BPSgIBT0+dAU+hAQIBTk+sAU+0AQIBTWhIaFICAUZmowFmqgECAURmWGZdAgFDbUhtVwIBQGujAWuqAQIBPmtYa10CAT1wtgFwvQECATpwaXBvAgE5c0hzUAIBNnGlAXGsAQIBNHFYcV4CATN4SHhRAgEwdqgBdq8BAgEudlh2XwIBLX1IfVMCASp7pgF7rQECASh7WHteAgEnggFIggFRAgEkgAGiAYABqQECASKAAViAAVwCASGHAUiHAVQCAR6FAaYBhQGtAQIBHIUBWIUBXgIBG4oBSYoBkAECARmKAe0BigH+AQIBGIsBwQGLAYgCAgEWkQEblgEmAgEFkgEdkgGpAQIBEpMBHZMBrwECAQ6UAR2UAa0BAgEKlQEdlQGqAQIBBpIBNZIBOQIBFZIBmwGSAaYBAgEUkgGQAZIBlQECAROTATWTATkCARGTAZsBkwGsAQIBEJMBkAGTAZUBAgEPlAE1lAE6AgENlAGcAZQBqgECAQyUAZEBlAGWAQIBC5UBNZUBOgIBCZUBnAGVAacBAgEIlQGRAZUBlgECAQc=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ExcelReadRange_5" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="336,183">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_12" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetRowItem_4" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_7" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_8" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_9" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_10" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_11" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_12" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="GetRowItem_13" sap:VirtualizedContainerService.HintSize="414,64" />
+      <sap2010:ViewStateData Id="CopyFile_2" sap:VirtualizedContainerService.HintSize="414,22" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_6" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_5" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_4" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_7" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_22" sap:VirtualizedContainerService.HintSize="336,592">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_17" sap:VirtualizedContainerService.HintSize="414,701" />
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="436,1719">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="466,1867">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,174</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,104</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,156 300,174</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,104</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AutoReadWrite_1" sap:VirtualizedContainerService.HintSize="654,716">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
