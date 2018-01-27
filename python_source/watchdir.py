@@ -7,7 +7,7 @@ import os
 import time
 
 #target_dir = "監視したいフォルダのパス"
-target_dir = "d:\\"
+target_dir = "c:\\"
 
 
 class ChangeHandler(FileSystemEventHandler):
