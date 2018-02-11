@@ -12,6 +12,9 @@ newsheet_1 = book.add_sheet('Newsheet_1')
 #セルへの書き込み、行列を直接指定
 newsheet_1.write(0,0,'A1')
 
+# 関数
+#newsheet_1.write( 0, 0, xlwt.Formula('sum(B2:B3)'))
+
 #行指定移動
 newsheet_1_row_1 = newsheet_1.row(1)
 
