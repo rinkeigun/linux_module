@@ -15,7 +15,7 @@ RUN apt-get update && apt-get -y install gdb gcc g++ make \
 RUN pip3 install --upgrade pip
 RUN pip3 install requests matplotlib seaborn xlrd xlwt xlutils \
 	opencv_python pydub gdata pytube \
-	pyautogui
+	pyautogui facebook-sdk wechat-sdk
 RUN mkdir -p /home/myuser && \
 	groupadd -g 1000 dev && \
 	useradd -g dev -G sudo -s /bin/bash myuser && \
