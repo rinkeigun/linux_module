@@ -1,0 +1,36 @@
+// dot -Tpng source.dot -otarget.png
+
+digraph graph_name {
+	graph [
+		charset = "UTF-8";
+	];
+
+	node [
+		colorscheme = "rdylgn11",
+		style = "solid,filled"
+	];
+
+	edge [
+		style = solid,
+		fontsize = 14
+	];
+
+	subgraph cluster_1 {
+		OIMG [label = "IMAGE"];
+		TIMETABLE [label = "勤務表"];
+		TIMETABLE -> OIMG;
+		TIMETABLE -> EXCEL;
+		TIMETABLE -> PDF;
+		PDF -> IMAGE ;
+	
+	}
+	STRING   [label = "文字列"];
+	INVOICE   [label = "請求書\nExcel"];
+
+	PDF -> STRING;
+	OIMG -> STRING;
+	EXCEL -> STRING;
+	IMAGE -> STRING;
+	STRING -> INVOICE;
+
+}
