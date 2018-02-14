@@ -1,3 +1,4 @@
+# apt-get install tesseract-ocr-jpn
 from PIL import Image
 import sys
 import pyocr
@@ -12,13 +13,14 @@ if len(tools) == 0:
 tool = tools[0]
 
 txt = tool.image_to_string(
-	Image.open("img/aaa.jpg"),
+	Image.open("a.png"),
 	lang="jpn+eng",
-	builder = pyocr.builders.TextBuilder( tesseract_layout=6)
+	builder = pyocr.builders.TextBuilder(    tesseract_layout=4)
+	#builder = pyocr.builders.LineBoxBuilder( tesseract_layout=6)
 )
-#print (txt)
+print (txt)
 
-out = cv2.imread("img/aaa.jpg")
+out = cv2.imread("a.png")
 for d in txt:
 	print (d.content)
 	print (d.position)
