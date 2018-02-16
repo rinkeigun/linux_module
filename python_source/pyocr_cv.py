@@ -11,14 +11,16 @@ if len(tools) == 0:
 	print("No OCR tool found")
 	sys.exit(1)
 tool = tools[0]
+#a = pyocr.builders.TextBuilder(tesseract_layout=4)
+#a = pyocr.builders.WordBoxBuilder( )
+a = pyocr.builders.LineBoxBuilder( )
 
 txt = tool.image_to_string(
 	Image.open("a.png"),
 	lang="jpn+eng",
-	builder = pyocr.builders.TextBuilder(    tesseract_layout=4)
-	#builder = pyocr.builders.LineBoxBuilder( tesseract_layout=6)
+	builder  = a
 )
-print (txt)
+#print (txt)
 
 out = cv2.imread("a.png")
 for d in txt:

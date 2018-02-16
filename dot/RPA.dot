@@ -25,7 +25,13 @@ digraph graph_name {
 	
 	}
 	STRING   [label = "文字列"];
-	INVOICE   [label = "請求書\nExcel"];
+	subgraph cluster_2 {
+		INVOICE [label = "請求書"];
+		OPDF	[label = "PDF"];
+		Excel	[label = "Excel"];
+		INVOICE -> OPDF;
+		INVOICE -> Excel;
+	}
 
 	PDF -> STRING;
 	OIMG -> STRING;
