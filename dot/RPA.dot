@@ -32,11 +32,13 @@ digraph graph_name {
 		INVOICE -> OPDF;
 		INVOICE -> Excel;
 	}
+	email [label = "メール送信"];
 
 	PDF -> STRING;
 	OIMG -> STRING;
 	EXCEL -> STRING;
 	IMAGE -> STRING;
 	STRING -> INVOICE;
+	INVOICE -> email ;
 
 }
