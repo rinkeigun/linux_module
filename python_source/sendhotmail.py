@@ -10,6 +10,7 @@ from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.utils import formatdate
+import mimetypes
 
 #hotmail
 #user = 'huiqun<linhuiqun_us@hotmail.com>'
@@ -17,14 +18,15 @@ user = 'linhuiqun_us@hotmail.com'
 
 def create_message(from_addr, to_addr, subject, body, attach_file):
     #msg = MIMEText(body)
-    msg = MIMEMultipart(body)
+    msg = MIMEMultipart()
     msg['Subject'] = subject
     msg['From'] = from_addr
     msg['To'] = to_addr
     msg['Date'] = formatdate()
+    body = MIMEText( body.encode('utf-8'), 'plain', 'utf-8')
+    msg.attach(body)
     
     # 添付ファイルのMIMEタイプを指定する
-    #mime={'type':'text', 'subtype':'comma-separated-values'}
     # bin	application/octet-stream
     # css	text/css
     # csv	text/csv
@@ -50,14 +52,22 @@ def create_message(from_addr, to_addr, subject, body, attach_file):
     # xls	application/vnd.ms-excel
     # zip	application/zip
     # 7z	application/x-7z-compressed
-    #mime={'type':'text', 'subtype':'comma-separated-values'}
-    mime={'type':'text', 'subtype':'plain'}
-    attachment = MIMEBase(mime['type'],mime['subtype'])
+
+    #mime={'type':'text', 'subtype':'csv'}
+    #attachment = MIMEBase(mime['type'],mime['subtype'])
     # 添付ファイルのデータをセットする
-    file = open(attach_file['path'])
-    attachment.set_payload(file.read())
+    file = open(attach_file['path'], 'r')
+    mimetype, mimeencoding = mimetypes.guess_type(attach_file['path'])
+    if mimeencoding or (mimetype is None):
+        mimetype = 'application/octet-stream'
+    maintype, subtype = mimetype.split('/')
+    if maintype == 'text':
+        attachment = MIMEText( file.read(), _subtype=subtype )
+    else:
+        attachment = MIMEBase( maintype, subtype )
+        attachment.set_payload(file.read())
+        encoders.encode_base64(attachment) 
     file.close()
-    encoders.encode_base64(attachment)
     msg.attach(attachment)
     attachment.add_header("Content-Disposition","attachment", filename=attach_file['name'])
     return msg
@@ -92,7 +102,14 @@ if __name__ == '__main__':
     #from_addr = 'huang@innov-soft.co.jp'
     from_addr = user 
     to_addr = 'huiqun.lin@gmail.com'
+    subject = u'subject: 日本語のタイトル'
+    body    = u'body   : 日本語のbody'
     attach_file={'name':'text.txt', 'path':'text.txt'}
-    msg = create_message(from_addr, to_addr, u'日本語test subject', 'よろしくtest body', attach_file)
+    #attach_file={'name':'text.csv', 'path':'text.csv'}
+
+    # 送信用メッセージを作成
+    msg = create_message(from_addr, to_addr, subject, body, attach_file)
+
+    # 送信
     passwd = sys.argv[1]
     send(from_addr, to_addr, msg, passwd)
