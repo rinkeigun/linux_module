@@ -1,0 +1,14 @@
+// rank sample
+
+digraph g1 {
+	graph[
+		rankdir = normal,
+		ranksep = 0.7
+	]
+	a1, a2, a3, a4, a5;
+	ga, gb, gc [label="", shape=none];
+	ga -> gb -> gc [arrowhead = none, color=white];
+	{rank = same; ga; a1; a2;}
+	{rank = same; gb; a3;}
+	{rank = same; gc; a4; a5;}
+}

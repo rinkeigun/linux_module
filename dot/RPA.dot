@@ -1,44 +1,71 @@
-// dot -Tpng source.dot -otarget.png
+// dot -Tpng RPA.dot -oRPA.png
 
 digraph graph_name {
+	// グラフ全体設定
 	graph [
 		charset = "UTF-8";
+		rankdir = normal;
+		ranksep = 0.7;
+		compound = true
 	];
 
+	// ノードの共通設定
 	node [
-		colorscheme = "rdylgn11",
+		//colorscheme = "rdylgn11",
 		style = "solid,filled"
 	];
 
+	// エッジの共通設定
 	edge [
 		style = solid,
-		fontsize = 14
+		fontsize = 14,
+		color = green
 	];
 
-	subgraph cluster_1 {
-		OIMG [label = "IMAGE"];
-		TIMETABLE [label = "勤務表"];
-		TIMETABLE -> OIMG;
-		TIMETABLE -> EXCEL;
-		TIMETABLE -> PDF;
-		PDF -> IMAGE ;
+	// 各ノード定義 
+	// source
+	source [shape = record, label = "<web>web|<ftp>ftp|<email>email" ];
+	// resource, 日本語の場合、その前に半角スペース
+	resource [shape = record, label = "{ 入力|{<xls>Excel|<wd>Word|<ppt>PPT|<pdf>Pdf|<img> 画像}}" ];
 	
-	}
+	// resource2
+	IMAGE [label = "画像" ];
+
+	// element
 	STRING   [label = "文字列"];
-	subgraph cluster_2 {
-		INVOICE [label = "請求書"];
-		OPDF	[label = "PDF"];
-		Excel	[label = "Excel"];
-		INVOICE -> OPDF;
-		INVOICE -> Excel;
-	}
-	email [label = "メール送信"];
+	cIMAGE   [label = "画像"];
+	cGRAPH   [label = "図形"];
 
-	PDF -> STRING;
-	OIMG -> STRING;
-	EXCEL -> STRING;
+	// compose, 日本語の場合半角スペースが必要
+	compose [shape = record, label = "{ 生成|{PDF|Excel|Word|PPT}}" ];
+
+	//output [label = "", color = white, shape = none];
+	email [shape = record, label = "{ メール送信|{ 本文| 添付}}"];
+	print [label = "印刷"];
+
+	// 全体配置
+	// resource
+	source:web -> resource [color = red];
+	source:ftp -> resource [color = red];
+	source:email -> resource [color = red];
+
+	// resource2
+	resource:wd -> IMAGE[color=red];
+	resource:ppt -> IMAGE[color=red];
+	resource:pdf -> IMAGE;
+
+	// element
 	IMAGE -> STRING;
-	STRING -> INVOICE;
-	INVOICE -> email ;
+	resource:img -> STRING;
+	resource:xls -> STRING;
+	source:web -> STRING[color = red ];
+	
+	// compose
+	STRING -> compose;
+	cGRAPH -> compose[color=red];
+	cIMAGE -> compose[color=red];	
 
+	// output
+	compose -> email ;
+	compose -> print [color = red ];
 }
