@@ -63,7 +63,7 @@ digraph graph_name {
 	// compose
 	STRING -> compose;
 	cGRAPH -> compose[color=red];
-	cIMAGE -> compose[color=red];	
+	cIMAGE -> compose;	
 
 	// output
 	compose -> email ;
