@@ -8,7 +8,6 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
@@ -34,7 +33,6 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -54,49 +52,30 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="addressList" />
-      <Variable x:TypeArguments="x:String" Name="template" />
+      <Variable x:TypeArguments="x:String" Name="ftpsession" />
+      <Variable x:TypeArguments="x:String" Name="pw" />
     </Flowchart.Variables>
     <Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
-        <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="機能説明" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="outlookによるメール送信" TopMost="True" />
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <ui:MessageBox ChosenButton="{x:Null}" Buttons="Ok" Caption="機能説明" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="FTPの機能実証" TopMost="True" />
         <FlowStep.Next>
-          <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
-            <ui:ReadRange AddHeaders="True" DataTable="[addressList]" DisplayName="Read range 名前、アドレスの一覧を読み込む" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="b2:c5" SheetName="Sheet1" WorkbookPath="mail_address.xlsx" />
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+            <ui:InputDialog Options="{x:Null}" DisplayName="Private: Input dialog" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="True" Label="パスワードの入力" Title="パスワードを入力">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:String">[pw]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
             <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
-                <ui:ReadTextFile Content="[template]" DisplayName="Read text file　送信テンプレートファイルを読み込み" FileName="給与明細テンプレート.txt" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-                <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
-                    <ui:ForEachRow DataTable="[addressList]" DisplayName="For each row　リスト分だけ送信" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                      <ui:ForEachRow.Body>
-                        <ActivityAction x:TypeArguments="sd:DataRow">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_1">
-                            <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[string.format(template, row.Item(0).ToString)]" DisplayName="Send Outlook Mail Message" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;給与明細”]" To="[row.Item(1).ToString]">
-                              <ui:SendOutlookMail.Files>
-                                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                                  <InArgument x:TypeArguments="x:String">[row.Item(0).ToString+".xlsx"]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" />
-                                </scg:List>
-                              </ui:SendOutlookMail.Files>
-                            </ui:SendOutlookMail>
-                          </Sequence>
-                        </ActivityAction>
-                      </ui:ForEachRow.Body>
-                    </ui:ForEachRow>
-                  </FlowStep>
-                </FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                <ui:OpenFTPSession FTPSession="{x:Null}" KeyFiles="{x:Null}" DisplayName="Open FTP session" Host="192.168.2.13" sap2010:WorkflowViewState.IdRef="OpenFTPSession_1" Password="[pw]" Port="21" SecureFTP="False" Username="rin">
+                  <ui:OpenFTPSession.Body>
+                    <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1" />
+                  </ui:OpenFTPSession.Body>
+                </ui:OpenFTPSession>
               </FlowStep>
             </FlowStep.Next>
           </FlowStep>
@@ -106,8 +85,7 @@
     <x:Reference>__ReferenceID0</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
-    <x:Reference>__ReferenceID3</x:Reference>
-    <sads:DebugSymbol.Symbol>d0VDOlxVc2Vyc1xsaW5odVxEZXNrdG9wXFVpUGF0aOOCteODs+ODl+ODq1xtYWlsXG1haWxfb3V0bG9va1xNYWluLnhhbWwUPwNvDwIBAUYJRr0BAgEVSQ1J4gECAQ9MEUyzAQIBC08VYSUCAQJGRUZLAgEXRpoBRqsBAgEWSTdJRgIBE0mkAUmrAQIBEkm2AUm+AQIBEUnMAUnfAQIBEExvTH8CAQ5MKkw2AgEMTy5PPQIBCVUbXiYCAQNWHV0yAgEEVt4CVvYCAgEIWUpZaAIBB1aSAVbDAQIBBlbLAlbaAgIBBQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dy9EOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcZnRwXGZ0cF90ZXN0XE1haW4ueGFtbA45A1kPAgEBQAlAtgECAQ5DDUceAgEJShFOJQIBAkBFQEsCARBAmgFApAECAQ9DnAFDpgECAQ1FOUU9AgELQ60BQ7cBAgEKSukBSu4BAgEHSskBSs0BAgEGSr0BSsMBAgEESnJKgAECAQNMFUxfAgEI</sads:DebugSymbol.Symbol>
   </Flowchart>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -118,67 +96,50 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="200,52.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ReadTextFile_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,100.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="SendOutlookMail_1" sap:VirtualizedContainerService.HintSize="314,145" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,269">
+      <sap2010:ViewStateData Id="OpenFTPSession_1" sap:VirtualizedContainerService.HintSize="200,52.8">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="200,52.8">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_2">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">190,404.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_3">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">190,313.6</av:Point>
-            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">290,366.4 290,404.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="FlowStep_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">190,213.6</av:Point>
+            <av:Point x:Key="ShapeLocation">190,303.6</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">290,266.4 290,313.6</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="FlowStep_4">
+      <sap2010:ViewStateData Id="FlowStep_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,117.7</av:Point>
+            <av:Point x:Key="ShapeLocation">190,203.6</av:Point>
             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,170.5 300,200.5 290,200.5 290,213.6</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">290,256.4 290,303.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,113.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,166.4 300,196.4 290,196.4 290,203.6</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
@@ -188,7 +149,7 @@
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75.2</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,117.7</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,113.6</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>

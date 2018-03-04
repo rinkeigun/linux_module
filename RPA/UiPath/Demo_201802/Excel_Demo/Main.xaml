@@ -1,0 +1,814 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="empDT" />
+      <Variable x:TypeArguments="ui:GenericValue" Default="[0.0]" Name="totaltime" />
+      <Variable x:TypeArguments="x:String" Name="name">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="errMessage">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String" Value="" />
+        </Variable.Default>
+      </Variable>
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch.Variables>
+            <Variable x:TypeArguments="x:String" Name="attachmentFile">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:String" Value="" />
+              </Variable.Default>
+            </Variable>
+          </TryCatch.Variables>
+          <TryCatch.Try>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13">
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <ui:ReadRange AddHeaders="True" DataTable="[empDT]" DisplayName="Read range 管理データの取込" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A3:t8" SheetName="勤怠管理" WorkbookPath="input\勤怠管理.xlsx" />
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_46">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[errMessage]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[errMessage+"管理表を読み込む"+Chr(13)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ForEach x:TypeArguments="x:Object" DisplayName="For each 処理対象フォルダー" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(&quot;input\勤務表&quot;)]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="filename" />
+                              <Variable x:TypeArguments="s:String[]" Name="extension" />
+                            </Sequence.Variables>
+                            <Assign DisplayName="Assign ファイル名の取得" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[item.ToString()]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_47">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[errMessage]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[errMessage+"処理対象ファイル："+filename +Chr(13)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign 拡張子の取得" sap2010:WorkflowViewState.IdRef="Assign_3">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="s:String[]">[extension]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="s:String[]">[Split(filename, ".")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <If Condition="[extension.last() = &quot;xlsx&quot;]" DisplayName="If　拡張子による処理判定(xlsx)" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If.Then>
+                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="sheetname" />
+                                  </Sequence.Variables>
+                                  <Assign DisplayName="Assign シート名" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[sheetname]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">201711</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:ReadCell Cell="b1" DisplayName="Read cell 名前読込" sap2010:WorkflowViewState.IdRef="ReadCell_1" SheetName="[sheetname]" WorkbookPath="[filename]">
+                                    <ui:ReadCell.Result>
+                                      <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                                    </ui:ReadCell.Result>
+                                  </ui:ReadCell>
+                                  <ui:ReadCell Cell="d33" DisplayName="Read cell 総時間取得" sap2010:WorkflowViewState.IdRef="ReadCell_2" SheetName="[sheetname]" WorkbookPath="[filename]">
+                                    <ui:ReadCell.Result>
+                                      <OutArgument x:TypeArguments="ui:GenericValue">[totaltime]</OutArgument>
+                                    </ui:ReadCell.Result>
+                                  </ui:ReadCell>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <If Condition="[extension.last() = &quot;pdf&quot;]" DisplayName="If 拡張子による処理判定(pdf)" sap2010:WorkflowViewState.IdRef="If_2">
+                                  <If.Then>
+                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:String" Name="pdfResult" />
+                                        <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="pdfName" />
+                                        <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="pdfTotalTime" />
+                                        <Variable x:TypeArguments="x:String" Name="tmpString" />
+                                      </Sequence.Variables>
+                                      <ui:ReadPDFWithOCR DisplayName="Read PDF with OCR" FileName="[filename]" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" Range="All" Text="[pdfResult]">
+                                        <ui:ReadPDFWithOCR.OCREngine>
+                                          <ActivityFunc x:TypeArguments="sd1:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                                            <ActivityFunc.Argument>
+                                              <DelegateInArgument x:TypeArguments="sd1:Image" Name="Image" />
+                                            </ActivityFunc.Argument>
+                                            <ui:MicrosoftOCR FilterRegion="{x:Null}" Text="{x:Null}" DisplayName="Microsoft OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_1" Image="[Image]" Language="日本語" Profile="Legacy" Scale="2" />
+                                          </ActivityFunc>
+                                        </ui:ReadPDFWithOCR.OCREngine>
+                                      </ui:ReadPDFWithOCR>
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[pdfResult]" />
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_33">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="ui:GenericValue">[totaltime]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="ui:GenericValue">[""]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:Matches DisplayName="Matches 氏名の検索" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[pdfResult]" Pattern="\nNID 本 社 氏 名 林 恵 群.+" RegexOption="IgnoreCase, Compiled" Result="[pdfName]" />
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_15" Text="[&quot;wo:&quot;+pdfName(0).ToString]" />
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_39">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[pdfName(0).ToString.trim()]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_16" Text="[&quot;wo2:&quot;+name]" />
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_34">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[name.replace(" ","")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_17" Text="[&quot;wo3:&quot;+name]" />
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_35">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[name]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[name.replace("NID本社氏名","")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_18" Text="[&quot;wo4:&quot;+name]" />
+                                      <If Condition="[name.Length = 0]" DisplayName="If 名前が見つからない" sap2010:WorkflowViewState.IdRef="If_9">
+                                        <If.Then>
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_44">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[errMessage]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[errMessage + "名前が見つかりません"+Chr(13)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </If.Then>
+                                      </If>
+                                      <ui:Matches DisplayName="Matches　総時間数の検索" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[pdfResult]" Pattern="作 業 時 間\r\n.*" RegexOption="IgnoreCase, Compiled" Result="[pdfTotalTime]" />
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_41">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[tmpString]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[pdfTotalTime(0).ToString.replace("作 業 時 間","")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign sap2010:WorkflowViewState.IdRef="Assign_40">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="ui:GenericValue">[totaltime]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="ui:GenericValue">[tmpString.trim()]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_14" Text="[&quot;keigun : &quot;+ totaltime]" />
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <If Condition="[extension.last() = &quot;jpg&quot;]" DisplayName="If 拡張子による処理判定(jpg)" sap2010:WorkflowViewState.IdRef="If_3">
+                                      <If.Then>
+                                        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="jpg" />
+                                      </If.Then>
+                                      <If.Else>
+                                        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="処理対象ファイルの種類は対応できません。" />
+                                      </If.Else>
+                                    </If>
+                                  </If.Else>
+                                </If>
+                              </If.Else>
+                            </If>
+                            <ui:ForEachRow DataTable="[empDT]" DisplayName="For each row 登録社員分でループ" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                              <ui:ForEachRow.Body>
+                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="name2">
+                                        <Variable.Default>
+                                          <Literal x:TypeArguments="x:String" Value="" />
+                                        </Variable.Default>
+                                      </Variable>
+                                      <Variable x:TypeArguments="x:String" Name="Suppliers" />
+                                      <Variable x:TypeArguments="x:String" Name="orderNo" />
+                                      <Variable x:TypeArguments="s:DateTime" Name="orderDate" />
+                                      <Variable x:TypeArguments="x:String" Name="bottomline" />
+                                      <Variable x:TypeArguments="x:String" Name="topline" />
+                                      <Variable x:TypeArguments="x:String" Name="unitPrice" />
+                                      <Variable x:TypeArguments="x:String" Name="ofilename" />
+                                    </Sequence.Variables>
+                                    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[row.Item(0).ToString+&quot;:&quot;+name]" />
+                                    <Assign DisplayName="Assign 管理表に登録している社員名" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[name2]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[row.Item(0).ToString]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <If Condition="[name = name2]" DisplayName="If 同じ氏名かのチェック、同じ場合のみ処理" sap2010:WorkflowViewState.IdRef="If_4">
+                                      <If.Then>
+                                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:String" Name="deadline" />
+                                            <Variable x:TypeArguments="sd:DataTable" Name="orderSheet" />
+                                            <Variable x:TypeArguments="x:String" Name="content" />
+                                            <Variable x:TypeArguments="x:String" Name="order" />
+                                            <Variable x:TypeArguments="x:String" Name="overtime" />
+                                            <Variable x:TypeArguments="x:String" Name="timefee" />
+                                            <Variable x:TypeArguments="x:String" Name="inRangeTime" />
+                                            <Variable x:TypeArguments="x:String" Name="orderName" />
+                                            <Variable x:TypeArguments="s:DateTime" Name="startDate" />
+                                            <Variable x:TypeArguments="s:DateTime" Name="endDate" />
+                                            <Variable x:TypeArguments="x:Boolean" Name="doesExist" />
+                                            <Variable x:TypeArguments="x:String" Name="variable1" />
+                                          </Sequence.Variables>
+                                          <Assign DisplayName="Assign 取引先" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[Suppliers]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(5).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 案件名" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[orderName]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(9).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 注文書番号" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[orderNo]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(13).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 稼働下限値" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[bottomline]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(14).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 稼働上限値" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[topline]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(15).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 時給" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[timefee]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(16).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 単価" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[unitPrice]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(18).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 締め日" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[deadline]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[row.Item(19).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 出力ファイル名" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[ofilename]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">["output\請求書\請求書-"+name+".xlsx"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:PathExists DisplayName="Path exists" Exists="[doesExist]" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[ofilename]" PathType="File" />
+                                          <If Condition="[doesExist]" DisplayName="If ファイルが既存の場合、削除" sap2010:WorkflowViewState.IdRef="If_8">
+                                            <If.Then>
+                                              <ui:Delete ContinueOnError="{x:Null}" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[ofilename]" />
+                                            </If.Then>
+                                          </If>
+                                          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[ofilename]" DisplayName="Copy file 出力用ファイルのコピー" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="input\請求書テンプレート.xlsx" />
+                                          <Assign DisplayName="Assign 請求書のシート名" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[order]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">請求書</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:WriteCell Cell="b3" DisplayName="Write cell 取引先" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[order]" Text="[Suppliers]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="g2" DisplayName="Write cell 請求書番号" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="[order]" Text="[orderNo]" WorkbookPath="[ofilename]" />
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_24">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:DateTime">[orderDate]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:DateTime">[Datetime.Now.Date]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:WriteCell Cell="g3" DisplayName="Write cell 請求日" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="[order]" Text="[orderDate.Tostring(&quot;yyyy年MM月dd日&quot;)]" WorkbookPath="[ofilename]" />
+                                          <If Condition="[totaltime &gt; topline]" DisplayName="If 超過時間の算出" sap2010:WorkflowViewState.IdRef="If_5">
+                                            <If.Then>
+                                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                                <Assign DisplayName="Assign　超過時間取得" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[overtime]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">[(totaltime - convert.ToSingle(topline)).ToString]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <Assign DisplayName="Assign 制限時間内での時間" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="ui:GenericValue">[totaltime]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="ui:GenericValue">[topline]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </Sequence>
+                                            </If.Then>
+                                            <If.Else>
+                                              <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:String">[overtime]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:String">[(0).ToString]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Else>
+                                          </If>
+                                          <If Condition="[deadline = &quot;&quot;]" DisplayName="If 請求対象期間" sap2010:WorkflowViewState.IdRef="If_7">
+                                            <If.Then>
+                                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                <Assign DisplayName="Assign 最終日" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="s:DateTime">[endDate]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="s:DateTime">[orderDate.adddays(-orderDate.day)]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </Sequence>
+                                            </If.Then>
+                                            <If.Else>
+                                              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                <Assign DisplayName="Assign 終了日を設定する" sap2010:WorkflowViewState.IdRef="Assign_31">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="s:DateTime">[endDate]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="s:DateTime">[orderDate.adddays(-orderDate.day+20)]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </Sequence>
+                                            </If.Else>
+                                          </If>
+                                          <Assign DisplayName="Assign 開始日付の準備" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:DateTime">[startDate]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:DateTime">[endDate]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 開始日付" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:DateTime">[startDate]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:DateTime">[startDate.AddMonths(-1).AddDays(1)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign DisplayName="Assign 作業内容作成" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[content]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[name + ":" +startDate.ToString("MM/dd")+"-"+endDate.ToString("MM/dd")+orderName+"("+totaltime+")"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:WriteCell Cell="g3" DisplayName="Write cell 請求日" sap2010:WorkflowViewState.IdRef="WriteCell_9" SheetName="[order]" Text="[endDate.Tostring(&quot;yyyy年MM月dd日&quot;)]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="b14" DisplayName="Write cell 作業内容" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="[order]" Text="[content]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="f14" DisplayName="Write cell　単価" sap2010:WorkflowViewState.IdRef="WriteCell_8" SheetName="[order]" Text="[unitPrice]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="b15" DisplayName="Write cell　作業内容（超過時間）" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="[order]" Text="[&quot;超過時間：&quot;+overtime]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="d15" DisplayName="Write cell　超過時間" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="[order]" Text="[overtime]" WorkbookPath="[ofilename]" />
+                                          <ui:WriteCell Cell="f15" DisplayName="Write cell　時給" sap2010:WorkflowViewState.IdRef="WriteCell_7" SheetName="[order]" Text="[timefee]" WorkbookPath="[ofilename]" />
+                                          <ui:Break DisplayName="Break 処理が終わったので継続処理をしない" sap2010:WorkflowViewState.IdRef="Break_1" />
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="no same" />
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:ForEachRow.Body>
+                            </ui:ForEachRow>
+                          </Sequence>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </Sequence>
+              </Sequence>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_48">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[errMessage]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[errMessage+"送信開始"+Chr(13)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:ForEach x:TypeArguments="x:Object" DisplayName="For each 送信" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[directory.GetFiles(&quot;output\請求書&quot;)]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_45">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[attachmentFile]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[item.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="この請求書はちゃんと届いたか" DisplayName="Send Outlook Mail Message" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;請求書&quot; + name]" To="huang@innov-soft.co.jp">
+                        <ui:SendOutlookMail.Files>
+                          <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">[attachmentFile]</InArgument>
+                            <InArgument x:TypeArguments="x:String" />
+                          </scg:List>
+                        </ui:SendOutlookMail.Files>
+                      </ui:SendOutlookMail>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="si:IOException" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <ActivityAction x:TypeArguments="si:IOException">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="si:IOException" Name="exception" />
+                </ActivityAction.Argument>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_43">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[errMessage]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[errMessage + "ファイルオープンエラー"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+          <TryCatch.Finally>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[errMessage]" TopMost="True" />
+          </TryCatch.Finally>
+        </TryCatch>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <sads:DebugSymbol.Symbol>dzlEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcRGVtb18yMDE4MDJcRXhjZWxfRGVtb1xNYWluLnhhbWyDAkYDygQPAgEBSTtJQgIBBEwLTDoCAQNRC1E6AgECVwnFBBQCAQVbEVtAAgELYA2vBBgCAQ/DBA3DBMIBAgEMtwQRvgQaAgEGYQ+LBBoCASOMBA+TBBgCAR+UBA+uBBwCARDDBKIBwwSwAQIBDbwEPLwEWAIBCbkEPbkESQIBB2IRigQcAgEkkQQ6kQRVAgEijgQ7jgRHAgEglASFAZQEswECAR6aBBWrBCACARFjE2PXAQMB6QJkE2scAwHlAmwTiQQgAgElmwQXogQgAgEZowQXqgQsAgESYz1jRgMB7QJjnQFjpAEDAewCY68BY7UBAwHrAmPDAWPUAQMB6gJpPmldAwHoAmY/ZksDAeYCbJABbL0BAwHkAnIZhgQkAgEmoARCoARRAgEcnQRDnQRTAgEaowTCAqME2gICARimBESmBFQCARajBIwBowScAQIBFaMEpAKjBL4CAgETcxuFBCYCASd4HX8mAwHfAoABHYcBJgMB2wKIAR2PASYDAdcCkAEdkAIiAwHuAZECHYQELQIBKH1IfVkDAeICekl6UwMB4AKFAUiFAXIDAd4CggFJggFVAwHcAo0BSo0BYAMB2gKKAUuKAVYDAdgCkAErkAFSAwHvAZIBIagBLAMBwgKrASGOAiYDAfABkQI2kQI/AwHsAZcCI4EELgIBKZYBI50BLAMB0wKeASOiATEDAcsCowEjpwExAwHDAqsBL6sBVQMB8QGtASWCAjADAfgBhQIljAIqAwHyAZsCK5sCWgIBKqYCJaYCqwEDAeoBpwIlrgIuAwHmAa8CJYAEKgIBK5sBTpsBVAMB1gKYAU+YAVoDAdQCngE1ngE5AwHSAqABT6ABVQMB0AKeAY4BngGbAQMBzgKeAakBngG1AQMBzAKjATWjAToDAcoCpQFWpQFhAwHIAqMBkAGjAZ0BAwHGAqMBqwGjAbcBAwHEArQBJ70BOwMBtwK+ASe+AY4BAwG0Ar8BJ8YBMAMBsALHASfHAecBAwGqAsgBJ8gBqQEDAagCyQEn0AEwAwGkAtEBJ9EBmwEDAaEC0gEn2QEwAwGcAtoBJ9oBmwEDAZkC2wEn4gEwAwGUAuMBJ+MBmwEDAZEC5AEn7wEsAwGKAvABJ/AB5gEDAYQC8QEn+AEwAwGAAvkBJ4ACMAMB+wGBAieBAqYBAwH5AYUCM4UCWQMB8wGHAimHAogBAwH2AYoCKYoCmQEDAfQBpgJ9pgKoAQMB6wGsAlCsAmYDAekBqQJRqQJYAwHnAa8CM68CQwIBLLECKfsDNAIBMf4DKf4DjAECAS+0AbQBtAHBAQMBwAK0AWO0AW8DAb4CtAGpAbQBrgEDAb0CugEtugGEAgMBuAK+AX6+AYsBAwG1AsQBWcQBXQMBswLBAVrBAWUDAbECxwGBAccBjgEDAa4CxwHZAccB5AEDAawCxwGXAccBrgEDAasCyAF/yAGmAQMBqQLOAVLOAW4DAacCywFTywFZAwGlAtEBf9EBmAEDAaIC1wFS1wFoAwGfAtQBU9QBWQMBnQLaAX/aAZgBAwGaAuABUuABbgMBlwLdAVPdAVkDAZUC4wF/4wGYAQMBkgLkATXkAUgDAYsC5gEr7QE0AwGNAvABgwHwAZABAwGIAvAB0wHwAeMBAwGGAvABmQHwAagBAwGFAvYBUvYBggEDAYMC8wFT8wFeAwGBAv4BWf4BawMB/gH7AVr7AWUDAfwBgQJ/gQKjAQMB+gGHAoABhwKFAQMB9wGKAoABigKWAQMB9QHAAivHAjQDAeIByAIrzwI0AwHeAdACK9cCNAMB2gHYAivfAjQDAdYB4AIr5wI0AwHSAegCK+8CNAMBzgHwAiv3AjQDAcoB+AIr/wI0AwHGAYADK4cDNAMBwQGIAyuIA70BAwG8AYkDK40DMAMBtgGOAyuOA+4BAwGyAY8DK5YDNAMBrgGXAyuXA9IBAwGmAZgDK5gD0gEDAZ4BmQMroAM0AwGaAaEDK6ED9AEDAZIBogMrwQMwAwGCAcIDK9sDMAIBcdwDK+MDNAIBbOQDK+sDNAIBZ+wDK/MDNAIBY/QDK/QD8gECAVv1Ayv1A9IBAgFT9gMr9gPSAQIBS/cDK/cD6wECAUP4Ayv4A9MBAgE7+QMr+QPQAQIBM/oDK/oDhwECATL+A4AB/gOJAQIBMLoB/gG6AYECAwG8AroBzgG6AdcBAwG6AroB4QG6AeYBAwG5AusBVusBeQMBkALoAVfoAWMDAY4CxQJWxQJsAwHlAcICV8ICYgMB4wHNAlbNAmwDAeEBygJXygJiAwHfAdUCVtUCbQMB3QHSAlfSAmADAdsB3QJW3QJtAwHZAdoCV9oCYwMB1wHlAlblAm0DAdUB4gJX4gJgAwHTAe0CVu0CbQMB0QHqAlfqAmADAc8B9QJW9QJtAwHNAfICV/ICYgMBywH9Alb9Am0DAckB+gJX+gJhAwHHAYUDVoUDdgMBxAGCA1eCA2IDAcIBiANbiANoAwG/AYgDnQGIA6oBAwG9AYkDOYkDRgMBtwGLAy+LA5UBAwG5AY4DX44DbAMBtAGOA9UBjgPrAQMBswGUA1aUA1kDAbEBkQNXkQNeAwGvAZcDPpcDQgMBrQGXA6cBlwO0AQMBqwGXA5gBlwOhAQMBqQGXA8IBlwPPAQMBpwGYAz6YA0IDAaUBmAOpAZgDtAEDAaMBmAOaAZgDowEDAaEBmAPCAZgDzwEDAZ8BngNYngNrAwGdAZsDWZsDZAMBmwGhAz6hA0IDAZkBoQOnAaED1gEDAZcBoQOYAaEDoQEDAZUBoQPkAaED8QEDAZMBogM5ogNTAwGDAaQDL7UDOgMBiAG4Ay+/AzgDAYQBwgM5wgNUAgFyxAMvzQM6AgF70AMv2QM6AgF04QNY4QNhAgFv3gNZ3gNkAgFt6QNY6QN8AgFq5gNZ5gNkAgFo8QNW8QO5AQIBZu4DV+4DYAIBZPQDPvQDQgIBYvQDpwH0A9QBAgFg9AOYAfQDoQECAV70A+IB9APvAQIBXPUDPvUDQwIBWvUDqQH1A7QBAgFY9QOaAfUDowECAVb1A8IB9QPPAQIBVPYDPvYDQwIBUvYDpwH2A7QBAgFQ9gOYAfYDoQECAU72A8IB9gPPAQIBTPcDPvcDQwIBSvcDrwH3A80BAgFI9wOgAfcDqQECAUb3A9sB9wPoAQIBRPgDPvgDQwIBQvgDqQH4A7UBAgFA+AOaAfgDowECAT74A8MB+APQAQIBPPkDPvkDQwIBOvkDpwH5A7IBAgE4+QOYAfkDoQECATb5A8AB+QPNAQIBNIsDhQGLA5IBAwG6AaUDMawDOgMBjgGtAzG0AzoDAYkBvQNavQNoAwGHAboDW7oDZQMBhQHFAzHMAzoCAXzRAzHYAzoCAXWqA1yqA44BAwGRAacDXacDZwMBjwGyA2OyA2wDAYwBrwNkrwNvAwGKAcoDXsoDgQECAX/HA1/HA2gCAX3WA17WA4QBAgF40wNf0wNoAgF2</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="1395.2,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_46" sap:VirtualizedContainerService.HintSize="1395.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="1334.4,60.8" />
+      <sap2010:ViewStateData Id="Assign_47" sap:VirtualizedContainerService.HintSize="1334.4,60.8" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="1334.4,60.8" />
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="ReadCell_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="ReadCell_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,441.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MicrosoftOCR_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="ReadPDFWithOCR_1" sap:VirtualizedContainerService.HintSize="464,132.8" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Assign_33" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Matches_1" sap:VirtualizedContainerService.HintSize="464,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_15" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Assign_39" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="WriteLine_16" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Assign_34" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="WriteLine_17" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Assign_35" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="WriteLine_18" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Assign_44" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_9" sap:VirtualizedContainerService.HintSize="464,211.2" />
+      <sap2010:ViewStateData Id="Matches_2" sap:VirtualizedContainerService.HintSize="464,22.4" />
+      <sap2010:ViewStateData Id="Assign_41" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Assign_40" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="WriteLine_14" sap:VirtualizedContainerService.HintSize="464,62.4" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486.4,1852.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="214.4,62.4" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="210,61" />
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="464,212.8" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="974.4,2003.2" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="1334.4,2153.6" />
+      <sap2010:ViewStateData Id="WriteLine_11" sap:VirtualizedContainerService.HintSize="816,62.4" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="816,60.8" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_18" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="PathExists_2" sap:VirtualizedContainerService.HintSize="555.2,89.6" />
+      <sap2010:ViewStateData Id="Delete_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="If_8" sap:VirtualizedContainerService.HintSize="555.2,211.2" />
+      <sap2010:ViewStateData Id="CopyFile_1" sap:VirtualizedContainerService.HintSize="555.2,22.4" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="WriteCell_1" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_2" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="WriteCell_3" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_22" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="265.6,286.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_29" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="555.2,436.8" />
+      <sap2010:ViewStateData Id="Assign_25" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="265.6,185.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_31" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="265.6,185.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="555.2,336" />
+      <sap2010:ViewStateData Id="Assign_27" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_28" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="555.2,60.8" />
+      <sap2010:ViewStateData Id="WriteCell_9" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_4" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_8" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_5" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_6" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="WriteCell_7" sap:VirtualizedContainerService.HintSize="555.2,115.2" />
+      <sap2010:ViewStateData Id="Break_1" sap:VirtualizedContainerService.HintSize="555.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="577.6,4251.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_8" sap:VirtualizedContainerService.HintSize="214.4,62.4" />
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="816,4401.6" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="838.4,4729.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="1334.4,4878.4" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="1356.8,7499.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="1379.2,7624">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="1395.2,7758.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="1417.6,8112">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="1440,8236.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_48" sap:VirtualizedContainerService.HintSize="1440,60.8" />
+      <sap2010:ViewStateData Id="Assign_45" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="SendOutlookMail_1" sap:VirtualizedContainerService.HintSize="313.6,145.6" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="336,371.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="1440,505.6" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="1462.4,9008">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_43" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="1465.6,131.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="1480,9452.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,183.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614.4,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,183.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654.4,716.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
