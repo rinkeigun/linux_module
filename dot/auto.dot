@@ -1,0 +1,16 @@
+// Windows ハンドル、イベント、アクティブ
+
+digraph graph_g1 {
+	//windowsの時にfontを指定
+	graph[compound=true];
+	node[fontname="meiryo"];
+	edge[fontname="meiryo", color=red];
+	subgraph cluster_g1{
+		gb[shape = record, label=" オブジェクト解析|{ アクティブウィンドウの取得| 指定したウィンドウズ内の\nオブジェクトの取得| マウスオーバーオブジェクトの取得| 親子関係の取得}"];
+	}
+	g2[label="手順の作成"]
+	g3[label="手順の実行"]
+
+	gb->g2->g3
+
+}
