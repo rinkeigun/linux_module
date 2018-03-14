@@ -14,4 +14,5 @@ app.Notepad.MenuSelect(u'ファイル(&F)->名前を付けて保存(&A)...')
 #app.Notepad.MenuSelect(u'名前を付けて保存(&A)...')
 
 app[u'名前を付けて保存'].edit.SetText('tamesi.txt')
+app[u'無題.*メモ帳'].CaptureAsImage().save('auto_capture.png')
 app[u'名前を付けて保存'][u'保存(&S)'].Click()
