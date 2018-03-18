@@ -10,6 +10,10 @@ from pywinauto import application
 import time
 import numpy
 import threading
+import pyautogui
+from subprocess import Popen
+from pywinauto import Desktop
+
 
 class TestThread(threading.Thread):
 
@@ -36,6 +40,7 @@ class TestThread(threading.Thread):
         videoWriter = cv2.VideoWriter(filename, fourcc, fps, size)
 
         while (1):
+            #print(type(self.app))
             img = self.app.CaptureAsImage()
             frame = numpy.asarray(img)
 
@@ -89,29 +94,22 @@ class TestThread(threading.Thread):
 if __name__ == '__main__':
 
     time.sleep(1)
-    app_path = "notepad.exe"
-    app = application.Application()
-    app.start(app_path)
-    print(app.Notepad.wait('visible'))
-    
-    spec_app = app.top_window()
-#    app[u'無題.*メモ帳'].CaptureAsImage().save('auto_capture.png')
-    tmpapp = app[u'無題.*メモ帳']
-    th_cl = TestThread(spec_app)
+    Popen('calc.exe', shell=True)
+    dlg = Desktop(backend="uia")[u"電卓"]
+    dlg.wait('visible')
+    print(type(dlg))
+
+    # なぜか録画ができない
+    th_cl = TestThread(dlg)
     th_cl.start()
-
-    #cap_app = AppCap(tmpapp)
-    #.CaptureAsImage().save('auto_capture.png')
-
-    time.sleep(1)
-    app.Notepad.edit.TypeKeys('Hello world')
-    time.sleep(1)
-
-    app.Notepad.MenuSelect(u'ファイル(&F)->名前を付けて保存(&A)...')
-    time.sleep(1)
-
-    app[u'名前を付けて保存'].edit.SetText('tamesi.txt')
-    time.sleep(1)
-    app[u'名前を付けて保存'][u'保存(&S)'].Click()
-
-
+    
+    for i in [0,8,0,9,6,6,7,2,2,2,2]:
+        numFile = u".\\numdata\\" + str(i) + u".png"
+        print( numFile )
+        p = pyautogui.locateOnScreen(numFile)
+        print(p)
+        x,y = pyautogui.center(p)
+#        p = pyautogui.locateCenterOnScreen(numFile)
+        print(x,y)
+        pyautogui.click(x,y)
+        time.sleep(2)

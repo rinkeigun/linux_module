@@ -10,6 +10,7 @@ from pywinauto import application
 import time
 import numpy
 import threading
+import pyautogui
 
 class TestThread(threading.Thread):
 
@@ -104,14 +105,19 @@ if __name__ == '__main__':
     #.CaptureAsImage().save('auto_capture.png')
 
     time.sleep(1)
-    app.Notepad.edit.TypeKeys('Hello world')
+    app.Notepad.edit.TypeKeys(u'hotkeyによる操作開始')
     time.sleep(1)
 
-    app.Notepad.MenuSelect(u'ファイル(&F)->名前を付けて保存(&A)...')
+    #app.Notepad.MenuSelect(u'ファイル(&F)->名前を付けて保存(&A)...')
+    pyautogui.hotkey('alt', 'F')
+    time.sleep(1)
+    pyautogui.hotkey('ctrl', 'S')
     time.sleep(1)
 
     app[u'名前を付けて保存'].edit.SetText('tamesi.txt')
     time.sleep(1)
     app[u'名前を付けて保存'][u'保存(&S)'].Click()
+    time.sleep(1)
+    pyautogui.hotkey('alt', 'Y')
 
 

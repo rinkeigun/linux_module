@@ -1,3 +1,6 @@
+# windowsのハンドルの取得
+# 下記の二つモジュールと一緒に動作する必要がある
+
 import windowhandleenumerator
 import windowtext
 

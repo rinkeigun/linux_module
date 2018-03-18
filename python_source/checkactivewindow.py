@@ -3,11 +3,14 @@
 from time import sleep
 import ctypes
 import win32gui
+import win32process
 
 def funWin():
     handle = win32gui.GetForegroundWindow()
     title = win32gui.GetWindowText(handle)
-    print(str(handle) + ":" + title)
+    thread_process = win32process.GetWindowThreadProcessId(handle)
+    # 1:process, 0:thread
+    print(str(handle) + ":" + title+ ":" + str(thread_process[1])+ ":" + str(thread_process[0]))
 
 # 下記関数がうまく実行できない
 def onForeground():
@@ -28,6 +31,6 @@ def onForeground():
         return False
 if __name__ == '__main__':
     while(1):
-    	print(onForeground())
-    	#funWin()
+    	#print(onForeground())
+    	funWin()
     	sleep(1)

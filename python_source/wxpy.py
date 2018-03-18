@@ -6,6 +6,7 @@
 
 # python wxpy.py
 # pyinstaller wxpy.py -> wxpy.exe
+# pyinstaller --onefile --noconsole wxpy.py
 
 
 

@@ -18,7 +18,8 @@ class TestThread(threading.Thread):
         print (" === start sub thread (sub class) === ")
         #for i in range(self.n):
         while(1):
-            print( ++i )
+            i=i+1
+            print( i )
             if stoper == True:
                 break
         #    time.sleep(self.t)
