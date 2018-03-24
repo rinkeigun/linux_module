@@ -28,7 +28,7 @@ class myWindow(wx.Frame):
     def __init__(self,parent,id):
         self.parent = parent
         x = 640
-        y = 400
+        y = 320
 
         x1 = x/2
         y1 = 320
@@ -56,7 +56,7 @@ class myWindow(wx.Frame):
         root_layout.Add(self.slider_panel, 0, wx.GROW | wx.ALL, border=10)
         self.root_panel.SetSizer(root_layout)
         root_layout.Fit(self.root_panel)
-        #self.Close( True)
+
         
     def setSliderValue(self, i, num):
         self.slider_panel.setValue(i, num)
@@ -144,8 +144,8 @@ class CompoPanel(wx.Panel):
         self.left_panel = LeftPanel(self, dict)
         self.right_panel = RightPanel(self, dict, start_f, end_f)
         layout = wx.BoxSizer(wx.HORIZONTAL)
-        layout.Add(self.left_panel, 1)
-        layout.Add(self.right_panel, 1)
+        layout.Add(self.left_panel, 1, flag=wx.EXPAND | wx.ALL, border=5)
+        layout.Add(self.right_panel, 1, flag=wx.EXPAND | wx.ALL, border=5)
         self.SetSizer(layout)
         
     def get(self):
@@ -165,7 +165,10 @@ class SliderPanel(wx.Panel):
       
         super().__init__(parent, wx.ID_ANY)
         
+        layout = wx.BoxSizer(wx.HORIZONTAL)
         self.slider = wx.Slider(self, style=wx.SL_LABELS)
+        layout.Add( self.slider, proportion=1)
+        self.SetSizer(layout)
         
     def setValue(self, i, num):
         self.slider.SetValue( i / num *100 )
@@ -185,7 +188,7 @@ class LeftPanel(wx.Panel):
         self.file_panel = FilePanel(self, dict)
         self.out_panel = OutPanel(self, dict)
         layout = wx.BoxSizer(wx.VERTICAL)
-        layout.Add(self.in_panel, 1)
+        layout.Add(self.in_panel, 1, flag=wx.EXPAND | wx.TOP, border=10)
         layout.Add(self.file_panel, 1)
         layout.Add(self.out_panel, 1)
         self.SetSizer(layout)
@@ -204,8 +207,8 @@ class RightPanel(wx.Panel):
         self.image_panel = ImagePanel(self, dict)
         command_panel = CommandPanel(self, dict, start_f, end_f)
         layout = wx.BoxSizer(wx.VERTICAL)
-        layout.Add(self.image_panel, 1)
-        layout.Add(command_panel, 1)
+        layout.Add(self.image_panel, 1, flag=wx.EXPAND | wx.TOP, border=10) #60
+        layout.Add(command_panel, 1, flag= wx.TOP, border=5) #57
         self.SetSizer(layout)
     
     def get(self):
@@ -224,10 +227,14 @@ class InPanel(wx.Panel):
         super().__init__(parent, wx.ID_ANY)
         self.dict = dict
 
+        x_pos = 350
         # 入力用フォルダー
         in_folder_l  = wx.StaticText(self, wx.ID_ANY, dict['IN_FOLDER_L'])
-        self.in_folder_t  = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(250,25))
-        in_folder_b  = wx.Button(self, wx.ID_ANY, dict['IN_FOLDER_B'], pos=(250,20))
+        self.in_folder_t  = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(x_pos,25))
+        btnBmap = wx.ArtProvider.GetBitmap(wx.ART_FIND)
+        in_folder_b = wx.BitmapButton(self, wx.ID_ANY, btnBmap, pos=(x_pos,20), size=(26,26))
+        in_folder_b.SetToolTip(wx.ToolTip(dict['IN_FOLDER_B']))
+        #in_folder_b  = wx.Button(self, wx.ID_ANY, dict['IN_FOLDER_B'], pos=(x_pos,20))
         in_folder_b.Bind(wx.EVT_BUTTON, self.in_folder_f)
 
     def get(self):
@@ -254,7 +261,7 @@ class FilePanel(wx.Panel):
         
          # 入力用ファイル
         in_file_l    = wx.StaticText(self, wx.ID_ANY, dict['IN_FILE_L'])
-        self.in_file_t    = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(250, 25))
+        self.in_file_t    = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(350, 25))
 
     def get(self):
         return self.in_file_t.GetValue()
@@ -269,10 +276,15 @@ class OutPanel(wx.Panel):
       
         super().__init__(parent, wx.ID_ANY)
         self.dict = dict
+        
         # 出力用フォルダ
+        x_pos = 350
         out_folder_l = wx.StaticText(self, wx.ID_ANY, dict['OUT_FOLDER_L'])
-        self.out_folder_t = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(250,25) )
-        out_folder_b = wx.Button(self, wx.ID_ANY, dict['OUT_FOLDER_B'], pos=(250,20))
+        self.out_folder_t = wx.TextCtrl(self, wx.ID_ANY, pos=(0, 20), size=(x_pos,25) )
+        btnBmap = wx.ArtProvider.GetBitmap(wx.ART_FIND)
+        out_folder_b = wx.BitmapButton(self, wx.ID_ANY, btnBmap, pos=(x_pos,20), size=(26,26))
+        out_folder_b.SetToolTip(wx.ToolTip(dict['OUT_FOLDER_B']))
+        #out_folder_b = wx.Button(self, wx.ID_ANY, dict['OUT_FOLDER_B'], pos=(250,20))
         out_folder_b.Bind(wx.EVT_BUTTON, self.out_folder_f)
 
     def get(self):
@@ -303,6 +315,9 @@ class ImagePanel(wx.Panel):
         self.rbox = wx.RadioBox(self, label = dict['IMAGE_TYPE_L'],  choices = lblList,
             majorDimension = 2, style = wx.RA_SPECIFY_ROWS) 
         self.rbox.Bind(wx.EVT_RADIOBOX,self.onRadioBox) 
+        layout = wx.BoxSizer(wx.HORIZONTAL)
+        layout.Add(self.rbox, 1, flag=wx.EXPAND | wx.ALL, border=5)
+        self.SetSizer(layout)
 
     def get(self):
         return self.image_type_l.GetLabel()
@@ -331,7 +346,7 @@ class CommandPanel(wx.Panel):
         end_b = wx.Button(self, wx.ID_ANY, dict['END_B'])
         end_b.Bind(wx.EVT_BUTTON, end_f)
         
-        layout.Add( start_b )
+        layout.Add( start_b, flag= wx.LEFT, border=5 )
         layout.Add( end_b )
         self.SetSizer(layout)
         
@@ -342,4 +357,5 @@ if __name__ == '__main__':
     frame = myWindow(parent = None, id=wx.ID_ANY)
 
     frame.Show()
+    #wx.Window.Fit(frame)
     application.MainLoop()
