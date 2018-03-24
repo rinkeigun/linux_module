@@ -53,7 +53,7 @@ while (cameraCapture.isOpened()):
 			break
 
 		end=time()
-		if end-start >= 10:
+		if end-start >= 100:
 			break
 	else:
 		break
