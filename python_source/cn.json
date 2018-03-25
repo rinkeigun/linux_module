@@ -1,0 +1,20 @@
+{
+  "VERSION_INFO":"v0.1",
+  "END_B": "结束",
+  "ICON": "图标",
+  "IMAGE_CONVERTER": "图像变换器",
+  "IMAGE_TYPE_L": "图像种类",
+  "IMAGE_TYPE_R": "单选按钮",
+  "IN_FILE_L": "文件名",
+  "IN_FILE_T": "文件名栏",
+  "IN_FOLDER_B": "输入文件夹按钮",
+  "IN_FOLDER_L": "输入文件夹",
+  "IN_FOLDER_T": "输入文件夹栏",
+  "OUT_FOLDER_B": "输出文件夹按钮",
+  "OUT_FOLDER_L": "输出文件夹",
+  "OUT_FOLDER_T": "输出文件夹栏",
+  "SELECT_FILE": "选择文件",
+  "SELECT_FOLDER": "选择文件夹",
+  "START_B": "开始",
+  "STATUS": "进度栏"
+}
