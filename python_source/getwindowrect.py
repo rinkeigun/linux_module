@@ -6,7 +6,8 @@ import time
 import pywintypes
 
 while(1):
-    hwnd = win32gui.WindowFromPoint(win32gui.GetCursorPos())
+    pt = win32gui.GetCursorPos()
+    hwnd = win32gui.WindowFromPoint(pt)
     w0, h0, w1, h1 = win32gui.GetWindowRect(hwnd)
     focus = win32gui.GetFocus()
     #win32gui.DrawFocusRect( hwnd, (w0, h0, w1, h1))
@@ -25,6 +26,7 @@ while(1):
     cursorinfo = win32gui.GetCursorInfo()
     foreground = win32gui.GetForegroundWindow()
     hdc = win32gui.GetDC(hwnd)
+    #win32gui.PolylineTo(hdc, ((w0, h0), (w1, h0), (w1, h1), (w0, h1), (w0,h0)))
     obj = win32gui.GetCurrentObject(hdc, win32con.OBJ_BITMAP)
     stockobj = win32gui.GetStockObject(obj)
     sysmenu  = win32gui.GetSystemMenu(hwnd, 1)
@@ -83,11 +85,12 @@ while(1):
     print("15.menu         : ", win32gui.GetMenuItemRect(hwnd, menu, 2))
 
     buf, extras = win32gui_struct.EmptyMENUITEMINFO()
-    print(type(buf))
-    print("buf 0 : ", buf[0])
+    #print(type(buf))
+    #print("buf 0 : ", buf[0])
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
     try:
-        print(type( menu ))
+        #print(type( menu ))
         for i in range( win32gui.GetMenuItemCount(menu) ):
             win32gui.GetMenuItemInfo( menu, 
                 i, 
@@ -96,15 +99,17 @@ while(1):
             #win32gui.GetMenuInfo( menu, 
             #    buf )
             #print( "menu :" , buf[0] )
-            print(win32gui_struct.UnpackMENUITEMINFO(buf))
-            print(win32gui.GetMenuItemRect(hwnd, menu, i))
- 
+            _, rect = win32gui.GetMenuItemRect(hwnd, menu, i)
+            #print( rect )
+            if win32gui.PtInRect( rect, pt ):
+                print(win32gui_struct.UnpackMENUITEMINFO(buf))
+
     except pywintypes.error :
         pass
     win32gui.DrawMenuBar(hwnd)
+    #time.sleep(1)
     
-    print("menu count : ", win32gui.GetMenuItemCount(menu))
-    #print("menu string: ", GetMenuItemString(0) )
+    #print("menu count : ", win32gui.GetMenuItemCount(menu))
     
     #print("layout:", win32gui.GetLayout())
     #print("Message:", win32gui.GetMessage(hwnd, 0, 10))

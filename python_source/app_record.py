@@ -36,6 +36,7 @@ class TestThread(threading.Thread):
         videoWriter = cv2.VideoWriter(filename, fourcc, fps, size)
 
         while (1):
+            print(type(self.app))
             img = self.app.CaptureAsImage()
             frame = numpy.asarray(img)
 
