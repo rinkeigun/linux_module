@@ -39,8 +39,8 @@ class TestThread(threading.Thread):
         size = (1280,960)
         videoWriter = cv2.VideoWriter(filename, fourcc, fps, size)
 
-        while (1):
-            #print(type(self.app))
+        while (0):
+            print(type(self.app))
             img = self.app.CaptureAsImage()
             frame = numpy.asarray(img)
 
@@ -97,19 +97,24 @@ if __name__ == '__main__':
     Popen('calc.exe', shell=True)
     dlg = Desktop(backend="uia")[u"電卓"]
     dlg.wait('visible')
+    #spec_app = dlg.top_window()
     print(type(dlg))
 
     # なぜか録画ができない
+    time.sleep(3)
     th_cl = TestThread(dlg)
+    #th_cl = TestThread(spec_app)
     th_cl.start()
     
     for i in [0,8,0,9,6,6,7,2,2,2,2]:
         numFile = u".\\numdata\\" + str(i) + u".png"
         print( numFile )
-        p = pyautogui.locateOnScreen(numFile)
-        print(p)
-        x,y = pyautogui.center(p)
-#        p = pyautogui.locateCenterOnScreen(numFile)
+#        p = pyautogui.locateOnScreen(numFile)
+        #print(p)
+        #x,y = pyautogui.center(p)
+        #p = pyautogui.locateCenterOnScreen(numFile)
+        x,y = pyautogui.locateCenterOnScreen(numFile)
         print(x,y)
         pyautogui.click(x,y)
+        pyautogui.moveTo(0.0)
         time.sleep(2)

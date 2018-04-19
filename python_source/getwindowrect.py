@@ -114,4 +114,4 @@ while(1):
     #print("layout:", win32gui.GetLayout())
     #print("Message:", win32gui.GetMessage(hwnd, 0, 10))
     
-    time.sleep(1)
+    time.sleep(2)

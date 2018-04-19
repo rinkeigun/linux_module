@@ -1,4 +1,5 @@
 from pynput import mouse
+import time
 
 def on_move(x, y):
     print('Pointer moved to {0}'.format(
@@ -19,7 +20,7 @@ def on_scroll(x, y, dx, dy):
 
 # Collect events until released
 with mouse.Listener(
-        #on_move=on_move,
+        on_move=on_move,
         on_click=on_click,
         on_scroll=on_scroll) as listener:
     listener.join()
