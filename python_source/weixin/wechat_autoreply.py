@@ -4,19 +4,17 @@ import sqlite3
 # 初始化机器人，扫码登陆
 bot = Bot(cache_path=True, console_qr=True)
 
-#db = ':memory:'
-#db = 'test.db3'
-#tablename = 'wechat_control_t'
-#connector = sqlite3.connect(db)
-#createtable = "create table IF NOT EXISTS %s (flg INTEGER)" % tablename
-#connector.execute( createtable )
+# db = ':memory:'
+# db = 'test.db3'
+# tablename = 'wechat_control_t'
+# connector = sqlite3.connect(db)
+# createtable = "create table IF NOT EXISTS %s (flg INTEGER)" % tablename
+# connector.execute( createtable )
 
-#sql = "insert into %s values( '%s')" % (tablename, 1)
-#print ( sql )
-#connector.execute( sql )
-#connector.close()
-
-
+# sql = "insert into %s values( '%s')" % (tablename, 1)
+# print ( sql )
+# connector.execute( sql )
+# connector.close()
 
 my_friend_list = bot.friends()
 
@@ -43,18 +41,6 @@ def reply_my_friend(msg):
 		if connector.execute( sql ).fetchone()[0] == 1:
 			return u'睡觉时间，醒后回复'
 
-#@bot.register([friend for friend in my_friend_list], except_self=False)
-#@bot.register([friend for friend in my_friend_list], except_self=False)
-#def reply_control(msg):
-#	print( msg.text == 'c1 on')
-#
-#	if msg.sender == msg.receiver:
-#		if msg.text == 'c1 on':
-#			bot.registered.enable(reply_my_friend)
-#		elif msg.text == 'c1 off':
-#			bot.registered.disable(reply_my_friend)
-#	else:
-#		pass
 
 print (u'启动了')
 bot.join()
