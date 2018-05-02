@@ -1,0 +1,19 @@
+{
+  "END_B": "終了",
+  "ICON": "アイコン",
+  "IMAGE_CONVERTER": "アプリ名",
+  "IMAGE_TYPE_L": "画像種別",
+  "IMAGE_TYPE_R": "ラジオ一覧",
+  "IN_FILE_L": "ファイル名",
+  "IN_FILE_T": "ファイル名欄",
+  "IN_FOLDER_B": "入力フォルダーボタン",
+  "IN_FOLDER_L": "入力フォルダー",
+  "IN_FOLDER_T": "入力フォルダー欄",
+  "OUT_FOLDER_B": "出力フォルダーボタン",
+  "OUT_FOLDER_L": "出力フォルダー",
+  "OUT_FOLDER_T": "出力フォルダー欄",
+  "SELECT_FILE": "ファイルを選択してください",
+  "SELECT_FOLDER": "フォルダーを選択してください",
+  "START_B": "開始",
+  "STATUS": "進捗スライダー"
+}

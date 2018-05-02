@@ -1,0 +1,20 @@
+{
+  "VERSION_INFO":"v0.1",
+  "END_B": "Finish",
+  "ICON": "Icon",
+  "IMAGE_CONVERTER": "Image Converter",
+  "IMAGE_TYPE_L": "Image Type",
+  "IMAGE_TYPE_R": "Radio Button List",
+  "IN_FILE_L": "File Name",
+  "IN_FILE_T": "File",
+  "IN_FOLDER_B": "Input Folder Button",
+  "IN_FOLDER_L": "Input Folder",
+  "IN_FOLDER_T": "Input Folder Text",
+  "OUT_FOLDER_B": "Output Folder Button",
+  "OUT_FOLDER_L": "Output Folder",
+  "OUT_FOLDER_T": "Output Folder Text",
+  "SELECT_FILE": "Please select file",
+  "SELECT_FOLDER": "Please select folder",
+  "START_B": "Start",
+  "STATUS": "Slider"
+}
