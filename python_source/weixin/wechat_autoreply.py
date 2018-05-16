@@ -4,6 +4,8 @@ import sqlite3
 # 初始化机器人，扫码登陆
 bot = Bot(cache_path=True, console_qr=True)
 
+print(type(bot))
+
 # db = ':memory:'
 # db = 'test.db3'
 # tablename = 'wechat_control_t'

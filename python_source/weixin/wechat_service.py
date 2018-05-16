@@ -9,28 +9,33 @@ import time
 
 class weixin(threading.Thread):
 
-    def __init__(self, username):
+    def __init__(self, mypuid):
         super(weixin, self).__init__()
         # 初始化机器人，扫码登陆
         #bot = Bot(cache_path=True, console_qr=True)
         #username = username.replace('@', '')
-        self.path = username+'.png'
+        self.mypuid = mypuid
+        #self.path = username+'.png'
 
     def run(self):
-        print( "bot : " + self.path )
-        bot = Bot(cache_path=False, qr_path=self.path)
+        pngpath = self.mypuid+'.png'
+        pklpath = self.mypuid+'.pkl'
+        print( "bot : " + pklpath )
+        bot = Bot(cache_path=False, console_qr=True, qr_path=pngpath)
+        bot.enable_puid(pklpath)
         print("bot ")
 
         @bot.register(except_self=False, enabled=True)
         def reply_my_friend(msg):
+            print(msg)
             try:
                 print("alias     : "+msg.sender.alias)
                 print("nick_name : "+msg.sender.nick_name)
                 print("user_name : "+msg.sender.user_name)
                 print("name      : "+msg.sender.name)
-                #print("wxid      : "+msg.sender.wxid)
-                #print("puid      : "+msg.sender.puid)
+                print("puid      : "+msg.sender.puid)
                 #print("uin       : "+msg.sender.uin)
+                #print("wxid      : "+msg.sender.wxid)
                 db = 'test.db3'
                 tablename = 'wechat_control_t'
                 connector = sqlite3.connect(db)
@@ -59,9 +64,9 @@ class weixin(threading.Thread):
                 else:
                     str_lower = msg.text.lower()
                     if str_lower == 'r':
-                        w = weixin(msg.sender.user_name)
+                        w = weixin(msg.sender.puid)
                         w.start()
-                        imgpath = msg.sender.user_name+'.png'
+                        imgpath = msg.sender.puid+'.png'
                         print(imgpath)
                         for cnt in range(10):
                             time.sleep( 3 )
