@@ -18,7 +18,8 @@ for link in soup.find_all('a', href=re.compile("free-icons/")): # imgタグを�
     max_page = paging.find_all("li")[len(paging.find_all("li"))-1].a
     url = max_page.get('href').split('&')
     page_str = url[1].split('=')
-    for page_no in range(1,int(max_page.string)):
+    max_i = int(max_page.string)
+    for page_no in range(1,max_i+1):
         page_str[1] = str(page_no)
         print(page_no)
         print(url)
