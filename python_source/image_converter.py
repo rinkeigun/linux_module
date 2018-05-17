@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# pyinstall --icon="iconfile.icon" --onefile --noconsole image_converter.py
+# pyinstaller --icon="iconfile.icon" --onefile --noconsole image_converter.py
 
 # Panel Structure
 # rootPanel
