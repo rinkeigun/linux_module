@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pip install pdfminer.six
 
 import re
 import sys
@@ -38,4 +39,4 @@ def convert_pdf_to_txt(path, txtname, buf=True):
     outfp.close()
 
 
-convert_pdf_to_txt("TEST.pdf", "test.txt", False)
+convert_pdf_to_txt("C:\\Users\\linhu\\downloads\\downloaded_2.pdf", "test.txt", False)
