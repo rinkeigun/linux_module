@@ -1,0 +1,328 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="ConfigJson"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:nj="clr-namespace:Newtonsoft.Json;assembly=Newtonsoft.Json"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="json_data" Type="InOutArgument(njl:JObject)" />
+    <x:Property Name="client_dt" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="master_dt" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>ConfigJson_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.JSON.Activities</x:String>
+      <x:String>UiPath.REST.Activities</x:String>
+      <x:String>UiPath.SOAP.Activities</x:String>
+      <x:String>UiPath.XML.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_66">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="config_path" />
+      <Variable x:TypeArguments="x:String" Name="json_file" />
+      <Variable x:TypeArguments="x:Boolean" Name="file_exist_flg" />
+      <Variable x:TypeArguments="x:String" Name="reader_error_message" />
+    </Sequence.Variables>
+    <Sequence DisplayName="Sequence 1.1. JSON" sap2010:WorkflowViewState.IdRef="Sequence_77">
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[config_path]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String" Value="" />
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:GetEnvironmentVariable DisplayName="Get environment variable" sap2010:WorkflowViewState.IdRef="GetEnvironmentVariable_1" Variable="CONFIG_PATH" VariableValue="[config_path]" />
+      <If Condition="[config_path.Length &lt;= 0]" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[config_path]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">D:\2018-07\極洋電機\K電機\090.詳細設計\ROOT\config.json</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+      <ui:PathExists DisplayName="Path exists" Exists="[file_exist_flg]" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[config_path]" PathType="File" />
+      <If Condition="[file_exist_flg]" sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_75">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="no_file_message" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[no_file_message]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["ファイル："+config_path+"は見つかりません。"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Throw Exception="[new Exception(no_file_message)]" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:ReadTextFile Content="[json_file]" DisplayName="Read text file" Encoding="shift-jis" FileName="[config_path]" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+      <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+        <TryCatch.Try>
+          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[json_data]" JsonString="[json_file]" />
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="nj:JsonReaderException" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+            <ActivityAction x:TypeArguments="nj:JsonReaderException">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="nj:JsonReaderException" Name="exception" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_76">
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[reader_error_message]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">["読込エラー。"+exception.Message]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Throw Exception="[new Exception(reader_error_message)]" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+    </Sequence>
+    <Sequence DisplayName="Sequence 1.2. 品番" sap2010:WorkflowViewState.IdRef="Sequence_78">
+      <ui:BuildDataTable DataTable="[client_dt]" DisplayName="Build data table" sap2010:WorkflowViewState.IdRef="BuildDataTable_6" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;商品名_xFF08_カナ_xFF09_&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;商品名略称&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;KEY&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;日_xFF1A_画面名称&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;日_xFF1A_画面番号&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;英_xFF1A_画面名称&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;英_xFF1A_画面番号&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;WEIGHT&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;作成日&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;改訂日&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Rev.&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;英_xFF1A_ファイル格納場所&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;日_xFF1A_ファイル格納場所&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column1&gt;text&lt;/Column1&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel application scope " sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="[json_data.GetValue(&quot;CLIENT_PATH&quot;).ToString]">
+        <ui:ExcelApplicationScope.Body>
+          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_79">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="start_key_cnt" />
+                <Variable x:TypeArguments="sd:DataTable" Name="work_dt" />
+              </Sequence.Variables>
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[client_dt]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="B3" SheetName="極洋顧客マスター" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ExcelApplicationScope.Body>
+      </ui:ExcelApplicationScope>
+    </Sequence>
+    <Sequence DisplayName="Sequence　1.3. シンボル" sap2010:WorkflowViewState.IdRef="Sequence_81">
+      <ui:BuildDataTable DataTable="[master_dt]" DisplayName="Build data table シンボルテーブルの初期化" sap2010:WorkflowViewState.IdRef="BuildDataTable_7" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;KEY&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Symbolファイル名&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Symbol文字ラベル&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column1 /&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
+      <ui:PathExists DisplayName="Path exists" Exists="[file_exist_flg]" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[json_data.GetValue(&quot;MASTER_PATH&quot;).ToString]" PathType="File" />
+      <If Condition="[file_exist_flg]" sap2010:WorkflowViewState.IdRef="If_3">
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_82">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="no_file_message" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[no_file_message]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["ファイル："+json_data.GetValue("MASTER_PATH").ToString+"は見つかりません。"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Throw Exception="[new Exception(no_file_message)]" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel application scope " sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Visible="False" WorkbookPath="[json_data.GetValue(&quot;MASTER_PATH&quot;).ToString]">
+        <ui:ExcelApplicationScope.Body>
+          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_80">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Int32" Name="start_key_cnt" />
+                <Variable x:TypeArguments="sd:DataTable" Name="work_dt" />
+              </Sequence.Variables>
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[master_dt]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="B3" SheetName="極洋シンボルマスター" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ExcelApplicationScope.Body>
+      </ui:ExcelApplicationScope>
+    </Sequence>
+    <sads:DebugSymbol.Symbol>dzBEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhca3lmaXJzdFxDb25maWdKc29uLnhhbWxFXQPkAQ4CAQFkBakBEAIBKKoBBbwBEAIBHL0BBeIBEAIBAmUHbhACAVdvB2+7AQIBU3AHewwCAUx8B3ygAQIBR30HjgEMAgE8jwEHjwGsAQIBNpABB6gBEgIBKasBB6sBkhgCASWsAQe7ASICAR2+AQe+Ad8OAgEZvwEHvwHJAQIBFcABB9EBDAIBC9IBB+EBIgIBA2sNazwCAVpnM2dAAgFYb40Bb5oBAgFWb6kBb7gBAgFUcBVwMwIBTXILeRQCAU98N3xJAgFKfH58jQECAUh9FX0nAgE9fwuMARYCAT+PAVSPAV8CATuPAWmPAXgCATmPASCPAS0CATeSAQuSAcYBAgExmgEPpAEaAgEqqwEkqwExAgEmrAHaAawBkgICASSyAQ24ARgCAR6+ASS+ATECARq/ATe/AUkCARe/AX6/AbYBAgEWwAEVwAEnAgEMwgELzwEWAgEO0gHaAdIBkgICAQrYAQ3eARgCAQR3NndjAgFSdDd0RAIBUIMBDYoBFgIBQosBDYsBbQIBQJIBtgGSAcMBAgE0kgGdAZIBqgECATKbARGiARoCAS2jARGjAXYCASu3AQ+3AboBAgEfxgENzQEWAgERzgENzgFtAgEP3QEP3QG8AQIBBYgBOIgBWQIBRYUBOYUBSgIBQ4sBHosBQAIBQaABPKABWAIBMJ0BPZ0BUwIBLqMBIqMBSQIBLLcBPrcBSwIBIrcBngG3AaIBAgEhtwGtAbcBtwECASDLATjLAXgCARTIATnIAUoCARLOAR7OAUACARDdAT7dAUsCAQjdAZ4B3QGiAQIBB90BrQHdAbkBAgEG</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="GetEnvironmentVariable_1" sap:VirtualizedContainerService.HintSize="464,59.2" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,211.2" />
+      <sap2010:ViewStateData Id="PathExists_1" sap:VirtualizedContainerService.HintSize="464,89.6" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Throw_1" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_75" sap:VirtualizedContainerService.HintSize="265.6,248">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,398.4" />
+      <sap2010:ViewStateData Id="ReadTextFile_2" sap:VirtualizedContainerService.HintSize="464,59.2" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_1" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Throw_2" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_76" sap:VirtualizedContainerService.HintSize="265.6,246.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="403.2,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="464,292.8" />
+      <sap2010:ViewStateData Id="Sequence_77" sap:VirtualizedContainerService.HintSize="486.4,1536">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildDataTable_6" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_79" sap:VirtualizedContainerService.HintSize="336,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="414.4,292.8" />
+      <sap2010:ViewStateData Id="Sequence_78" sap:VirtualizedContainerService.HintSize="486.4,516.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildDataTable_7" sap:VirtualizedContainerService.HintSize="464,59.2" />
+      <sap2010:ViewStateData Id="PathExists_2" sap:VirtualizedContainerService.HintSize="464,89.6" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Throw_3" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="Sequence_82" sap:VirtualizedContainerService.HintSize="265.6,248">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="464,398.4" />
+      <sap2010:ViewStateData Id="ExcelReadRange_2" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_80" sap:VirtualizedContainerService.HintSize="336,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_2" sap:VirtualizedContainerService.HintSize="464,292.8" />
+      <sap2010:ViewStateData Id="Sequence_81" sap:VirtualizedContainerService.HintSize="486.4,1084.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_66" sap:VirtualizedContainerService.HintSize="508.8,3342.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ConfigJson_1" sap:VirtualizedContainerService.HintSize="548.8,3462.4" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,678 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="TOP_WORD" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TOP_WORD_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.uipath.com/workflow/activities/word"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.XPS.Activities</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:String" Name="word_num" />
+        <Variable x:TypeArguments="x:Int32" Name="word_tonum" />
+        <Variable x:TypeArguments="x:String" Name="tmp_str" />
+      </Flowchart.Variables>
+      <Flowchart.StartNode>
+        <x:Reference>__ReferenceID2</x:Reference>
+      </Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[word_tonum]" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="1" Buttons="Ok" DisplayName="Message box　説明" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="説明" TopMost="True" />
+          <Sequence x:Key="2" DisplayName="Sequence 非表示の読込" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp_str" />
+            </Sequence.Variables>
+            <p:DocumentReadText DisplayName="Read Text" FilePath="input\WORD\read_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReadText_1" Text="[tmp_str]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[tmp_str]" TopMost="True" />
+          </Sequence>
+          <Sequence x:Key="3" DisplayName="Sequence　追加" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <p:DocumentAppendText DisplayName="Append Text" FilePath="output\WORD\append_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentAppendText_1" Text="文字を追加、フォルダのパスが存在しない場合エラーとなる" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="append_sample.docxを確認し、ファイルの生成、文字の追加ができたか" TopMost="True" />
+            <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="input\WORD\replace_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_2" Replace="置換前" Search="置換後" />
+          </Sequence>
+          <Sequence x:Key="4" DisplayName="Sequence 置換" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <p:DocumentReadText DisplayName="Read Text" FilePath="input\WORD\replace_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReadText_4" Text="[tmp_str]" />
+            <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="input\WORD\replace_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_3" Replace="置換後" Search="置換前" />
+            <p:DocumentReadText DisplayName="Read Text" FilePath="input\WORD\replace_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReadText_5" Text="[tmp2_str]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_11" Text="[tmp_str+&quot;  &quot;+tmp2_str]" TopMost="True" />
+            <p:DocumentReplaceText Found="{x:Null}" DisplayName="Replace Text" FilePath="input\WORD\replace_sample.docx" sap2010:WorkflowViewState.IdRef="DocumentReplaceText_4" Replace="置換前" Search="置換後" />
+          </Sequence>
+          <Sequence x:Key="5" DisplayName="Sequence アプリ起動" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="input\WORD\read_sample.docx" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_12" Text="WORDアプリが起動されることを確認" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="6" DisplayName="Sequence アプリ起動、内容の読込" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="input\WORD\read_sample.docx" sap2010:WorkflowViewState.IdRef="WordApplicationScope_2">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <p:WordReadText DisplayName="Read Text" sap2010:WorkflowViewState.IdRef="WordReadText_2" Text="[tmp_str]" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_13" Text="[&quot;WORDアプリが起動され、内容が読み込まれる。&quot; + tmp_str]" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="7" DisplayName="Sequence アプリ起動、内容の追加" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[tmp2_str]" DisplayName="Copy file" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="input\WORD\append_sample.docx" />
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_3">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="元のファイルにはデータを追加されたくないので、まずはファイルのコピー。そして内容の追加" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_14" Text="WORDアプリが起動され、内容が追加されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="8" DisplayName="Sequence アプリ起動、既存ファイルの追加" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_4">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_2" Text="既存ファイルにこの内容を追加" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_15" Text="WORDアプリが起動され、既存ファイルに内容が追加されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="9" DisplayName="Sequence アプリ起動、置換" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_replace.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[tmp2_str]" DisplayName="Copy file" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="input\WORD\replace_sample.docx" />
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_5">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <p:WordReplaceText Found="{x:Null}" DisplayName="Replace Text" sap2010:WorkflowViewState.IdRef="WordReplaceText_1" Replace="置換後" Search="置換前" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_16" Text="WORDアプリが起動され、内容が置換されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="10" DisplayName="Sequence アプリ起動、改行" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_6">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_4">
+                      <p:WordAppendText.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordAppendText.Text>
+                    </p:WordAppendText>
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_8">
+                      <p:WordAppendText.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordAppendText.Text>
+                    </p:WordAppendText>
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_9">
+                      <p:WordAppendText.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </p:WordAppendText.Text>
+                    </p:WordAppendText>
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_10" Text="NewLine Optionがチェックされることにより、改行される" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_17" Text="WORDアプリが起動され、改行が追加されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="11" DisplayName="Sequence アプリ起動、画像" sap2010:WorkflowViewState.IdRef="Sequence_18">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">input\WORD\ailurophile_318-109100.jpg</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_7">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_5" Text="この後ろに画像が追加される" />
+                    <p:WordAddImage DisplayName="Add Image" sap2010:WorkflowViewState.IdRef="WordAddImage_1" ImagePath="[tmp_str]" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_18" Text="WORDアプリが起動され、内容が追加されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="12" DisplayName="Sequence アプリ起動、ブックマーク" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_8">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_6" Text="後ろにブックマークが追加される。ブックマークが登録していないとエラーとなる" />
+                    <p:WordSetBookmarkContent BookmarkName="aa" BookmarkText="aaはブックマット" DisplayName="Set Bookmark Content" sap2010:WorkflowViewState.IdRef="WordSetBookmarkContent_1" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_19" Text="WORDアプリが起動され、ブックマークが追加されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+          <Sequence x:Key="13" DisplayName="Sequence アプリ起動、DF変換" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="tmp2_str" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[tmp2_str]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">output\WORD\copy_append.docx</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="[tmp2_str]" sap2010:WorkflowViewState.IdRef="WordApplicationScope_9">
+              <p:WordApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WordDocument">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_7" Text="PDFファイルが作成される" />
+                    <p:WordExportToPdf DisplayName="Export to PDF" FilePath="output\WORD\create_PDF.pdf" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message box" sap2010:WorkflowViewState.IdRef="MessageBox_20" Text="WORDアプリが起動され、PDFが生成されたか" TopMost="True" />
+                  </Sequence>
+                </ActivityAction>
+              </p:WordApplicationScope.Body>
+            </p:WordApplicationScope>
+          </Sequence>
+        </Switch>
+      </FlowStep>
+      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[word_tonum]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(word_num.Split("."c)(0))]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <FlowStep.Next>
+          <x:Reference>__ReferenceID0</x:Reference>
+        </FlowStep.Next>
+      </FlowStep>
+      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+        <ui:InputDialog DisplayName="Input dialog WORD" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="処理種類を選択してください" Options="[{&quot;1.説明&quot;,&quot;2.非表示の読込&quot;,&quot;3.文字列追加&quot;,&quot;4.置換&quot;,&quot;5.Wordアプリ&quot;,&quot;6.表示の読込&quot;,&quot;7.文字列追加&quot;,&quot;8.既存ファイルの追加&quot;,&quot;9.置換&quot;,&quot;10.改行&quot;,&quot;11.画像&quot;,&quot;12.ブックマーク&quot;,&quot;13.PDF変換&quot;}]" Title="WORD処理">
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:String">[word_num]</OutArgument>
+          </ui:InputDialog.Result>
+        </ui:InputDialog>
+        <FlowStep.Next>
+          <x:Reference>__ReferenceID1</x:Reference>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart>
+    <sads:DebugSymbol.Symbol>dz1EOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcZnVuY3Rpb25zXHdob2xlX3VpcGF0aFxUT1BfV09SRC54YW1soQFVA5EDDgIBAVYFjwMRAgEChgMJigMaAwG5AfkCCYADEgMBtQFgCfYCEgIBA4YDggGGA5EBAwG+AYYDmgGGA6ADAwG9AYgDNYgDPwMBuwGGA6cDhgOvAwMBugH+AjP+Al0DAbgB+wI0+wJAAwG2AWBLYFkCAQRhC2HDAQMBswFiC2gWAwGrAWkLcBYDAaEBcQt6FgMBjAF7C4sBFgMBhgGMAQudARYCAXyeAQu4ARYCAWu5AQvSARYCAV7TAQvtARYCAUzuAQucAhYCATmdAgu/AhYCASXAAgvaAhYCARXbAgv1AhYCAQZhrQFhsQEDAbQBZg1mqAEDAa8BZw1nvwEDAawBbQ1twwEDAagBbg1u4AEDAaYBbw1vzwEDAaIBdQ11qwEDAZ0Bdg12zwEDAZkBdw13rAEDAZUBeA142AEDAZEBeQ15zwEDAY0Bfw2KASYDAYcBkAENnAEmAgF9ogENqQEWAgF4qgENqgHLAQIBdKsBDbcBJgIBbL0BDcQBFgIBZ8UBDdEBJgIBX9cBDd4BFgIBWt8BDd8BzAECAVbgAQ3sASYCAU3yAQ35ARYCAUj6AQ2bAiYCATqhAg2oAhYCATWpAg2wAhYCATGxAg2+AiYCASbEAg3LAhYCASHMAg3ZAiYCARbfAg3mAhYCARHnAg30AiYCAQdmmgFmpQEDAbEBZkJmXwMBsAFnogFnrQEDAa0BbaMBbcABAwGqAW1GbWYDAakBbqMBbs4BAwGnAW/HAW/MAQMBpQFvugFvvwEDAaQBb1lveQMBowF1nQF1qAEDAZ8BdUJ1YgMBngF2xwF2zAEDAZwBdroBdr8BAwGbAXZZdnkDAZoBd50Bd6kBAwGXAXdCd2IDAZYBeKMBeMYBAwGSAXnHAXnMAQMBkAF5ugF5vwEDAY8BeVl5eQMBjgF/U39wAwGLAYUBE4cBHgMBiAGQAVOQAXADAYUBlgETmQEeAgF+pwE4pwFUAgF7pAE5pAFDAgF5qgFBqgFNAgF2qgGpAaoByAECAXWrAVOrAV8CAXKxARO0AR4CAW3CATjCAVQCAWq/ATm/AUMCAWjFAVPFAV8CAWXLARPOAR4CAWDcATjcAVUCAV3ZATnZAUMCAVvfAUHfAU0CAVjfAakB3wHJAQIBV+ABU+ABXwIBVOYBE+kBHgIBTvcBOPcBVAIBS/QBOfQBQwIBSfoBU/oBXwIBRoACE5gCHgIBO6YCOKYCVAIBOKMCOaMCQwIBNq4COK4CXQIBNKsCOasCQgIBMrECU7ECXwIBL7cCE7sCHgIBJ8kCOMkCVAIBJMYCOcYCQwIBIswCU8wCXwIBH9ICE9YCHgIBF+QCOOQCVAIBFOECOeECQwIBEucCU+cCXwIBD+0CE/ECHgIBCIYBFYYB0QEDAYkBlwEVlwGBAQMBggGYARWYAe4BAgF/sgEVsgGpAQIBcLMBFbMB1QECAW7MARXMAYwBAgFjzQEVzQHcAQIBYecBFecBpQECAVHoARXoAdUBAgFPgQIVhwIoAgFEiAIVjgIoAgFCjwIVlQIoAgFAlgIVlgKgAQIBPpcCFZcC1QECATy4AhW4AosBAgEtuQIVuQKGAQIBKroCFboC1QECASjTAhXTAqMBAgEd1AIV1AK6AQIBGtUCFdUC2QECARjuAhXuAosBAgEN7wIV7wKgAQIBC/ACFfAC1gECAQmGAasBhgG/AQMBigGXAXOXAX4DAYMBmAGrAZgB3AEDAYABsgF5sgGmAQIBcbMBqwGzAcMBAgFvzAF5zAGJAQIBZM0BqwHNAcoBAgFi5wGdAecBogECAVPnAZAB5wGVAQIBUugBqwHoAcMBAgFQhAIbhAJKAgFFiwIbiwJKAgFDkgIbkgJKAgFBlgJ6lgKdAQIBP5cCqwGXAsMBAgE9uAJ5uAKIAQIBLrkCeLkCgwECASu6AqsBugLDAQIBKdMCedMCoAECAR7UAjzUAkACARzUAk7UAlkCARvVAqsB1QLHAQIBGe4Cee4CiAECAQ7vAk3vAmkCAQzwAqsB8ALEAQIBCg==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="MessageBox_8" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="DocumentReadText_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="MessageBox_9" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,312">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DocumentAppendText_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="MessageBox_10" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,440">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DocumentReadText_4" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_3" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="DocumentReadText_5" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="MessageBox_11" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="DocumentReplaceText_4" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,696">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MessageBox_12" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_1" sap:VirtualizedContainerService.HintSize="414.4,292.8" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordReadText_2" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="MessageBox_13" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="336,283.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_2" sap:VirtualizedContainerService.HintSize="414.4,392" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="CopyFile_1" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="WordAppendText_1" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="MessageBox_14" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_3" sap:VirtualizedContainerService.HintSize="243.2,52.8" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="WordAppendText_2" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="MessageBox_15" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="222.4,270.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_4" sap:VirtualizedContainerService.HintSize="243.2,52.8" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="CopyFile_3" sap:VirtualizedContainerService.HintSize="243.2,22.4" />
+      <sap2010:ViewStateData Id="WordReplaceText_1" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="MessageBox_16" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="222.4,270.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_5" sap:VirtualizedContainerService.HintSize="243.2,52.8" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="WordAppendText_4" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordAppendText_8" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordAppendText_9" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordAppendText_10" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="MessageBox_17" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="222.4,548.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_6" sap:VirtualizedContainerService.HintSize="243.2,52.8" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="WordAppendText_5" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordAddImage_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="MessageBox_18" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="222.4,363.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_7" sap:VirtualizedContainerService.HintSize="414.4,161.6" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="WordAppendText_6" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordSetBookmarkContent_1" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="MessageBox_19" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="222.4,363.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_8" sap:VirtualizedContainerService.HintSize="243.2,52.8" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="WordAppendText_7" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="WordExportToPdf_1" sap:VirtualizedContainerService.HintSize="200,52.8" />
+      <sap2010:ViewStateData Id="MessageBox_20" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="222.4,363.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_9" sap:VirtualizedContainerService.HintSize="414.4,161.6" />
+      <sap2010:ViewStateData Id="Sequence_22" sap:VirtualizedContainerService.HintSize="265.6,278.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Switch`1_1" sap:VirtualizedContainerService.HintSize="476.8,526.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,323.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243.2,60.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">178.4,199.6</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,260.4 300,290.4 310,290.4 310,323.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,113.6</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,166.4 300,199.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614.4,636.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,113.6</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222.4,177.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TOP_WORD_1" sap:VirtualizedContainerService.HintSize="376,396.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
+            <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

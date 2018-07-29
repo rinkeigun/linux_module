@@ -1,0 +1,364 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="TOP_FTP" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TOP_FTP_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:p="http://schemas.uipath.com/workflow/activities/ftp"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.XPS.Activities</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.JSON.Activities</x:String>
+      <x:String>UiPath.REST.Activities</x:String>
+      <x:String>UiPath.SOAP.Activities</x:String>
+      <x:String>UiPath.XML.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence FTP処理" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ftp_num" />
+      <Variable x:TypeArguments="x:Int32" Name="ftp_tonum" />
+      <Variable x:TypeArguments="x:String" Name="user_info" />
+    </Sequence.Variables>
+    <ui:InputDialog DisplayName="Input dialog MAIL" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="処理種類を選択してください" Options="[{&quot;1.説明&quot;,&quot;2.接続&quot;,&quot;3.ディレクトリ既存&quot;,&quot;4.ファイル既存&quot;,&quot;5.ファイルアップ&quot;,&quot;6.ファイルダウンロード&quot;,&quot;7.削除&quot;}]" Title="FTP処理">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[ftp_num]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[ftp_tonum]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(ftp_num.Split("."c)(0))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[ftp_tonum]" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Sequence x:Key="1" DisplayName="Sequence　FTP説明" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Name="pdf_dt" />
+        </Sequence.Variables>
+        <ui:BuildDataTable DataTable="[pdf_dt]" DisplayName="Build data table" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column2&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName&gt;&#xD;&#xA;    &lt;Column1&gt;txt&lt;/Column1&gt;&#xD;&#xA;    &lt;Column2&gt;FTP操作&lt;/Column2&gt;&#xD;&#xA;  &lt;/TableName&gt;&#xD;&#xA;  &lt;TableName&gt;&#xD;&#xA;    &lt;Column1&gt;txt&lt;/Column1&gt;&#xD;&#xA;    &lt;Column2&gt;接続&lt;/Column2&gt;&#xD;&#xA;  &lt;/TableName&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Make_PDF workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Make_PDF.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="pdf_dt">[pdf_dt]</InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <Sequence x:Key="2" DisplayName="Sequence　接続" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="njl:JObject" Name="user" />
+        </Sequence.Variables>
+        <ui:ReadTextFile Content="[user_info]" DisplayName="Read text file" FileName="input\FTP\user.json" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[user]" JsonString="[user_info]" />
+        <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session　接続" Host="innov-soft.sakura.ne.jp" sap2010:WorkflowViewState.IdRef="WithFtpSession_2" Password="[user.GetValue(&quot;password&quot;).ToString]" UseSftp="True" Username="[user.GetValue(&quot;user&quot;).ToString]">
+          <p:WithFtpSession.Body>
+            <ActivityAction x:TypeArguments="p:IFtpSession">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Sequence 接続" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <p:DownloadFiles ContinueOnError="False" Create="False" DisplayName="Download files" sap2010:WorkflowViewState.IdRef="DownloadFiles_1" LocalPath="d:\innov-soft" Overwrite="False" Recursive="False" RemotePath="www" />
+                </Sequence>
+              </Sequence>
+            </ActivityAction>
+          </p:WithFtpSession.Body>
+        </p:WithFtpSession>
+      </Sequence>
+      <Sequence x:Key="3" DisplayName="Sequence　接続" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="njl:JObject" Name="user" />
+        </Sequence.Variables>
+        <ui:ReadTextFile Content="[user_info]" DisplayName="Read text file" FileName="input\FTP\user.json" sap2010:WorkflowViewState.IdRef="ReadTextFile_4" />
+        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[user]" JsonString="[user_info]" />
+        <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session　接続" Host="innov-soft.sakura.ne.jp" sap2010:WorkflowViewState.IdRef="WithFtpSession_3" Password="[user.GetValue(&quot;password&quot;).ToString]" UseSftp="True" Username="[user.GetValue(&quot;user&quot;).ToString]">
+          <p:WithFtpSession.Body>
+            <ActivityAction x:TypeArguments="p:IFtpSession">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Sequence 接続" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <p:DownloadFiles ContinueOnError="False" Create="False" DisplayName="Download files" sap2010:WorkflowViewState.IdRef="DownloadFiles_2" LocalPath="d:\innov-soft" Overwrite="False" Recursive="False" RemotePath="www" />
+                </Sequence>
+              </Sequence>
+            </ActivityAction>
+          </p:WithFtpSession.Body>
+        </p:WithFtpSession>
+      </Sequence>
+      <x:Null x:Key="4" />
+      <Sequence x:Key="5" DisplayName="Sequence　アップ" sap2010:WorkflowViewState.IdRef="Sequence_18">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="njl:JObject" Name="user" />
+        </Sequence.Variables>
+        <ui:ReadTextFile Content="[user_info]" DisplayName="Read text file" FileName="input\FTP\user.json" sap2010:WorkflowViewState.IdRef="ReadTextFile_6" />
+        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[user]" JsonString="[user_info]" />
+        <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session　接続" Host="innov-soft.sakura.ne.jp" sap2010:WorkflowViewState.IdRef="WithFtpSession_5" Password="[user.GetValue(&quot;password&quot;).ToString]" UseSftp="True" Username="[user.GetValue(&quot;user&quot;).ToString]">
+          <p:WithFtpSession.Body>
+            <ActivityAction x:TypeArguments="p:IFtpSession">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Sequence 接続" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <p:UploadFiles ContinueOnError="False" Create="True" DisplayName="Upload files" sap2010:WorkflowViewState.IdRef="UploadFiles_1" LocalPath="d:\innov-soft\rin" Overwrite="True" Recursive="True" RemotePath="www" />
+                </Sequence>
+              </Sequence>
+            </ActivityAction>
+          </p:WithFtpSession.Body>
+        </p:WithFtpSession>
+      </Sequence>
+      <Sequence x:Key="6" DisplayName="Sequence　ダウンロード" sap2010:WorkflowViewState.IdRef="Sequence_15">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="njl:JObject" Name="user" />
+        </Sequence.Variables>
+        <ui:ReadTextFile Content="[user_info]" DisplayName="Read text file" FileName="input\FTP\user.json" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
+        <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[user]" JsonString="[user_info]" />
+        <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session　接続" Host="innov-soft.sakura.ne.jp" sap2010:WorkflowViewState.IdRef="WithFtpSession_4" Password="[user.GetValue(&quot;password&quot;).ToString]" UseSftp="True" Username="[user.GetValue(&quot;user&quot;).ToString]">
+          <p:WithFtpSession.Body>
+            <ActivityAction x:TypeArguments="p:IFtpSession">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Sequence 接続" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <p:DownloadFiles ContinueOnError="False" Create="False" DisplayName="Download files" sap2010:WorkflowViewState.IdRef="DownloadFiles_3" LocalPath="d:\innov-soft" Overwrite="False" Recursive="False" RemotePath="www" />
+                </Sequence>
+              </Sequence>
+            </ActivityAction>
+          </p:WithFtpSession.Body>
+        </p:WithFtpSession>
+      </Sequence>
+      <x:Null x:Key="7" />
+      <x:Null x:Key="8" />
+      <x:Null x:Key="9" />
+      <x:Null x:Key="10" />
+      <x:Null x:Key="11" />
+    </Switch>
+    <sads:DebugSymbol.Symbol>dzxEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcZnVuY3Rpb25zXHdob2xlX3VpcGF0aFxUT1BfRlRQLnhhbWxZYgPdAQ4CAQFoBWwWAgFlbQV0DgIBYXUF2wEOAgECaH5ojQECAWpolgFoqQICAWlqMWo6AgFnaLACaLcCAgFmci9yWAIBZG8wbzsCAWJ1R3VUAgEDdgeAARICAVmBAQeVARICAUSWAQeqARICAS+sAQfAARICARrBAQfVARICAQV6CXrCDwIBXnsJfyECAVqFAQmFAZ8BAgFVhgEJhgG/AQIBUIcBCZQBHAIBRZoBCZoBnwECAUCbAQmbAb8BAgE7nAEJqQEcAgEwsAEJsAGfAQIBK7EBCbEBvwECASayAQm/ARwCARvFAQnFAZ8BAgEWxgEJxgG/AQIBEccBCdQBHAIBBnomejACAV99R31PAgFce7kBe8gBAgFbhQFWhQFrAgFYhQEihQEvAgFWhgGvAYYBvAECAVOGAZsBhgGjAQIBUYcBngGHAaUBAgFPhwHsAocBmAMCAU6HAaMChwHTAgIBTYcBzQGHAeYBAgFMjQEPkQEaAgFGmgFWmgFrAgFDmgEimgEvAgFBmwGvAZsBvAECAT6bAZsBmwGjAQIBPJwBngGcAaUBAgE6nAHsApwBmAMCATmcAaMCnAHTAgIBOJwBzQGcAeYBAgE3ogEPpgEaAgExsAFWsAFrAgEusAEisAEvAgEssQGvAbEBvAECASmxAZsBsQGjAQIBJ7IBngGyAaUBAgElsgHsArIBmAMCASSyAaMCsgHTAgIBI7IBzQGyAeYBAgEiuAEPvAEaAgEcxQFWxQFrAgEZxQEixQEvAgEXxgGvAcYBvAECARTGAZsBxgGjAQIBEscBngHHAaUBAgEQxwHsAscBmAMCAQ/HAaMCxwHTAgIBDscBzQHHAeYBAgENzQEP0QEaAgEHjgERkAEcAgFHowERpQEcAgEyuQERuwEcAgEdzgER0AEcAgEIjwETjwHrAQIBSKQBE6QB6wECATO6ARO6AeYBAgEezwETzwHrAQIBCY8B4wGPAegBAgFLjwE0jwE7AgFKjwGkAY8BswECAUmkAeMBpAHoAQIBNqQBNKQBOwIBNaQBpAGkAbMBAgE0ugHeAboB4wECASG6ATK6ATkCASC6AZ0BugGwAQIBH88B4wHPAegBAgEMzwE0zwE7AgELzwGkAc8BswECAQo=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InputDialog_1" sap:VirtualizedContainerService.HintSize="476.8,92.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="476.8,60.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildDataTable_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,312">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_3" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_1" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="DownloadFiles_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="244.8,272">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WithFtpSession_2" sap:VirtualizedContainerService.HintSize="414.4,358.4" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="436.8,683.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_4" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_2" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="DownloadFiles_2" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="244.8,272">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WithFtpSession_3" sap:VirtualizedContainerService.HintSize="414.4,358.4" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="436.8,683.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_6" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_4" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="UploadFiles_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="244.8,272">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WithFtpSession_5" sap:VirtualizedContainerService.HintSize="414.4,358.4" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="436.8,683.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_5" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_3" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="DownloadFiles_3" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="244.8,272">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WithFtpSession_4" sap:VirtualizedContainerService.HintSize="414.4,358.4" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="436.8,683.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Switch`1_1" sap:VirtualizedContainerService.HintSize="476.8,1104">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="499.2,1462.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TOP_FTP_1" sap:VirtualizedContainerService.HintSize="539.2,1456" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

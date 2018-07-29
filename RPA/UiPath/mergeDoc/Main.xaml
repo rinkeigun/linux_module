@@ -1,0 +1,169 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:c="clr-namespace:ClassDocuworksActivity;assembly=Docuworks"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:String[]" Name="pathes" />
+    </Sequence.Variables>
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="ConvertToPDF" />
+    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <c:ConvertToPDF ResultNumber="{x:Null}" DisplayName="Convert to PDF" sap2010:WorkflowViewState.IdRef="ConvertToPDF_1" InFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\input\\convertToPDF.xdw" OutFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\output\\convertToPDF.bmp" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="zrd" />
+    <c:CreateDocument ResultNumber="{x:Null}" DisplayName="Create document ZRD" sap2010:WorkflowViewState.IdRef="CreateDocument_1" InFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\input\\（済）MA-11G-S.ZRD" OutFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\output\\（済）MA-11G-S.xdw" />
+    <Delay DisplayName="Delay 15秒" Duration="00:00:15" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="f4" KeyModifiers="Alt" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="pdf" />
+    <c:CreateDocument ResultNumber="{x:Null}" DisplayName="Create document　PDF" sap2010:WorkflowViewState.IdRef="CreateDocument_2" InFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\input\\docuworks_test.pdf" OutFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\output\\docuworks_test.xdw" />
+    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="f4" KeyModifiers="Alt" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <Delay DisplayName="Delay 15秒" Duration="00:00:15" sap2010:WorkflowViewState.IdRef="Delay_2" />
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="excel" />
+    <c:CreateDocument ResultNumber="{x:Null}" DisplayName="Create document EXCEL" sap2010:WorkflowViewState.IdRef="CreateDocument_3" InFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\input\\極洋マスタ作成.xlsx" OutFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\output\\極洋マスタ作成.xdw" />
+    <Delay DisplayName="Delay 15秒" Duration="00:00:15" sap2010:WorkflowViewState.IdRef="Delay_4" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[pathes]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[{"C:\\Users\\linhu\\OneDrive\\Documents\\Fuji Xerox\\DocuWorks\\DWFolders\\ユーザーフォルダ\\scan-2.xdw", "C:\\Users\\linhu\\OneDrive\\Documents\\Fuji Xerox\\DocuWorks\\DWFolders\\ユーザーフォルダ\\scan.xdw"}]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="test1" />
+    <c:MergeDocument ResultNumber="{x:Null}" DisplayName="Merge document" sap2010:WorkflowViewState.IdRef="MergeDocument_1" InFile="[pathes]" OutFile="D:\\2018-07\\極洋電機\\K電機\\100.製作\\uipath\\output\\merge.xdw" />
+    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="何ができたか" />
+    <sads:DebugSymbol.Symbol>dytEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcbWVyZ2VEb2NcTWFpbi54YW1sJTwDcw4CAQFABUBtAgEmQQVHFQIBJUgFSGQCASNJBUmYAgIBIEoFSmQCAR5LBVUVAgEdVgVWZAIBG1cFV54CAgEYWAViFQIBF2MFY2QCARVkBWRmAgETZQVlkwICARBmBWZkAgEOZwVuDgIBCm8Fb2YCAQhwBXDVAQIBBHEFcWcCAQJAXEBqAgEnSFxIYQIBJEnUAUmVAgIBIkmLAUnLAQIBIUotSjcCAR9WXFZhAgEcV9cBV5sCAgEaV4sBV84BAgEZYy1jNwIBFmRcZGMCARRl0wFlkAICARJljQFlygECARFmLWY3AgEPbDJs9AECAQ1pM2k7AgELb1xvYwIBCXCXAXDSAQIBB3CEAXCOAQIBBXFccWQCAQM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="ConvertToPDF_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_3" sap:VirtualizedContainerService.HintSize="416,225.6" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="CreateDocument_1" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_1" sap:VirtualizedContainerService.HintSize="313.6,116.8" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,241.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_2" sap:VirtualizedContainerService.HintSize="416,320" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="CreateDocument_2" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_2" sap:VirtualizedContainerService.HintSize="313.6,116.8" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,241.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="416,320" />
+      <sap2010:ViewStateData Id="Delay_2" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_5" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="CreateDocument_3" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="416,60.8" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="MergeDocument_1" sap:VirtualizedContainerService.HintSize="416,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="416,62.4" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="438.4,2222.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="478.4,2302.4" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

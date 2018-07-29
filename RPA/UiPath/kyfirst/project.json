@@ -1,0 +1,19 @@
+{
+  "name": "kyfirst",
+  "description": "Blank Project",
+  "main": "Main.xaml",
+  "dependencies": {
+    "DocuworksActivities": "1.0.0.0",
+    "UiPath.Core.Activities": "18.2.6745.15248",
+    "UiPath.Excel.Activities": "2.3.6682.26635",
+    "UiPath.WebAPI.Activities": "1.1.6479.13209"
+  },
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.2",
+  "projectVersion": "1.0.6762.25543",
+  "packOptions": {},
+  "runtimeOptions": {}
+}

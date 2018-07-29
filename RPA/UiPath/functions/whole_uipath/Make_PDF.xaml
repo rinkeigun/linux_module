@@ -1,0 +1,280 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Make_PDF"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:p="http://schemas.uipath.com/workflow/activities/word"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="pdf_dt" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Make_PDF_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.XPS.Activities</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="doc_path" />
+      <Variable x:TypeArguments="x:Boolean" Name="doc_exist" />
+      <Variable x:TypeArguments="x:String" Name="pdf_path" />
+    </Sequence.Variables>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[doc_path]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">tmp.docx</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:PathExists DisplayName="Path exists" Exists="[doc_exist]" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[doc_path]" PathType="File" />
+    <If Condition="[doc_exist]" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <ui:Delete ContinueOnError="{x:Null}" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[doc_path]" />
+      </If.Then>
+    </If>
+    <p:WordApplicationScope DisplayName="Word Application Scope" FilePath="tmp.docx" sap2010:WorkflowViewState.IdRef="WordApplicationScope_1">
+      <p:WordApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WordDocument">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WordDocument" Name="WordDocumentScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="loop start" />
+            <ui:ForEachRow DataTable="[pdf_dt]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <p:WordSetBookmarkContent BookmarkName="aa" BookmarkText="何を" DisplayName="Set Bookmark Content" sap2010:WorkflowViewState.IdRef="WordSetBookmarkContent_1" />
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                    </ui:CommentOut>
+                    <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[row(0).ToString]" />
+                    <If Condition="[row(0).Equals( &quot;txt&quot;)]" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="this is txt" />
+                          <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_1" Text="[row(1).ToString]" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[row(1).ToString]" />
+                          <p:WordAppendText DisplayName="Append Text" sap2010:WorkflowViewState.IdRef="WordAppendText_2">
+                            <p:WordAppendText.Text>
+                              <InArgument x:TypeArguments="x:String">
+                                <Literal x:TypeArguments="x:String" Value="" />
+                              </InArgument>
+                            </p:WordAppendText.Text>
+                          </p:WordAppendText>
+                          <p:WordAddImage DisplayName="Add Image" sap2010:WorkflowViewState.IdRef="WordAddImage_1" ImagePath="[row(1).ToString]" />
+                          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="ここまで" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[pdf_path]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">tmp.pdf</InArgument>
+              </Assign.Value>
+            </Assign>
+            <p:WordExportToPdf DisplayName="Export to PDF" FilePath="[pdf_path]" sap2010:WorkflowViewState.IdRef="WordExportToPdf_1" />
+          </Sequence>
+        </ActivityAction>
+      </p:WordApplicationScope.Body>
+    </p:WordApplicationScope>
+    <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="D:\sourcetree\RPA\UiPath\functions\whole_uipath\tmp.pdf" DisplayName="Start process" FileName="C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+    <Delay Duration="00:00:20" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <ui:CommentOut DisplayName="Comment out PDFを表示するため、EDGEを開くつもりだがうまくいかない" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <ui:OpenApplication ApplicationWindow="{x:Null}" Arguments="{x:Null}" TimeoutMS="{x:Null}" WorkingDirectory="{x:Null}" DisplayName="Open application 'MicrosoftEdge.exe Micro...'" FileName="C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" sap2010:WorkflowViewState.IdRef="OpenApplication_5" InformativeScreenshot="88a7b8e6f48a920c2f01b11aadad1959" Selector="&lt;wnd app='applicationframehost.exe' appid='Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge' title='DST37326LK-LED.pdf ‎- Microsoft Edge' /&gt;&lt;wnd cls='Windows.UI.Core.CoreWindow' title='Microsoft Edge' /&gt;">
+            <ui:OpenApplication.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_11" />
+              </ActivityAction>
+            </ui:OpenApplication.Body>
+          </ui:OpenApplication>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <sads:DebugSymbol.Symbol>dz1EOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhcZnVuY3Rpb25zXHdob2xlX3VpcGF0aFxNYWtlX1BERi54YW1sMV4DwwEOAgEBZAVrDgIBNmwFbJYBAgExbQVxCgIBK3IFrwEeAgEIsAEFsAGeAgIBBbEBBbEBTAIBA7IBBcEBFQIBAmkwaTgCATlmMWY7AgE3bDVsQgIBNGx3bIMBAgEybRNtIAIBLG8Jb24CAS5yS3JVAgEqeAusARYCAQmwATywAXUCAQewAZsBsAHqAQIBBrEBFbEBHwIBBG9fb2sCAS95DXlzAgEoeg2iAR0CARGjAQ2qARYCAQ2rAQ2rAYgBAgEKeWR5cAIBKXomejACASaAAROfAR4CARKoATioAT8CARClATmlAUMCAQ6rAUWrAVECAQuBARWHASUCASWIARWIAYIBAgEjiQEVngEaAgETiAFsiAF/AgEkiQEjiQFGAgEUiwEZjgEkAgEekQEZnAEkAgEVjAEbjAGCAQIBIY0BG40BlQECAR+SARuSAYgBAgEckwEbmQEuAgEamgEbmgGUAQIBGJsBG5sBewIBFowBcowBfwIBIo0Bf40BkgECASCSAXKSAYUBAgEdlgEhlgFQAgEbmgF+mgGRAQIBGZsBcpsBeAIBFw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="785.6,60.8" />
+      <sap2010:ViewStateData Id="PathExists_1" sap:VirtualizedContainerService.HintSize="785.6,89.6" />
+      <sap2010:ViewStateData Id="Delete_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="785.6,211.2" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="748.8,62.4" />
+      <sap2010:ViewStateData Id="WordSetBookmarkContent_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="696,262.4" />
+      <sap2010:ViewStateData Id="WriteLine_7" sap:VirtualizedContainerService.HintSize="696,62.4" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="313.6,62.4" />
+      <sap2010:ViewStateData Id="WordAppendText_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,286.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="313.6,62.4" />
+      <sap2010:ViewStateData Id="WordAppendText_2" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="WordAddImage_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="WriteLine_8" sap:VirtualizedContainerService.HintSize="313.6,62.4" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="336,488">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="696,636.8" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="718.4,1166.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="748.8,1315.2" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="748.8,60.8" />
+      <sap2010:ViewStateData Id="WordExportToPdf_1" sap:VirtualizedContainerService.HintSize="748.8,59.2" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="771.2,1742.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WordApplicationScope_1" sap:VirtualizedContainerService.HintSize="785.6,1851.2" />
+      <sap2010:ViewStateData Id="StartProcess_1" sap:VirtualizedContainerService.HintSize="785.6,88" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="785.6,22.4" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="200,100.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenApplication_5" sap:VirtualizedContainerService.HintSize="414.4,248" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="436.8,372.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_2" sap:VirtualizedContainerService.HintSize="785.6,451.2" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="808,3139.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Make_PDF_1" sap:VirtualizedContainerService.HintSize="848,3539.2" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

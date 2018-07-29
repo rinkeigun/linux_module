@@ -1,0 +1,233 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CreateCover"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="json_data" Type="InArgument(njl:JObject)" />
+    <x:Property Name="out_path" Type="InArgument(x:String)" />
+    <x:Property Name="cover_history" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="xdw_paths" Type="InOutArgument(scg:List(x:String))" />
+    <x:Property Name="cover_head" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="cover_type" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CreateCover_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.XPS.Activities</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.JSON.Activities</x:String>
+      <x:String>UiPath.REST.Activities</x:String>
+      <x:String>UiPath.SOAP.Activities</x:String>
+      <x:String>UiPath.XML.Activities</x:String>
+      <x:String>UiPath.Word</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Sequence　表紙作成" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="in_file" />
+      <Variable x:TypeArguments="x:String" Name="out_file" />
+      <Variable x:TypeArguments="x:String" Name="sheet_name" />
+    </Sequence.Variables>
+    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create directory 日時ディレクトリを作成" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[out_path]" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_17">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_file]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[json_data.GetValue("ROOT").ToString + "\template\表紙.xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_18">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_file]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[out_path+"\"+"表紙_"+cover_type+".xlsx"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[out_file]" DisplayName="Copy file" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_file]" />
+    <Delay Duration="00:00:01" sap2010:WorkflowViewState.IdRef="Delay_8" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" WorkbookPath="[out_file]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="rows" />
+              <Variable x:TypeArguments="x:String" Name="cell_name" />
+            </Sequence.Variables>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[sheet_name]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["和文原紙"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ForEachRow DataTable="[cover_head]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                    <ui:ExcelWriteCell Cell="[row.Item(0).ToString]" DisplayName="Write Cell　表紙データの書き換え" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[sheet_name]" Text="[row.Item(1).ToString]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[rows]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[cover_history.Rows.Count]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[cell_name]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["A"+(39-(rows-1)).ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelWriteRange AddHeaders="False" DataTable="[cover_history]" DisplayName="Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[sheet_name]" StartingCell="[cell_name]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <AddToCollection x:TypeArguments="x:String" Collection="[xdw_paths]" DisplayName="Add to collection 表紙ファイル名を追加" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[out_file]" />
+    <ui:AppendLine DisplayName="Append line" FileName="[json_data.GetValue(&quot;LOG_PATH&quot;).ToString]" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[DateTime.Now.ToString(“MM/dd HH:mm:ss”) + &quot; 表紙作成完了&quot;]" />
+    <sads:DebugSymbol.Symbol>dzFEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhca3lmaXJzdFxDcmVhdGVDb3Zlci54YW1sK3ADwAEOAgEBdgV2pwECATx3BX4OAgE4fwWGAQ4CATKHAQWHAa8BAgEtiAEFiAFMAgEriQEFvAEgAgEKvQEFvQG/AQIBBb4BBb4B5QECAQJ2mAF2pAECAT18MHxrAgE7eTF5OgIBOYQBMIQBVwIBNYEBMYEBOwIBM4cBOYcBRQIBMIcBoQGHAawBAgEuiAEViAEfAgEsiQGgAYkBrAECASmPAQu5ARYCAQu9ATy9AUkCAQi9AbABvQG8AQIBBr4BoQG+AeIBAgEEvgE3vgFsAgEDlAENmwEWAgElnAENpwEdAgEcqAENrwEWAgEYsAENtwEWAgETuAENuAHUAQIBDJkBOJkBQAIBKJYBOZYBRQIBJpwBJpwBNAIBI6IBE6QBHgIBHa0BN60BUQIBG6oBOKoBPgIBGbUBOLUBVAIBFrIBObIBRAIBFLgBxAG4AdEBAgERuAE+uAFPAgEPuAGoAbgBtgECAQ2jARWjAdYBAgEeowEtowFFAgEiowG7AaMB0wECASGjAacBowG1AQIBHw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="CreateDirectory_1" sap:VirtualizedContainerService.HintSize="414.4,22.4" />
+      <sap2010:ViewStateData Id="Assign_17" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="Assign_18" sap:VirtualizedContainerService.HintSize="414.4,60.8" />
+      <sap2010:ViewStateData Id="CopyFile_1" sap:VirtualizedContainerService.HintSize="414.4,22.4" />
+      <sap2010:ViewStateData Id="Delay_8" sap:VirtualizedContainerService.HintSize="414.4,22.4" />
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="366.4,60.8" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_37" sap:VirtualizedContainerService.HintSize="336,212.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_4" sap:VirtualizedContainerService.HintSize="366.4,361.6" />
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="366.4,60.8" />
+      <sap2010:ViewStateData Id="Assign_20" sap:VirtualizedContainerService.HintSize="366.4,60.8" />
+      <sap2010:ViewStateData Id="ExcelWriteRange_1" sap:VirtualizedContainerService.HintSize="366.4,88" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="388.8,916.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_3" sap:VirtualizedContainerService.HintSize="414.4,1025.6" />
+      <sap2010:ViewStateData Id="AddToCollection`1_3" sap:VirtualizedContainerService.HintSize="414.4,22.4" />
+      <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="414.4,88" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="436.8,1729.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CreateCover_1" sap:VirtualizedContainerService.HintSize="476.8,1929.6" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

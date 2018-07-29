@@ -1,0 +1,480 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CreateXDWexl"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="json_data" Type="InArgument(njl:JObject)" />
+    <x:Property Name="in_file" Type="InArgument(x:String)" />
+    <x:Property Name="out_path" Type="InArgument(x:String)" />
+    <x:Property Name="out_file" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CreateXDWexl_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="app" />
+    </Sequence.Variables>
+    <Delay DisplayName="Delay 10秒" Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_2" />
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[app]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[json_data.GetValue("EXCEL_APP").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="True" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[in_file]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Delay DisplayName="Delay　10秒" Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_9" />
+                <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_17" Key="" KeyModifiers="Alt" SendWindowMessages="False" SpecialKey="False">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_21" Key="f" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_22" Key="p" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <Delay Duration="00:00:02" sap2010:WorkflowViewState.IdRef="Delay_13" />
+                <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_23" Key="p" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_14" />
+                <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_37" Text="[out_path]" />
+                <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_38" Text="[out_file]" />
+                <Sequence DisplayName="Recording Sequence" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'text  ファイル名:'" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition OffsetX="74" OffsetY="5" Position="TopLeft" />
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7958c17ad1028b4ee435f759cf161a3f" Selector="&lt;wnd app='dwmaker.exe' cls='#32770' title='名前を付けて保存' /&gt;&lt;wnd aaname='Explorer ウィンドウ' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer ウィンドウ' role='pane' /&gt;&lt;ctrl name='フォルダー レイアウト ウィンドウ' role='pane' /&gt;&lt;ctrl name='詳細ウィンドウ' role='pane' /&gt;&lt;ctrl name='ファイル名:' role='text' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DocuworksPrinterFileName workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="DocuworksPrinterFileName.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="out_path">[out_path]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="out_file">[out_file]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[in_file]" DisplayName="Start process" FileName="[app]" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
+          <Delay DisplayName="Delay　10秒" Duration="00:00:10" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  ファイル タブ'" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f0190152d0ebe7389e2984c05879698d" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='表紙.xlsx - Excel' /&gt;&lt;wnd cls='MsoWorkPane' title='Ribbon' /&gt;&lt;wnd aaname='Ribbon' cls='NetUIHWND' /&gt;&lt;ctrl name='Ribbon' role='property page' /&gt;&lt;ctrl name='ファイル タブ' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'push button  編集を有効にする(E)'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="dc164c1bb07d320c2e6f09bb6c41c6c8" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='表紙.xlsx  -  保護ビュー - Excel' /&gt;&lt;wnd cls='MsoWorkPane' title=' ' /&gt;&lt;wnd aaname='メッセージ バー' cls='NetUIHWND' /&gt;&lt;ctrl name='メッセージ バー' role='property page' /&gt;&lt;ctrl name='保護ビュー' /&gt;&lt;ctrl name='編集を有効にする(E)' role='push button' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <ui:RetryScope DisplayName="Retry scope" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap2010:WorkflowViewState.IdRef="Sequence_5" />
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                </ui:RetryScope>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_32" Text="test" />
+          <Delay Duration="00:00:07" sap2010:WorkflowViewState.IdRef="Delay_10" />
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_12" Key="" KeyModifiers="Alt" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_18" Key="f" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_19" Key="p" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <Delay Duration="00:00:02" sap2010:WorkflowViewState.IdRef="Delay_11" />
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_20" Key="p" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <Delay Duration="00:00:05" sap2010:WorkflowViewState.IdRef="Delay_12" />
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_39" Text="[out_path]" />
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_40" Text="[out_file]" />
+          <Sequence DisplayName="Recording Sequence" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'text  ファイル名:'" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition OffsetX="74" OffsetY="5" Position="TopLeft" />
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7958c17ad1028b4ee435f759cf161a3f" Selector="&lt;wnd app='dwmaker.exe' cls='#32770' title='名前を付けて保存' /&gt;&lt;wnd aaname='Explorer ウィンドウ' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer ウィンドウ' role='pane' /&gt;&lt;ctrl name='フォルダー レイアウト ウィンドウ' role='pane' /&gt;&lt;ctrl name='詳細ウィンドウ' role='pane' /&gt;&lt;ctrl name='ファイル名:' role='text' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+          </Sequence>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DocuworksPrinterFileName workflow" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="DocuworksPrinterFileName.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="out_path">[out_path]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="out_file">[out_file]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_16" Key="tab" KeyModifiers="Alt, Shift" SendWindowMessages="False" SpecialKey="False">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="p" KeyModifiers="Ctrl" SendWindowMessages="False" SpecialKey="False">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <Delay Duration="00:00:07" sap2010:WorkflowViewState.IdRef="Delay_4" />
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="right" KeyModifiers="None" SendWindowMessages="False" SpecialKey="True">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <Delay Duration="00:00:02" sap2010:WorkflowViewState.IdRef="Delay_5" />
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="tab" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <Delay Duration="00:00:02" sap2010:WorkflowViewState.IdRef="Delay_6" />
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="enter" KeyModifiers="None" SendWindowMessages="False" SpecialKey="False">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_34" Text="test3" />
+            <Sequence DisplayName="Recording Sequence" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window '     xlsx Xlmain'" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="2c144d653470ae6abdecd39f79d1f14c" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='作業指示書.xlsx - Excel' /&gt;">
+                <ui:WindowScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select item 'NetUIHWND'" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="DocuWorks Printer">
+                          <ui:SelectItem.Items>
+                            <scg:List x:TypeArguments="x:String" Capacity="32">
+                              <x:String>戻る</x:String>
+                              <x:String>情報</x:String>
+                              <x:String>新規</x:String>
+                              <x:String>開く</x:String>
+                              <x:String>上書き保存</x:String>
+                              <x:String>名前を付けて保存</x:String>
+                              <x:String>移動</x:String>
+                              <x:String>履歴</x:String>
+                              <x:String>印刷</x:String>
+                              <x:String>共有</x:String>
+                              <x:String>共有</x:String>
+                              <x:String>エクスポート</x:String>
+                              <x:String>発行</x:String>
+                              <x:String>閉じる</x:String>
+                              <x:String>アカウント</x:String>
+                              <x:String>フィードバック</x:String>
+                              <x:String>オプション</x:String>
+                              <x:String>フィードバック</x:String>
+                              <x:String>Brother DCP-J557N Printer</x:String>
+                              <x:String>DocuWorks PDF</x:String>
+                              <x:String>DocuWorks Printer</x:String>
+                              <x:String>Fax</x:String>
+                              <x:String>Microsoft Print to PDF</x:String>
+                              <x:String>Microsoft XPS Document Writer</x:String>
+                              <x:String>Send To OneNote 2016</x:String>
+                            </scg:List>
+                          </ui:SelectItem.Items>
+                          <ui:SelectItem.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="b74a0392fff15810f4f2323c1316b044" Selector="&lt;wnd cls='NetUIHWND' idx='1' /&gt;" WaitForReady="INTERACTIVE" />
+                          </ui:SelectItem.Target>
+                        </ui:SelectItem>
+                      </Sequence>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:WindowScope.Body>
+              </ui:WindowScope>
+            </Sequence>
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_10" Key="tab" KeyModifiers="Shift" SendWindowMessages="False" SpecialKey="False">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+            <ui:SendHotkey DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Send hotkey" EmptyField="False" sap2010:WorkflowViewState.IdRef="SendHotkey_11" Key="tab" KeyModifiers="Shift" SendWindowMessages="False" SpecialKey="False">
+              <ui:SendHotkey.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" WaitForReady="INTERACTIVE" />
+              </ui:SendHotkey.Target>
+            </ui:SendHotkey>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <sads:DebugSymbol.Symbol>dzJEOlxzb3VyY2V0cmVlXFJQQVxVaVBhdGhca3lmaXJzdFxDcmVhdGVYRFdleGwueGFtbElFA88CDgIBAUkFSWQCAVRKBVEOAgFQUgXnAQoCAQToAQXyARUCAQPzAQXNAhUCAQJJLUk3AgFVTzBPWgIBU0wxTDYCAVFSE1IZAgEFVAmHASQCATGKAQnlARQCAQZUpAFUrwECAU5aD4QBGgIBMosBC4sBrgECASyMAQuMAWoCASqNAQubARYCASicAQuqARYCASWrAQu6ARsCASS7AQu7AWwCASK8AQu8AVMCASC9AQvBARsCAR/CAQvGARsCAR7HAQvLARsCAR3MAQvMAVMCARvNAQvRARsCARrSAQvSAVMCARjTAQvTAXICARXUAQvUAXICARLVAQveARYCAQ3fAQvkASMCAQdbEVtwAgFMXBFgIQIBS2ERZSECAUpmEWohAgFJaxFrWQIBR2wRcCECAUZxEXFZAgFEchFyeAIBQXMRc3gCAT50EX0cAgE5fhGDASkCATOLAUKLAU0CAS+LAXOLAXoCAS2MATOMAT0CASuZAZ4BmQGeAwIBKagBngGoAcYDAgEnnAFonAFuAgEmuwFjuwFpAgEjvAEbvAElAgEhzAEbzAElAgEc0gEb0gElAgEZ0wFj0wFvAgEW1AFj1AFvAgET1gEN3QEYAgEO4gFH4gFRAgEL4QFH4QFRAgEJ3wHLAd8B6gECAQhbOVtDAgFNayFrKwIBSHEhcSsCAUVyaXJ1AgFCc2lzdQIBP3UTfB4CATqBAU2BAVcCATeAAU2AAVcCATV+0QF+8AECATTbAaAB2wHLAwIBEdgBOdgBPAIBENgBLNgBMAIBD3qmAXrRAwIBPXc/d0ICATx3Mnc2AgE7</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Delay_2" sap:VirtualizedContainerService.HintSize="1836.8,22.4" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="1836.8,60.8" />
+      <sap2010:ViewStateData Id="Delay_9" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_17" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="SendHotkey_21" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="SendHotkey_22" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_13" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_23" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_14" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_37" sap:VirtualizedContainerService.HintSize="876.8,62.4" />
+      <sap2010:ViewStateData Id="WriteLine_38" sap:VirtualizedContainerService.HintSize="876.8,62.4" />
+      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="313.6,107.2" />
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="876.8,232">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="876.8,88" />
+      <sap2010:ViewStateData Id="Sequence_17" sap:VirtualizedContainerService.HintSize="899.2,1504">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="913.6,1612.8" />
+      <sap2010:ViewStateData Id="StartProcess_1" sap:VirtualizedContainerService.HintSize="876.8,88" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="876.8,107.2" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="876.8,107.2" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="200,100.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetryScope_1" sap:VirtualizedContainerService.HintSize="313.6,276.8" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,401.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="876.8,480" />
+      <sap2010:ViewStateData Id="WriteLine_32" sap:VirtualizedContainerService.HintSize="876.8,62.4" />
+      <sap2010:ViewStateData Id="Delay_10" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_12" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="SendHotkey_18" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="SendHotkey_19" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_11" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_20" sap:VirtualizedContainerService.HintSize="876.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_12" sap:VirtualizedContainerService.HintSize="876.8,22.4" />
+      <sap2010:ViewStateData Id="WriteLine_39" sap:VirtualizedContainerService.HintSize="876.8,62.4" />
+      <sap2010:ViewStateData Id="WriteLine_40" sap:VirtualizedContainerService.HintSize="876.8,62.4" />
+      <sap2010:ViewStateData Id="Click_8" sap:VirtualizedContainerService.HintSize="313.6,107.2" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="876.8,232">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="876.8,88" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="899.2,2611.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="1836.8,2761.6" />
+      <sap2010:ViewStateData Id="SendHotkey_16" sap:VirtualizedContainerService.HintSize="313.6,116.8" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="336,241.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_5" sap:VirtualizedContainerService.HintSize="1836.8,320" />
+      <sap2010:ViewStateData Id="SendHotkey_1" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_4" sap:VirtualizedContainerService.HintSize="436.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_2" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_5" sap:VirtualizedContainerService.HintSize="436.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_4" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="Delay_6" sap:VirtualizedContainerService.HintSize="436.8,22.4" />
+      <sap2010:ViewStateData Id="SendHotkey_5" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="WriteLine_34" sap:VirtualizedContainerService.HintSize="436.8,62.4" />
+      <sap2010:ViewStateData Id="SelectItem_1" sap:VirtualizedContainerService.HintSize="313.6,134.4" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,259.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="358.4,384">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WindowScope_1" sap:VirtualizedContainerService.HintSize="414.4,531.2" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="436.8,656">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendHotkey_10" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="SendHotkey_11" sap:VirtualizedContainerService.HintSize="436.8,116.8" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="459.2,2011.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="481.6,2136">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_4" sap:VirtualizedContainerService.HintSize="1836.8,2214.4" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="1859.2,5664">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CreateXDWexl_1" sap:VirtualizedContainerService.HintSize="1899.2,6104" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
