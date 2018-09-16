@@ -1,0 +1,9 @@
+setup.py
+aaa.egg-info/PKG-INFO
+aaa.egg-info/SOURCES.txt
+aaa.egg-info/dependency_links.txt
+aaa.egg-info/requires.txt
+aaa.egg-info/top_level.txt
+package/__init__.py
+package/subpackage/__init__.py
+package/subpackage/module1.py

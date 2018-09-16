@@ -1,0 +1,1 @@
+c:\program files (x86)\microsoft visual studio\shared\python36_64\lib\site-packages\aaa-0.1-py3.6.egg
