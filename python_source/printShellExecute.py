@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 from __future__ import division, print_function, absolute_import, unicode_literals
 
 # ref: http://timgolden.me.uk/python/win32_how_do_i/print.html

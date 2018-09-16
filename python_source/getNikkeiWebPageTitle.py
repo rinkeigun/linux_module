@@ -1,4 +1,4 @@
-# coding: UTF-8 #
+# -*- coding: utf-8 -*-
 #import urllib as myurllib
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
