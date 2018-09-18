@@ -91,6 +91,7 @@ def location(file):
     cv2.imshow("hsv_img", hsv_img)
     cv2.waitKey(0)
     # 找到hsv图片下的所有符合蓝底颜色区间的像素点，转换成二值化图像
+    # 白底
     mask1 = cv2.inRange(hsv_img, lower_blue1, higher_blue1)
     mask2 = cv2.inRange(hsv_img, lower_blue2, higher_blue2)
     mask = mask1+mask2
@@ -129,7 +130,15 @@ def location(file):
 
     # 查找并筛选符合条件的矩形区域
     region = findPlateNumberRegion(closed)
+    x = [tmpa[0] for tmpa in [region]]
+    minx = min(x)
+    maxx = max(x)
+    y = [tmpa[1] for tmpa in [region]]
+    miny = min(y)
+    maxy = max(y)
     cv2.drawContours(img, [region], 0, (0, 255, 0), 2)
+    print( "region", region)
+    print( minx, miny, maxx, maxy)
     cv2.imshow("img", img)
     cv2.waitKey(0)
 
